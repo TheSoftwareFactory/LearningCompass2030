@@ -1,26 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
+import 'package:learning_compass_exp/data/models/petal_names.dart';
+import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower_petal_painter.dart';
 
 class FlowerPetal extends StatelessWidget {
-  final double petalSize;
+  final double maxPetalSize;
   final double angle;
   final Color color;
+  final PetalName petalName;
 
-  FlowerPetal({this.petalSize, this.angle, this.color});
+  FlowerPetal({this.maxPetalSize, this.angle, this.color, this.petalName});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: petalSize,
-      width: petalSize,
-      child: Transform.rotate(
-        alignment: Alignment.topLeft,
-        angle: angle,
-        child: CustomPaint(
-          foregroundPainter: FlowerPetalPainter(petalColor: color),
-        ),
-      ),
+    return StoreConnector<AppState, Map>(
+      converter: (Store<AppState> store) => store.state.flowerProgress,
+      builder: (context, flowerProgress) {
+        return Container(
+          height: (flowerProgress[petalName] / 100) * maxPetalSize,
+          width: (flowerProgress[petalName] / 100) * maxPetalSize,
+          child: Transform.rotate(
+            alignment: Alignment.topLeft,
+            angle: angle,
+            child: CustomPaint(
+              foregroundPainter: FlowerPetalPainter(petalColor: color),
+            ),
+          ),
+        );
+      },
     );
   }
 }

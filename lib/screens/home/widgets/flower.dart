@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower_petal.dart';
 
 class Flower extends StatelessWidget {
@@ -8,17 +9,17 @@ class Flower extends StatelessWidget {
   // is ~flowerSize / 2.
   final double flowerSize;
   final List _petalDetails = [
-    {'angle': 0.0, 'color': Colors.green},
-    {'angle': (2 / 11) * pi, 'color': Colors.red},
-    {'angle': (4 / 11) * pi, 'color': Colors.blue},
-    {'angle': (6 / 11) * pi, 'color': Colors.amber},
-    {'angle': (8 / 11) * pi, 'color': Colors.blueGrey},
-    {'angle': (10 / 11) * pi, 'color': Colors.cyan},
-    {'angle': (12 / 11) * pi, 'color': Colors.deepOrange},
-    {'angle': (14 / 11) * pi, 'color': Colors.lightGreen},
-    {'angle': (16 / 11) * pi, 'color': Colors.purple},
-    {'angle': (18 / 11) * pi, 'color': Colors.indigo},
-    {'angle': (20 / 11) * pi, 'color': Colors.lime}
+    {'petalName': PetalName.education, 'angle': 0.0, 'color': Colors.green},
+    {'petalName': PetalName.community, 'angle': (2 / 11) * pi, 'color': Colors.red},
+    {'petalName': PetalName.job, 'angle': (4 / 11) * pi, 'color': Colors.blue},
+    {'petalName': PetalName.income, 'angle': (6 / 11) * pi, 'color': Colors.amber},
+    {'petalName': PetalName.housing, 'angle': (8 / 11) * pi, 'color': Colors.blueGrey},
+    {'petalName': PetalName.workLifeBalance, 'angle': (10 / 11) * pi, 'color': Colors.cyan},
+    {'petalName': PetalName.safety, 'angle': (12 / 11) * pi, 'color': Colors.deepOrange},
+    {'petalName': PetalName.lifeSatisfaction, 'angle': (14 / 11) * pi, 'color': Colors.lightGreen},
+    {'petalName': PetalName.health, 'angle': (16 / 11) * pi, 'color': Colors.purple},
+    {'petalName': PetalName.civicEngagement, 'angle': (18 / 11) * pi, 'color': Colors.indigo},
+    {'petalName': PetalName.environment, 'angle': (20 / 11) * pi, 'color': Colors.lime}
   ];
 
   Flower({this.flowerSize});
@@ -36,15 +37,16 @@ class Flower extends StatelessWidget {
         ),
       ),
     );
-  }
+}
 
   List<Widget> _transformIntoPetals(List details, double flowerSize) {
     List<Widget> list = List<Widget>();
     for (var i = 0; i < details.length; i++) {
       list.add(FlowerPetal(
         angle: details[i]['angle'],
-        petalSize: flowerSize / 2,
+        maxPetalSize: flowerSize / 2,
         color: details[i]['color'],
+        petalName: details[i]['petalName'],
       ));
     }
     return list;
