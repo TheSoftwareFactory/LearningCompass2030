@@ -38,4 +38,25 @@ class AppState {
       },
     );
   }
+
+  @override
+  int get hashCode =>
+      number.hashCode ^
+      flowerProgress.hashCode;
+
+
+  // Not sure which == for map should be used for this function...
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AppState &&
+        runtimeType == other.runtimeType &&
+        number == other.number &&
+        //flowerProgress == other.flowerProgress;
+        isProgressIdentical(flowerProgress, other.flowerProgress);
+}
+
+bool isProgressIdentical(Map a, Map b) {
+  if (a.length != b.length) return false;
+  return a.keys.every((key) => b.containsKey(key) && a[key] == b[key]);
 }

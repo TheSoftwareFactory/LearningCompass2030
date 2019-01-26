@@ -27,7 +27,7 @@ Map<PetalName, double> _decrementPetalProgress(
     Map<PetalName, double> flowerProgress,
     DecrementPetalProgressAction action) {
   Map<PetalName, double> newMap = Map.from(flowerProgress);
-  newMap[action.petalName] = newMap[action.petalName] > 0
+  newMap[action.petalName] = newMap[action.petalName] > 30
       ? newMap[action.petalName] - 1
       : newMap[action.petalName];
   return newMap;
