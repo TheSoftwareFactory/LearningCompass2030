@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'dart:math';
 
-import 'package:learning_compass_exp/app.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower_petal.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
+import 'package:learning_compass_exp/store/app_state.dart';
+import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
@@ -15,21 +18,18 @@ void main() {
   }
 
   group("Flower widget", () {
+    final Store<AppState> store = Store<AppState>(
+      appReducer,
+      initialState: AppState.initial(),
+      //middleware: createStoreMiddleware(),
+    );
+
     testWidgets("sets padding correctly around the flower to center it",
         (WidgetTester tester) async {
-      await tester.pumpWidget(
-        LearningCompassApp(),
-      );
-
-      await tester.pump();
-      await tester.pump();
+      await setUpWidget(tester, store);
 
       // Find first container inside flower (ie. immediate child)
-      Container cont = find
-          .descendant(of: find.byType(Flower), matching: find.byType(Container))
-          .evaluate()
-          .first
-          .widget;
+      Container cont = find.byType(Container).evaluate().first.widget;
       Flower flower = find.byType(Flower).evaluate().first.widget;
 
       // Check that it's padding property is set correctly
@@ -41,64 +41,40 @@ void main() {
           ));
     });
 
-    testWidgets("sets width and height correctly around the petals", (WidgetTester tester) async {
-      await tester.pumpWidget(
-        LearningCompassApp(),
-      );
+    testWidgets("sets width and height correctly around the petals",
+        (WidgetTester tester) async {
+      await setUpWidget(tester, store);
 
-      await tester.pump();
-      await tester.pump();
-
-      Container cont = find
-          .descendant(of: find.byType(Flower), matching: find.byType(Container))
-          .evaluate()
-          .elementAt(1)
-          .widget;
+      Container cont = find.byType(Container).evaluate().elementAt(1).widget;
 
       Flower flower = find.byType(Flower).evaluate().first.widget;
 
       // width and height in a Container translate into BoxConstraints
-      expect(cont.constraints, BoxConstraints.expand(width: flower.flowerSize / 2, height: flower.flowerSize / 2));
+      expect(
+          cont.constraints,
+          BoxConstraints.expand(
+              width: flower.flowerSize / 2, height: flower.flowerSize / 2));
     });
 
     testWidgets("has a Stack widget", (WidgetTester tester) async {
-      await tester.pumpWidget(
-        LearningCompassApp(),
-      );
+      await setUpWidget(tester, store);
 
-      await tester.pump();
-      await tester.pump();
-
-      Container cont = find
-          .descendant(of: find.byType(Flower), matching: find.byType(Container))
-          .evaluate()
-          .elementAt(1)
-          .widget;
+      Container cont = find.byType(Container).evaluate().elementAt(1).widget;
 
       expect(cont.child.runtimeType, Stack);
     });
 
     testWidgets("contains 11 petals", (WidgetTester tester) async {
-      await tester.pumpWidget(
-        LearningCompassApp(),
-      );
+      await setUpWidget(tester, store);
 
-      await tester.pump();
-      await tester.pump();
-
-      expect(find.descendant(of: find.byType(Flower), matching: find.byType(FlowerPetal)).evaluate().length, 11);
+      expect(find.byType(FlowerPetal).evaluate().length, 11);
     });
 
-    testWidgets("assigns correct parameters to Flower Petals", (WidgetTester tester) async {
-      await tester.pumpWidget(
-        LearningCompassApp(),
-      );
+    testWidgets("assigns correct parameters to Flower Petals",
+        (WidgetTester tester) async {
+      await setUpWidget(tester, store);
 
-      await tester.pump();
-      await tester.pump();
-
-
-      var petals = find.descendant(of: find.byType(Flower), matching: find.byType(FlowerPetal)).evaluate();
+      var petals = find.byType(FlowerPetal).evaluate();
       Flower flower = find.byType(Flower).evaluate().first.widget;
 
       FlowerPetal petal;
@@ -172,4 +148,20 @@ void main() {
       expect(petal.color, Colors.lime);
     });
   });
+}
+
+Future<void> setUpWidget(WidgetTester tester, Store store) async {
+  await tester.pumpWidget(
+    StoreProvider<AppState>(
+      store: store,
+      child: MaterialApp(
+        home: Flower(
+          flowerSize: 347.9,
+        ),
+      ),
+    ),
+  );
+
+  await tester.pump();
+  await tester.pump();
 }
