@@ -15,7 +15,6 @@ class Home extends StatelessWidget {
       converter: (Store<AppState> store) => store.state.number,
       builder: (context, number) {
         return ListView(
-          shrinkWrap: true,
           children: <Widget>[
             Text('Add Flower here'),
             Grid(),

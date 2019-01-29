@@ -21,8 +21,9 @@ class Grid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool _isVertical = MediaQuery.of(context).orientation == Orientation.portrait;
-    return Column(
-      children: [
+    return Center(
+      //children: [
+      child:
         SizedBox (
           width: _isVertical ? 350.0 : 525.0,
           child: GridView.count(
@@ -33,7 +34,7 @@ class Grid extends StatelessWidget {
             children: _items.map((item) => GridItem(item: item)).toList(),
           ),
         ),
-      ],
+
     );
   }
 }
