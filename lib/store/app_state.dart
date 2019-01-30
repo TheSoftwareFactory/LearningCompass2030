@@ -19,22 +19,24 @@ class AppState {
     );
   }
 
+
   // Later on this initial state will be (partially) loaded from system memory
   factory AppState.initial() {
+    final double _initialProgress = 50;
     return AppState(
       number: 80,
       flowerProgress: {
-        PetalName.education: 30,
-        PetalName.community: 30,
-        PetalName.job: 30,
-        PetalName.income: 30,
-        PetalName.housing: 30,
-        PetalName.workLifeBalance: 30,
-        PetalName.safety: 30,
-        PetalName.lifeSatisfaction: 30,
-        PetalName.health: 30,
-        PetalName.civicEngagement: 30,
-        PetalName.environment: 30,
+        PetalName.education: _initialProgress,
+        PetalName.community: _initialProgress,
+        PetalName.job: _initialProgress,
+        PetalName.income: _initialProgress,
+        PetalName.housing: _initialProgress,
+        PetalName.workLifeBalance: _initialProgress,
+        PetalName.safety: _initialProgress,
+        PetalName.lifeSatisfaction: _initialProgress,
+        PetalName.health: _initialProgress,
+        PetalName.civicEngagement: _initialProgress,
+        PetalName.environment: _initialProgress,
       },
     );
   }

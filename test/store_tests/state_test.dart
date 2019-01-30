@@ -13,16 +13,16 @@ main() {
     );
 
     expect(store.state.number, 80);
-    expect(store.state.flowerProgress[PetalName.civicEngagement], 30.0);
-    expect(store.state.flowerProgress[PetalName.housing], 30.0);
-    expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 30.0);
-    expect(store.state.flowerProgress[PetalName.safety], 30.0);
-    expect(store.state.flowerProgress[PetalName.health], 30.0);
-    expect(store.state.flowerProgress[PetalName.environment], 30.0);
-    expect(store.state.flowerProgress[PetalName.workLifeBalance], 30.0);
-    expect(store.state.flowerProgress[PetalName.community], 30.0);
-    expect(store.state.flowerProgress[PetalName.job], 30.0);
-    expect(store.state.flowerProgress[PetalName.education], 30.0);
-    expect(store.state.flowerProgress[PetalName.income], 30.0);
+    expect(store.state.flowerProgress[PetalName.civicEngagement], 50.0);
+    expect(store.state.flowerProgress[PetalName.housing], 50.0);
+    expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 50.0);
+    expect(store.state.flowerProgress[PetalName.safety], 50.0);
+    expect(store.state.flowerProgress[PetalName.health], 50.0);
+    expect(store.state.flowerProgress[PetalName.environment], 50.0);
+    expect(store.state.flowerProgress[PetalName.workLifeBalance], 50.0);
+    expect(store.state.flowerProgress[PetalName.community], 50.0);
+    expect(store.state.flowerProgress[PetalName.job], 50.0);
+    expect(store.state.flowerProgress[PetalName.education], 50.0);
+    expect(store.state.flowerProgress[PetalName.income], 50.0);
   });
 }

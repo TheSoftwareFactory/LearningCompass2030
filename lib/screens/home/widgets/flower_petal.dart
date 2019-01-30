@@ -16,15 +16,20 @@ class FlowerPetal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _max = maxPetalSize - 30;
     return StoreConnector<AppState, Map>(
       converter: (Store<AppState> store) => store.state.flowerProgress,
       builder: (context, flowerProgress) {
-        return Container(
-          height: (flowerProgress[petalName] / 100) * maxPetalSize,
-          width: (flowerProgress[petalName] / 100) * maxPetalSize,
-          child: Transform.rotate(
-            alignment: Alignment.topLeft,
-            angle: angle,
+        return Transform.rotate(
+          alignment: Alignment.topLeft,
+          angle: angle,
+          child: Container(
+            height: flowerProgress[petalName] >= 100
+                ? _max
+                : (flowerProgress[petalName] / 100) * _max,
+            width: flowerProgress[petalName] >= 100
+                ? _max
+                : (flowerProgress[petalName] / 100) * _max,
             child: CustomPaint(
               foregroundPainter: FlowerPetalPainter(petalColor: color),
             ),
@@ -34,4 +39,3 @@ class FlowerPetal extends StatelessWidget {
     );
   }
 }
-

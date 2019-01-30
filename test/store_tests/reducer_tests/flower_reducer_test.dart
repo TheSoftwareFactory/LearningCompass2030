@@ -13,7 +13,7 @@ main() {
         initialState: AppState.initial(),
       );
 
-      expect(store.state.flowerProgress[PetalName.education], 30.0);
+      expect(store.state.flowerProgress[PetalName.education], 50.0);
 
       store.dispatch(SetPetalSizeAction(69.0, PetalName.education));
 
@@ -26,12 +26,12 @@ main() {
         initialState: AppState.initial(),
       );
 
-      expect(store.state.flowerProgress[PetalName.education], 30.0);
-      expect(store.state.flowerProgress[PetalName.health], 30.0);
+      expect(store.state.flowerProgress[PetalName.education], 50.0);
+      expect(store.state.flowerProgress[PetalName.health], 50.0);
 
       store.dispatch(SetPetalSizeAction(69.0, PetalName.education));
 
-      expect(store.state.flowerProgress[PetalName.health], 30.0);
+      expect(store.state.flowerProgress[PetalName.health], 50.0);
       expect(store.state.flowerProgress[PetalName.education], 69.0);
     });
 
@@ -41,11 +41,11 @@ main() {
         initialState: AppState.initial(),
       );
 
-      expect(store.state.flowerProgress[PetalName.safety], 30.0);
+      expect(store.state.flowerProgress[PetalName.safety], 50.0);
 
       store.dispatch(IncrementPetalProgressAction(PetalName.safety));
 
-      expect(store.state.flowerProgress[PetalName.safety], 31.0);
+      expect(store.state.flowerProgress[PetalName.safety], 51.0);
     });
 
     test('should increment only given petal size in response to IncrementPetalProgressAction', () {
@@ -54,13 +54,39 @@ main() {
         initialState: AppState.initial(),
       );
 
-      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 30.0);
-      expect(store.state.flowerProgress[PetalName.housing], 30.0);
+      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 50.0);
+      expect(store.state.flowerProgress[PetalName.housing], 50.0);
 
       store.dispatch(IncrementPetalProgressAction(PetalName.lifeSatisfaction));
 
-      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 31.0);
-      expect(store.state.flowerProgress[PetalName.housing], 30.0);
+      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 51.0);
+      expect(store.state.flowerProgress[PetalName.housing], 50.0);
+    });
+
+    test('should not increment petal size to above 100 in response to IncrementPetalProgressAction', () {
+      final store = Store<AppState>(
+        appReducer,
+        initialState: AppState.initial()..flowerProgress[PetalName.civicEngagement] = 100.0,
+      );
+
+      expect(store.state.flowerProgress[PetalName.civicEngagement], 100.0);
+
+      store.dispatch(IncrementPetalProgressAction(PetalName.civicEngagement));
+
+      expect(store.state.flowerProgress[PetalName.civicEngagement], 100.0);
+    });
+
+    test('should increment petal size to 100 in response to IncrementPetalProgressAction', () {
+      final store = Store<AppState>(
+        appReducer,
+        initialState: AppState.initial()..flowerProgress[PetalName.civicEngagement] = 99.0,
+      );
+
+      expect(store.state.flowerProgress[PetalName.civicEngagement], 99.0);
+
+      store.dispatch(IncrementPetalProgressAction(PetalName.civicEngagement));
+
+      expect(store.state.flowerProgress[PetalName.civicEngagement], 100.0);
     });
 
     test('should decrement a specific flower\'s petal size by 1 in response to DecrementPetalProgressAction', () {
@@ -71,11 +97,11 @@ main() {
 
       store.dispatch(IncrementPetalProgressAction(PetalName.lifeSatisfaction));
       store.dispatch(IncrementPetalProgressAction(PetalName.lifeSatisfaction));
-      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 32.0);
+      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 52.0);
 
       store.dispatch(DecrementPetalProgressAction(PetalName.lifeSatisfaction));
 
-      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 31.0);
+      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 51.0);
     });
 
     test('should decrement only given petal size in response to DecrementPetalProgressAction', () {
@@ -88,13 +114,13 @@ main() {
       store.dispatch(IncrementPetalProgressAction(PetalName.lifeSatisfaction));
       store.dispatch(IncrementPetalProgressAction(PetalName.housing));
       store.dispatch(IncrementPetalProgressAction(PetalName.housing));
-      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 32.0);
-      expect(store.state.flowerProgress[PetalName.housing], 32.0);
+      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 52.0);
+      expect(store.state.flowerProgress[PetalName.housing], 52.0);
 
       store.dispatch(DecrementPetalProgressAction(PetalName.lifeSatisfaction));
 
-      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 31.0);
-      expect(store.state.flowerProgress[PetalName.housing], 32.0);
+      expect(store.state.flowerProgress[PetalName.lifeSatisfaction], 51.0);
+      expect(store.state.flowerProgress[PetalName.housing], 52.0);
     });
 
     test('should not decrement specific flower\'s petal size if the current size is 30', () {
@@ -103,11 +129,11 @@ main() {
         initialState: AppState.initial(),
       );
 
-      expect(store.state.flowerProgress[PetalName.civicEngagement], 30.0);
+      expect(store.state.flowerProgress[PetalName.civicEngagement], 50.0);
 
       store.dispatch(DecrementPetalProgressAction(PetalName.civicEngagement));
 
-      expect(store.state.flowerProgress[PetalName.civicEngagement], 30.0);
+      expect(store.state.flowerProgress[PetalName.civicEngagement], 50.0);
     });
 
     test('should not decrement specific flower\'s petal size if the current size is less than 30', () {

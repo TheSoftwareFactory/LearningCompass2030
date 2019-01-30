@@ -18,8 +18,8 @@ class Home extends StatelessWidget {
           children: <Widget>[
             Center(
               child: Container(
-                child: Flower(flowerSize: 140.0),
-                padding: EdgeInsets.all(20.0),
+                child: Flower(flowerSize: 250.0),
+                padding: EdgeInsets.all(10.0),
               ),
             ),
             Text('Grid here'),
