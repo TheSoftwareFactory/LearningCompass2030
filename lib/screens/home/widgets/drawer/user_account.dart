@@ -11,8 +11,7 @@ class UserAccount {
     overflow: TextOverflow.ellipsis,
     style: TextStyle(fontWeight: FontWeight.bold),
   );
-  static const CircleAvatar defaultPhoto = const CircleAvatar(
-  backgroundColor: Colors.brown,);
+  static const CircleAvatar defaultPhoto = const CircleAvatar();
 
   UserAccount ({this.name = defaultPhotoText, this.email= defaultPhotoText,
                 this.photo = defaultPhoto});

@@ -14,7 +14,8 @@ class MDrawerHeaderWidget extends StatelessWidget {
     return UserAccountsDrawerHeader(accountName: myAccount.name,
         accountEmail: myAccount.email,
         currentAccountPicture: myAccount.photo,
-        decoration: BoxDecoration(color: Colors.blueAccent) , );
+        //decoration: BoxDecoration(color: Colors.blueAccent) ,
+    );
 }
 
 }
