@@ -12,7 +12,9 @@ class MListTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    return ListTile(
+        title: Text("Item 2"),
+    trailing: Icon(Icons.arrow_forward));
   }
 
 }

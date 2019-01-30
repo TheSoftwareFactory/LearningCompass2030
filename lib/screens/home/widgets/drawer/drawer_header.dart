@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:learning_compass_exp/user_account.dart';
 
 
 class MDrawerHeader {
-  String name;
-  String email;
-  IconData photo;
-  MDrawerHeader (this.name,this.email, this.photo);
+
+
+
 }
 
 class MDrawerHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
 
-
+    UserAccount myAccount ;
+    return UserAccountsDrawerHeader(accountName: myAccount.name,
+        accountEmail: myAccount.email,
+        currentAccountPicture: myAccount.photo,
+        decoration: BoxDecoration(color: Colors.blueAccent) , );
 }
 
 }
