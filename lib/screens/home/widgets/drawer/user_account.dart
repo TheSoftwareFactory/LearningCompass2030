@@ -5,8 +5,8 @@ class UserAccount {
   final Text email;               Text get userEmail => email;
   final CircleAvatar photo;       CircleAvatar get userPhoto => photo;
 
-
-  static const defaultPhotoText = Text('',
+  //Default values
+  static const defaultPhotoText = Text('defaultText',
     textAlign: TextAlign.center,
     overflow: TextOverflow.ellipsis,
     style: TextStyle(fontWeight: FontWeight.bold),

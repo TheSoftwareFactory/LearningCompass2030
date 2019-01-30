@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/screens/home/home.dart';
 import 'package:learning_compass_exp/screens/home/widgets/incrementer_button.dart';
+import 'widgets/drawer/drawer.dart';
 
 
 // This Widget defines the root of the Home-screen
 class HomeScreen extends StatelessWidget {
+
+  MDrawerWidget drawer = new MDrawerWidget() ;
+  Drawer drawer1 = new Drawer();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +20,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Home(),
       floatingActionButton: IncrementerButton(),
+      drawer: drawer1,
     );
   }
 }
