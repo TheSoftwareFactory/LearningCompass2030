@@ -4,7 +4,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower_petal_painter.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal_painter.dart';
 
 class FlowerPetal extends StatelessWidget {
   final double maxPetalSize;

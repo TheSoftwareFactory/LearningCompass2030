@@ -5,8 +5,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/app.dart';
-import 'package:learning_compass_exp/screens/home/widgets/icon_circle.dart';
-import 'package:learning_compass_exp/screens/home/widgets/petal_icon.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/icon_circle.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/petal_icon.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icon_button.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 

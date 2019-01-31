@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:learning_compass_exp/screens/home/widgets/petal_icon.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/petal_icon.dart';
 
 class IconCircle extends StatelessWidget {
   final double radius;

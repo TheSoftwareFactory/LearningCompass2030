@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'package:learning_compass_exp/data/models/petal_names.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower_petal.dart';
-import 'package:learning_compass_exp/screens/home/widgets/icon_circle.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/icon_circle.dart';
 
 class Flower extends StatelessWidget {
   // Using flower size because it's easier sized in parent. Size of the petal
