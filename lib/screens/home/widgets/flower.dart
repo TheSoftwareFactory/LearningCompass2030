@@ -49,6 +49,8 @@ class Flower extends StatelessWidget {
     for (var i = 0; i < details.length; i++) {
       list.add(FlowerPetal(
         angle: details[i]['angle'],
+        // the divisor is larger than 2 in order to leave room for icons while
+        // keeping the size scalable.
         maxPetalSize: flowerSize / 2.5,
         color: details[i]
             ['color'], // Later from state. Add Icon to this as well
