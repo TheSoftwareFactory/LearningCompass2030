@@ -32,9 +32,9 @@ void main() {
           cont.constraints,
           BoxConstraints.expand(
               width:
-                  (store.state.flowerProgress[PetalName.education] / 100) * (500-30),
+                  (store.state.flowerProgress[PetalName.education] / 100) * (500-45),
               height: (store.state.flowerProgress[PetalName.education] / 100) *
-                  (500-30)));
+                  (500-45)));
     });
 
     testWidgets("has the correct angle for the petal",

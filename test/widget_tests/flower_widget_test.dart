@@ -49,7 +49,6 @@ void main() {
       await setUpWidget(tester, store);
 
       Container cont = find.descendant(of: find.byType(Flower), matching: find.byType(Container)).evaluate().elementAt(1).widget;
-      print(cont);
       Flower flower = find.byType(Flower).evaluate().first.widget;
 
       // width and height in a Container translate into BoxConstraints

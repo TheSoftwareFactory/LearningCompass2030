@@ -11,8 +11,8 @@ class IconCircle extends StatelessWidget {
   Positioned _createStackWidget(double angle) {
     return Positioned(
       child: PetalIcon(color: Colors.lightGreen,),
-      left: radius + radius * cos((angle + (1/4)) * pi),
-      bottom: radius - radius * sin((angle + (1/4)) * pi),
+      left: (radius-1) + (radius-1) * cos((angle + (1/4)) * pi),
+      bottom: (radius-1) - (radius-1) * sin((angle + (1/4)) * pi),
 
     );
   }
