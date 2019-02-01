@@ -4,7 +4,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower_petal_painter.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal_painter.dart';
 
 class FlowerPetal extends StatelessWidget {
   final double maxPetalSize;
@@ -16,7 +16,8 @@ class FlowerPetal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _max = maxPetalSize - 30;
+    // This subtraction is done to leave room between max sized petal and it's icon.
+    double _max = maxPetalSize - 45;
     return StoreConnector<AppState, Map>(
       converter: (Store<AppState> store) => store.state.flowerProgress,
       builder: (context, flowerProgress) {

@@ -22,7 +22,7 @@ class LearningCompassApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Learning Compass',
         theme: ThemeData(
-          primarySwatch: Colors.green,
+          primaryColor: Colors.green,
         ),
         home: HomeScreen(),
       ),
