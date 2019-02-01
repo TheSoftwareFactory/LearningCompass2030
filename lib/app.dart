@@ -4,10 +4,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
-
-import 'package:learning_compass_exp/data/models/petal_names.dart';
-import 'package:learning_compass_exp/screens/home/index.dart';
-import 'package:learning_compass_exp/screens/info/index.dart';
+import 'package:learning_compass_exp/routes.dart';
 
 // This widget is the root of your application.
 class LearningCompassApp extends StatelessWidget {
@@ -23,10 +20,7 @@ class LearningCompassApp extends StatelessWidget {
       store: store,
       child: MaterialApp(
         initialRoute: '/',
-        routes: {
-          '/': (context) => HomeScreen(),
-          '/income': (context) => InfoScreen(name: PetalName.income,),
-        },
+        routes: routes,
         title: 'Learning Compass',
         theme: ThemeData(
           primaryColor: Colors.green,
