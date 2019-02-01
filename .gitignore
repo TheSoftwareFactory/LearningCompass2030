@@ -36,6 +36,10 @@ build/
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+**/android/app/src/main/gen/com/example/learningcompassexp/BuildConfig.java
+**/android/app/src/main/gen/com/example/learningcompassexp/Manifest.java
+**/android/app/src/main/gen/com/example/learningcompassexp/R.java
+
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
