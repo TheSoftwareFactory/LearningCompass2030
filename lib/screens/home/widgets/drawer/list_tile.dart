@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MListTile extends StatelessWidget {
+class MenuListTile extends StatelessWidget {
 
   final String title;
   final IconData icon;
@@ -9,7 +9,7 @@ class MListTile extends StatelessWidget {
   static const defaultListTileIcon = Icons.lightbulb_outline;
   static const defaultTitleText = 'about';
 
-  MListTile({this.title= defaultTitleText,
+  MenuListTile({this.title= defaultTitleText,
     this.icon= Icons.lightbulb_outline});
 
   @override

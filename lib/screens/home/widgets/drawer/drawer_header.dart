@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-class MDrawerHeader extends StatelessWidget {
+class MenuDrawerHeader extends StatelessWidget {
 
   final String name;
   final String email;
@@ -11,7 +11,7 @@ class MDrawerHeader extends StatelessWidget {
   static const defaultPhotoText = 'defaultText';
   static const CircleAvatar defaultPhoto = const CircleAvatar();
 
-  MDrawerHeader({this.name = defaultPhotoText, this.email= defaultPhotoText,
+  MenuDrawerHeader({this.name = defaultPhotoText, this.email= defaultPhotoText,
     this.photo = defaultPhoto});
 
   @override

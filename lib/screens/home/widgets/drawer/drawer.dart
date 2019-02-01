@@ -4,7 +4,7 @@ import 'package:learning_compass_exp/screens/home/widgets/drawer/list_tile.dart'
 
 
 
-class MDrawer extends StatelessWidget {
+class MenuDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
@@ -12,7 +12,7 @@ class MDrawer extends StatelessWidget {
       child: new ListView(
         padding: const EdgeInsets.only(top:0.0),
         children: <Widget>[
-          MDrawerHeader(), MListTile(), MListTile(),  MListTile()
+          MenuDrawerHeader(), MenuListTile(), MenuListTile(),  MenuListTile()
         ],
       ),
     );

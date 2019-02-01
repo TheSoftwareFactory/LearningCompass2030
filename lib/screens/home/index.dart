@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         title: Text('Learning Compass'),
       ),
       body: Home(),
-      drawer: MDrawer(),
+      drawer: MenuDrawer(),
       floatingActionButton: IncrementerButton(),
 
     );
