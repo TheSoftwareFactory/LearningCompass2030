@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 
-class MListTile{
-  String title;
-  IconData icon;
-  MListTile(this.title, this.icon);
+class MListTile extends StatelessWidget {
 
-}
+  final String title;
+  final IconData icon;
 
+  //Default values
+  static const defaultListTileIcon = Icons.lightbulb_outline;
+  static const defaultTitleText = 'about';
 
-class MListTileWidget extends StatelessWidget {
+  MListTile({this.title= defaultTitleText,
+    this.icon= Icons.lightbulb_outline});
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return ListTile(
-        title: Text("Item 2"),
-    trailing: Icon(Icons.arrow_forward));
+
+      leading: new Icon(this.icon ),
+      title: Text(this.title),);
+
   }
 
 }
