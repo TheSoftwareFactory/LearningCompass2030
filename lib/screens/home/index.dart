@@ -13,7 +13,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar( // May separate this into it's own file as well if it gets big
         title: Text('Learning Compass'),
-        //leading: Icon(Icons.menu),
       ),
       body: Home(),
       drawer: MDrawer(),
