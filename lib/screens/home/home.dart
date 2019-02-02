@@ -3,7 +3,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/flower.dart';
 
 import 'package:learning_compass_exp/screens/home/widgets/grid.dart';
 
@@ -16,12 +16,11 @@ class Home extends StatelessWidget {
       converter: (Store<AppState> store) => store.state.number,
       builder: (context, number) {
         return ListView(
-          padding: EdgeInsets.all(20.0),
           children: <Widget>[
-            Center(
-              child: Container(
-                child: Flower(flowerSize: 250.0),
-                padding: EdgeInsets.all(10.0),
+            Container(
+              padding: EdgeInsets.only(top: 20),
+              child: Center(
+                child: Flower(flowerSize: 300),
               ),
             ),
             Grid(),

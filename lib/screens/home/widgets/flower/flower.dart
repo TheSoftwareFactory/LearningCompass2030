@@ -6,8 +6,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower_petal.dart';
-import 'package:learning_compass_exp/screens/home/widgets/icon_circle.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/icon_circle.dart';
 
 class Flower extends StatelessWidget {
   // Using flower size because it's easier sized in parent. Size of the petal
@@ -22,6 +22,8 @@ class Flower extends StatelessWidget {
     for (var name in PetalName.values) {
       list.add(FlowerPetal(
         angle: petals[name].angle,
+        // the divisor is larger than 2 in order to leave room for icons while
+        // keeping the size scalable.
         maxPetalSize: flowerSize / 2.5,
         progress: petals[name].progress,
         color: petals[name].color,

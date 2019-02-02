@@ -4,7 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower_petal.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 
@@ -31,8 +31,8 @@ void main() {
       expect(
           cont.constraints,
           BoxConstraints.expand(
-              width: (69.6 / 100) * (500 - 30),
-              height: (69.6 / 100) * (500 - 30)));
+              width: (69.6 / 100) * (500 - 45),
+              height: (69.6 / 100) * (500 - 45)));
     });
 
     testWidgets("has the correct angle for the petal",

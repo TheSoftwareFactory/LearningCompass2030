@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
-import 'package:learning_compass_exp/screens/home/widgets/petal_icon_button.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/petal_icon_button.dart';
 
 class IconCircle extends StatelessWidget {
   final double radius;
@@ -14,9 +14,8 @@ class IconCircle extends StatelessWidget {
   Positioned _createStackWidget(double angle, Color color) {
     return Positioned(
       child: PetalIconButton(color: color,),
-      left: radius + radius * cos(angle + (pi / 4)),
-      bottom: radius - radius * sin(angle + (pi / 4)),
-
+      left: (radius-1) + (radius-1) * cos(angle + (pi / 4)),
+      bottom: (radius-1) - (radius-1) * sin(angle + (pi / 4)),
     );
   }
 
