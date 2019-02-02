@@ -84,70 +84,70 @@ void main() {
       // Might wanna separate into several tests. I left it like this to not
       // have to generate the widget 11 times.
       petal = petals.elementAt(0).widget;
-      expect(petal.petalName, PetalName.education);
+      expect(petal.progress, 50.0);
       expect(petal.angle, 0.0);
-      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
-      expect(petal.color, Colors.green);
-
-      petal = petals.elementAt(1).widget;
-      expect(petal.petalName, PetalName.community);
-      expect(petal.angle, (2 / 11) * pi);
       expect(petal.maxPetalSize, flower.flowerSize / 2.5);
       expect(petal.color, Colors.red);
 
-      petal = petals.elementAt(2).widget;
-      expect(petal.petalName, PetalName.job);
-      expect(petal.angle, (4 / 11) * pi);
+      petal = petals.elementAt(1).widget;
+      expect(petal.progress, 50.0);
+      expect(petal.angle, (2 / 11) * pi);
       expect(petal.maxPetalSize, flower.flowerSize / 2.5);
       expect(petal.color, Colors.blue);
 
+      petal = petals.elementAt(2).widget;
+      expect(petal.progress, 50.0);
+      expect(petal.angle, (4 / 11) * pi);
+      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
+      expect(petal.color, Colors.lightBlue);
+
       petal = petals.elementAt(3).widget;
-      expect(petal.petalName, PetalName.income);
+      expect(petal.progress, 50.0);
       expect(petal.angle, (6 / 11) * pi);
-      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
-      expect(petal.color, Colors.amber);
-
-      petal = petals.elementAt(4).widget;
-      expect(petal.petalName, PetalName.housing);
-      expect(petal.angle, (8 / 11) * pi);
-      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
-      expect(petal.color, Colors.blueGrey);
-
-      petal = petals.elementAt(5).widget;
-      expect(petal.petalName, PetalName.workLifeBalance);
-      expect(petal.angle, (10 / 11) * pi);
-      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
-      expect(petal.color, Colors.cyan);
-
-      petal = petals.elementAt(6).widget;
-      expect(petal.petalName, PetalName.safety);
-      expect(petal.angle, (12 / 11) * pi);
-      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
-      expect(petal.color, Colors.deepOrange);
-
-      petal = petals.elementAt(7).widget;
-      expect(petal.petalName, PetalName.lifeSatisfaction);
-      expect(petal.angle, (14 / 11) * pi);
       expect(petal.maxPetalSize, flower.flowerSize / 2.5);
       expect(petal.color, Colors.lightGreen);
 
-      petal = petals.elementAt(8).widget;
-      expect(petal.petalName, PetalName.health);
-      expect(petal.angle, (16 / 11) * pi);
-      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
-      expect(petal.color, Colors.purple);
-
-      petal = petals.elementAt(9).widget;
-      expect(petal.petalName, PetalName.civicEngagement);
-      expect(petal.angle, (18 / 11) * pi);
+      petal = petals.elementAt(4).widget;
+      expect(petal.progress, 50.0);
+      expect(petal.angle, (8 / 11) * pi);
       expect(petal.maxPetalSize, flower.flowerSize / 2.5);
       expect(petal.color, Colors.indigo);
 
-      petal = petals.elementAt(10).widget;
-      expect(petal.petalName, PetalName.environment);
-      expect(petal.angle, (20 / 11) * pi);
+      petal = petals.elementAt(5).widget;
+      expect(petal.progress, 50.0);
+      expect(petal.angle, (10 / 11) * pi);
+      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
+      expect(petal.color, Colors.amber);
+
+      petal = petals.elementAt(6).widget;
+      expect(petal.progress, 50.0);
+      expect(petal.angle, (12 / 11) * pi);
+      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
+      expect(petal.color, Colors.blueGrey);
+
+      petal = petals.elementAt(7).widget;
+      expect(petal.progress, 50.0);
+      expect(petal.angle, (14 / 11) * pi);
+      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
+      expect(petal.color, Colors.deepOrange);
+
+      petal = petals.elementAt(8).widget;
+      expect(petal.progress, 50.0);
+      expect(petal.angle, (16 / 11) * pi);
       expect(petal.maxPetalSize, flower.flowerSize / 2.5);
       expect(petal.color, Colors.lime);
+
+      petal = petals.elementAt(9).widget;
+      expect(petal.progress, 50.0);
+      expect(petal.angle, (18 / 11) * pi);
+      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
+      expect(petal.color, Colors.purple);
+
+      petal = petals.elementAt(10).widget;
+      expect(petal.progress, 50.0);
+      expect(petal.angle, (20 / 11) * pi);
+      expect(petal.maxPetalSize, flower.flowerSize / 2.5);
+      expect(petal.color, Colors.green);
     });
   });
 }
