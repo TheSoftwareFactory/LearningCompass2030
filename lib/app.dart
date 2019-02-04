@@ -5,8 +5,7 @@ import 'package:redux_persist/redux_persist.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
-
-import 'package:learning_compass_exp/screens/home/index.dart';
+import 'package:learning_compass_exp/routes.dart';
 
 // This widget is the root of your application.
 class LearningCompassApp extends StatelessWidget {
@@ -27,11 +26,12 @@ class LearningCompassApp extends StatelessWidget {
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
+        initialRoute: '/',
+        routes: routes,
         title: 'Learning Compass',
         theme: ThemeData(
           primaryColor: Colors.green,
         ),
-        home: HomeScreen(),
       ),
     );
   }
