@@ -10,7 +10,7 @@ class GridItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(10.0),
       child: FlatButton(
-        onPressed: () {},
+        onPressed: () => Navigator.pushNamed(context, '/income'),
         color: item['color'],
         child: Center(
           child: Text(
