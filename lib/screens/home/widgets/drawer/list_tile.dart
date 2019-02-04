@@ -16,7 +16,7 @@ class MenuListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
 
-      leading: new Icon(this.icon ),
+      leading:Icon(this.icon ),
       title: Text(this.title),);
 
   }
