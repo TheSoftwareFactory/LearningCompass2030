@@ -41,6 +41,10 @@ class AppState {
     );
   }
 
+  static AppState fromJson(dynamic json) => AppState(flowerProgress: json["flowerProgress"]);
+
+  dynamic toJson() => {'flowerProgress': flowerProgress};
+
   @override
   int get hashCode =>
       number.hashCode ^
