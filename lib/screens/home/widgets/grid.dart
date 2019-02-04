@@ -22,7 +22,6 @@ class Grid extends StatelessWidget {
   Widget build(BuildContext context) {
     bool _isVertical = MediaQuery.of(context).orientation == Orientation.portrait;
     return Center(
-      //children: [
       child:
         SizedBox (
           width: _isVertical ? 350.0 : 525.0,
