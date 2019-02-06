@@ -8,6 +8,7 @@ import 'package:learning_compass_exp/app.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/petal_icon_button.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icon_button.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
+import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
@@ -52,7 +53,7 @@ void main() {
           .widget;
 
       expect(but.color, Colors.white);
-      expect(but.icon.toString(), Icon(Icons.store).toString());
+      expect(but.icon.toString(), Icon(CustomIcons.education).toString());
     });
   });
 }

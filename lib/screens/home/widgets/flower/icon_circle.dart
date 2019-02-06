@@ -11,9 +11,9 @@ class IconCircle extends StatelessWidget {
 
   IconCircle({this.radius, this.petals});
 
-  Positioned _createStackWidget(double angle, Color color) {
+  Positioned _createStackWidget(double angle, Color color, IconData icon) {
     return Positioned(
-      child: PetalIconButton(color: color,),
+      child: PetalIconButton(color: color, icon: icon),
       left: (radius-1) + (radius-1) * cos(angle + (pi / 4)),
       bottom: (radius-1) - (radius-1) * sin(angle + (pi / 4)),
     );
@@ -22,7 +22,7 @@ class IconCircle extends StatelessWidget {
   List<Widget> _createIconStack() {
     List<Widget> list = List<Widget>();
     for (var name in PetalName.values) {
-      list.add(_createStackWidget(petals[name].angle, petals[name].color));
+      list.add(_createStackWidget(petals[name].angle, petals[name].color, petals[name].icon));
     }
     return list;
   }
