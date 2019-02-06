@@ -12,21 +12,22 @@ import 'package:learning_compass_exp/screens/home/widgets/grid.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, int>(
-      converter: (Store<AppState> store) => store.state.number,
-      builder: (context, number) {
-        return ListView(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(top: 20),
-              child: Center(
-                child: Flower(flowerSize: 300),
+    return ListView(
+      children: <Widget>[
+        StoreConnector<AppState, bool>(
+          converter: (Store<AppState> store) => store.state.flowerSmall,
+          builder: (context, flowerSmall) {
+            return Container(
+              padding: EdgeInsets.only(top: flowerSmall ? 0 : 20),
+              child: Align(
+                alignment: flowerSmall ? Alignment.topRight : Alignment.center,
+                child: Flower(flowerSize: flowerSmall ? 175 : 300),
               ),
-            ),
-            Grid(),
-          ],
-        );
-      },
+            );
+          },
+        ),
+        Grid(),
+      ],
     );
   }
 }

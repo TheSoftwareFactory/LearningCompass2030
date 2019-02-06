@@ -17,7 +17,7 @@ class FlowerPetal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // This subtraction is done to leave room between max sized petal and it's icon.
-    double _max = maxPetalSize - 45;
+    double _max = maxPetalSize;
     return StoreConnector<AppState, Map>(
       converter: (Store<AppState> store) => store.state.flowerProgress,
       builder: (context, flowerProgress) {

@@ -5,16 +5,19 @@ import 'package:learning_compass_exp/data/models/petal_names.dart';
 class AppState {
   // If these variables are objects, could possibly make more complicated states relatively cleanly...?
   final int number;
+  final bool flowerSmall;
   final Map<PetalName, double> flowerProgress;
 
-  AppState({this.number, this.flowerProgress});
+  AppState({this.number, this.flowerSmall, this.flowerProgress});
 
   AppState copyWith({
     int number,
+    bool flowerSmall,
     Map flowerProgress,
   }) {
     return AppState(
       number: number ?? this.number,
+      flowerSmall: flowerSmall ?? this.flowerSmall,
       flowerProgress: flowerProgress ?? this.flowerProgress,
     );
   }
@@ -22,9 +25,10 @@ class AppState {
 
   // Later on this initial state will be (partially) loaded from system memory
   factory AppState.initial() {
-    final double _initialProgress = 50;
+    final double _initialProgress = 100;
     return AppState(
       number: 80,
+      flowerSmall: true,
       flowerProgress: {
         PetalName.education: _initialProgress,
         PetalName.community: _initialProgress,

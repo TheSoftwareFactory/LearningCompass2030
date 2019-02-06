@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
+import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/icon_circle.dart';
@@ -30,17 +33,23 @@ class Flower extends StatelessWidget {
     return Container(
       width: flowerSize,
       height: flowerSize,
-      child: Stack(children: [
-        Container(
-          // This padding is because the center of the flower is top-left
-          padding: EdgeInsets.only(left: flowerSize / 2, top: flowerSize / 2),
-          child: Stack(
-            children: _transformIntoPetals(_petalDetails, flowerSize),
-          ),
-        ),
-        // 12.5 is half of the iconbutton size
-        IconCircle(radius: flowerSize / 2 - 12.5),
-      ]),
+      child: StoreConnector<AppState, bool>(
+        converter: (Store<AppState> store) => store.state.flowerSmall,
+        builder: (context, flowerSmall) {
+          return Stack(children: [
+            Container(
+              // This padding is because the center of the flower is top-left
+              padding: EdgeInsets.only(left: flowerSize / 2, top: flowerSize / 2),
+              child: Stack(
+                children: _transformIntoPetals(_petalDetails, flowerSize),
+              ),
+            ),
+            // 12.5 is half of the iconbutton size
+            flowerSmall ? Container() : IconCircle(radius: flowerSize / 2 - 12.5),
+          ]);
+        },
+      ),
+
     );
   }
 
@@ -51,7 +60,7 @@ class Flower extends StatelessWidget {
         angle: details[i]['angle'],
         // the divisor is larger than 2 in order to leave room for icons while
         // keeping the size scalable.
-        maxPetalSize: flowerSize / 2.5,
+        maxPetalSize: flowerSize / 2.5 - 45,
         color: details[i]
             ['color'], // Later from state. Add Icon to this as well
         petalName: details[i]['petalName'],
