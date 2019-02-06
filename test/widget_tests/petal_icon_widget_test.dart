@@ -5,7 +5,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/app.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower/petal_icon.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/petal_icon_button.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icon_button.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 
@@ -23,22 +23,33 @@ void main() {
       //middleware: createStoreMiddleware(),
     );
 
-    testWidgets("is correct color and shape",
-        (WidgetTester tester) async {
+    testWidgets("is correct color and shape", (WidgetTester tester) async {
       await setUpWidget(tester, store);
 
-
-      Container cont = find.descendant(of: find.byType(PetalIcon), matching: find.byType(Container)).evaluate().first.widget;
+      Container cont = find
+          .descendant(
+              of: find.byType(PetalIconButton),
+              matching: find.byType(Container))
+          .evaluate()
+          .first
+          .widget;
 
       // color here will change when it is linked to state.
-      expect(cont.decoration, BoxDecoration(color: Colors.lightGreen, shape: BoxShape.circle));
+      expect(cont.decoration,
+          BoxDecoration(color: Colors.red, shape: BoxShape.circle));
     });
 
     testWidgets("has child CustomIconButton with correct params",
         (WidgetTester tester) async {
       await setUpWidget(tester, store);
 
-      CustomIconButton but = find.descendant(of: find.byType(PetalIcon), matching: find.byType(CustomIconButton)).evaluate().first.widget;
+      CustomIconButton but = find
+          .descendant(
+              of: find.byType(PetalIconButton),
+              matching: find.byType(CustomIconButton))
+          .evaluate()
+          .first
+          .widget;
 
       expect(but.color, Colors.white);
       expect(but.icon.toString(), Icon(Icons.store).toString());

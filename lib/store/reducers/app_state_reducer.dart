@@ -5,6 +5,6 @@ import 'package:learning_compass_exp/store/reducers/flower_reducer.dart';
 AppState appReducer(AppState state, action) {
   return AppState(
     number: numberReducer(state.number, action),
-    flowerProgress: flowerReducer(state.flowerProgress, action),
+    petals: flowerReducer(state.petals, action),
   );
 }
