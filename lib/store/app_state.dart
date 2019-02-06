@@ -7,7 +7,7 @@ class AppState {
   final int number;
   final Map<PetalName, double> flowerProgress;
 
-  AppState({this.number, this.flowerProgress});
+  AppState({this.number = 0, this.flowerProgress});
 
   AppState copyWith({
     int number,
@@ -17,6 +17,46 @@ class AppState {
       number: number ?? this.number,
       flowerProgress: flowerProgress ?? this.flowerProgress,
     );
+  }
+
+  static AppState fromJson(dynamic json) {
+    //print("json: ${json["flowerProgress"][PetalName.education.toString()].toDouble()}. Its type: ${json["flowerProgress"][PetalName.education.toString()].runtimeType}");
+
+    if (json == null) {
+      return null;
+    }
+    Map<PetalName, double> loadedFlowerProgress = {
+      PetalName.education: json["flowerProgress"][PetalName.education.toString()].toDouble(),
+      PetalName.community: json["flowerProgress"][PetalName.community.toString()].toDouble(),
+      PetalName.job: json["flowerProgress"][PetalName.job.toString()].toDouble(),
+      PetalName.income: json["flowerProgress"][PetalName.income.toString()].toDouble(),
+      PetalName.housing: json["flowerProgress"][PetalName.housing.toString()].toDouble(),
+      PetalName.workLifeBalance: json["flowerProgress"][PetalName.workLifeBalance.toString()].toDouble(),
+      PetalName.safety: json["flowerProgress"][PetalName.safety.toString()].toDouble(),
+      PetalName.lifeSatisfaction: json["flowerProgress"][PetalName.lifeSatisfaction.toString()].toDouble(),
+      PetalName.health: json["flowerProgress"][PetalName.health.toString()].toDouble(),
+      PetalName.civicEngagement: json["flowerProgress"][PetalName.civicEngagement.toString()].toDouble(),
+      PetalName.environment: json["flowerProgress"][PetalName.environment.toString()].toDouble(),
+    };
+
+    return AppState.initial().copyWith(flowerProgress: loadedFlowerProgress);
+
+  }
+
+  dynamic toJson() {
+    return {'number': number, 'flowerProgress': {
+      PetalName.education.toString(): flowerProgress[PetalName.education],
+      PetalName.community.toString(): flowerProgress[PetalName.community],
+      PetalName.job.toString(): flowerProgress[PetalName.job],
+      PetalName.income.toString(): flowerProgress[PetalName.income],
+      PetalName.housing.toString(): flowerProgress[PetalName.housing],
+      PetalName.workLifeBalance.toString(): flowerProgress[PetalName.workLifeBalance],
+      PetalName.safety.toString(): flowerProgress[PetalName.safety],
+      PetalName.lifeSatisfaction.toString(): flowerProgress[PetalName.lifeSatisfaction],
+      PetalName.health.toString(): flowerProgress[PetalName.health],
+      PetalName.civicEngagement.toString(): flowerProgress[PetalName.civicEngagement],
+      PetalName.environment.toString(): flowerProgress[PetalName.environment],
+    }};
   }
 
 
@@ -41,9 +81,7 @@ class AppState {
     );
   }
 
-  static AppState fromJson(dynamic json) => AppState(flowerProgress: json["flowerProgress"]);
 
-  dynamic toJson() => {'flowerProgress': flowerProgress};
 
   @override
   int get hashCode =>
