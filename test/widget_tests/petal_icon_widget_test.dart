@@ -37,7 +37,7 @@ void main() {
 
       // color here will change when it is linked to state.
       expect(cont.decoration,
-          BoxDecoration(color: Colors.red, shape: BoxShape.circle));
+          BoxDecoration(color: Colors.red[900], shape: BoxShape.circle));
     });
 
     testWidgets("has child CustomIconButton with correct params",
@@ -53,7 +53,7 @@ void main() {
           .widget;
 
       expect(but.color, Colors.white);
-      expect(but.icon.toString(), Icon(CustomIcons.education).toString());
+      expect(but.icon.toString(), Icon(CustomIcons.workLifeBalance).toString());
     });
   });
 }
