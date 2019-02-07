@@ -3,8 +3,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower/flower.dart';
-
+import 'package:learning_compass_exp/screens/home/widgets/flower/flower_menu.dart';
 import 'package:learning_compass_exp/screens/home/widgets/grid.dart';
 
 // Use this file as a starting-point to build the contents of the page.
@@ -17,11 +16,16 @@ class Home extends StatelessWidget {
         StoreConnector<AppState, bool>(
           converter: (Store<AppState> store) => store.state.flowerSmall,
           builder: (context, flowerSmall) {
-            return Container(
-              padding: EdgeInsets.only(top: flowerSmall ? 0 : 20),
-              child: Align(
+            return AnimatedContainer(
+              duration: Duration(seconds: 1),
+              padding: flowerSmall ? EdgeInsets.only(top: 5, right: 5) : EdgeInsets.only(top: 20),
+              child: AnimatedAlign(
+                duration: Duration(milliseconds: 1000),
                 alignment: flowerSmall ? Alignment.topRight : Alignment.center,
-                child: Flower(flowerSize: flowerSmall ? 175 : 300),
+                child: FlowerMenu(
+                    flowerSize: flowerSmall ? 100 : 300,
+                    hasIcons: !flowerSmall
+                ),
               ),
             );
           },

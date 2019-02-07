@@ -30,3 +30,5 @@ class DecrementPetalProgressAction {
 
   DecrementPetalProgressAction(this.petalName);
 }
+
+class ToggleFlowerSmallAction {}

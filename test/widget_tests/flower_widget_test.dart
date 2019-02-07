@@ -4,7 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'dart:math';
 
-import 'package:learning_compass_exp/screens/home/widgets/flower/flower.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/flower_menu.dart';
 import 'package:learning_compass_exp/app.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';

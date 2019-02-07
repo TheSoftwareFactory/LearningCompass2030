@@ -4,7 +4,7 @@ import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/store/actions/actions.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 
-final flowerReducer = combineReducers<Map<PetalName, Petal>>([
+final flowerPetalReducer = combineReducers<Map<PetalName, Petal>>([
   TypedReducer<Map<PetalName, Petal>, SetPetalSizeAction>(_setFlowerState),
   TypedReducer<Map<PetalName, Petal>, IncrementPetalProgressAction>(
       _incrementPetalProgress),

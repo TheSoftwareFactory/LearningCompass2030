@@ -15,6 +15,7 @@ class PetalIconButton extends StatelessWidget {
           shape: BoxShape.circle,
         ),
         child: CustomIconButton(
+          highlightColor: Colors.black,
           color: Colors.white,
           icon: Icon(Icons.store),
           onPressed: () => print('third'),

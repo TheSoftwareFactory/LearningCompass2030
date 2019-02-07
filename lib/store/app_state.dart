@@ -16,6 +16,7 @@ class AppState {
 
   AppState copyWith({
     int number,
+    bool flowerSmall,
     Map<PetalName, Petal> petals,
   }) {
     return AppState(
@@ -51,6 +52,7 @@ class AppState {
   @override
   int get hashCode =>
       number.hashCode ^
+      flowerSmall.hashCode ^
       petals.hashCode;
 
 
@@ -61,6 +63,7 @@ class AppState {
       other is AppState &&
         runtimeType == other.runtimeType &&
         number == other.number &&
+        flowerSmall == other.flowerSmall &&
         //flowerProgress == other.flowerProgress;
         isProgressIdentical(petals, other.petals);
 }
