@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
+import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 
@@ -13,11 +14,11 @@ class InfoBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return StoreConnector<AppState, double>(
-      converter: (Store<AppState> store) => store.state.flowerProgress[subject],
-      builder: (context, progress) {
+    return StoreConnector<AppState, Petal>(
+      converter: (Store<AppState> store) => store.state.petals[subject],
+      builder: (context, petal) {
         return Center(
-          child: Text('Current progress for this particular subject is: $progress'),
+          child: Text('Current progress for ${petal.name} is: ${petal.progress}, and its color is ${petal.color}'),
         );
       },
     );
