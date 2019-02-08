@@ -25,9 +25,9 @@ main() {
     });
 
     test('has an overriden hashCode method that works correctly', () {
-      Petal petal = Petal(name: PetalName.workLifeBalance, angle: 6.7, progress: 54, color: Colors.green);
+      Petal petal = Petal(name: PetalName.workLifeBalance, angle: 6.7, progress: 54, color: Colors.green, icon: Icons.print);
 
-      int expectedHashCode = PetalName.workLifeBalance.hashCode ^ 6.7.hashCode ^ 54.hashCode ^ Colors.green.hashCode;
+      int expectedHashCode = PetalName.workLifeBalance.hashCode ^ 6.7.hashCode ^ 54.hashCode ^ Colors.green.hashCode ^ Icons.print.hashCode;
 
       expect(petal.hashCode, expectedHashCode);
     });
