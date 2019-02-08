@@ -16,10 +16,10 @@ void main() {
     binding.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.fullyLive;
   }
 
-  group("PetalIcon widget", () {
+  group("PetalIconButton widget", () {
     final Store<AppState> store = Store<AppState>(
       appReducer,
-      initialState: AppState.initial(),
+      initialState: AppState.initial().copyWith(flowerSmall: false),
       //middleware: createStoreMiddleware(),
     );
 
@@ -59,10 +59,7 @@ void main() {
 
 Future<void> setUpWidget(WidgetTester tester, Store store) async {
   await tester.pumpWidget(
-    StoreProvider<AppState>(
-      store: store,
-      child: LearningCompassApp(),
-    ),
+      LearningCompassApp(testingStore: store,)
   );
 
   await tester.pump();
