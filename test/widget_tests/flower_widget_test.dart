@@ -90,57 +90,56 @@ void main() {
       petal = petals.elementAt(0).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, 0.0);
-      expect(petal.color, Colors.red);
+      expect(petal.color, Colors.red[900]);
 
       petal = petals.elementAt(1).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, (2 / 11) * pi);
-      expect(petal.color, Colors.blue);
-
+      expect(petal.color, Colors.blueGrey);
       petal = petals.elementAt(2).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, (4 / 11) * pi);
-      expect(petal.color, Colors.lightBlue);
+      expect(petal.color, Colors.orange[600]);
 
       petal = petals.elementAt(3).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, (6 / 11) * pi);
-      expect(petal.color, Colors.lightGreen);
+      expect(petal.color, Colors.purple);
 
       petal = petals.elementAt(4).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, (8 / 11) * pi);
-      expect(petal.color, Colors.indigo);
+      expect(petal.color, Colors.amber);
 
       petal = petals.elementAt(5).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, (10 / 11) * pi);
-      expect(petal.color, Colors.amber);
+      expect(petal.color, Colors.green);
 
       petal = petals.elementAt(6).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, (12 / 11) * pi);
-      expect(petal.color, Colors.blueGrey);
+      expect(petal.color, Colors.lightGreen[400]);
 
       petal = petals.elementAt(7).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, (14 / 11) * pi);
-      expect(petal.color, Colors.deepOrange);
+      expect(petal.color, Colors.red[400]);
 
       petal = petals.elementAt(8).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, (16 / 11) * pi);
-      expect(petal.color, Colors.lime);
+      expect(petal.color, Colors.blue);
 
       petal = petals.elementAt(9).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, (18 / 11) * pi);
-      expect(petal.color, Colors.purple);
+      expect(petal.color, Colors.cyan);
 
       petal = petals.elementAt(10).widget;
       expect(petal.progress, 50.0);
       expect(petal.angle, (20 / 11) * pi);
-      expect(petal.color, Colors.green);
+      expect(petal.color, Colors.teal[300]);
     });
 
     testWidgets("is correct size when it is small", (WidgetTester tester) async {

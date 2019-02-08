@@ -4,8 +4,9 @@ import 'package:learning_compass_exp/common/widgets/custom_icon_button.dart';
 
 class PetalIconButton extends StatelessWidget {
   final Color color;
+  final IconData icon;
 
-  PetalIconButton({this.color});
+  PetalIconButton({this.color, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class PetalIconButton extends StatelessWidget {
         child: CustomIconButton(
           highlightColor: Colors.black,
           color: Colors.white,
-          icon: Icon(Icons.store),
+          icon: Icon(icon),
           onPressed: () => print('third'),
         ),
     );

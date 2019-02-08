@@ -8,6 +8,7 @@ import 'package:learning_compass_exp/app.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/petal_icon_button.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icon_button.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
+import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
@@ -34,9 +35,45 @@ void main() {
           .first
           .widget;
 
-      // color here will change when it is linked to state.
       expect(cont.decoration,
-          BoxDecoration(color: Colors.red, shape: BoxShape.circle));
+          BoxDecoration(color: Colors.red[900], shape: BoxShape.circle));
+    });
+
+    testWidgets("creates an icon button with given parameters",
+        (WidgetTester tester) async {
+      Color expectedColor = Colors.blue;
+      IconData expectedIcon = CustomIcons.education;
+
+      await tester.pumpWidget(MaterialApp(
+          home: Scaffold(
+              body: PetalIconButton(
+        color: expectedColor,
+        icon: expectedIcon,
+      ))));
+
+      await tester.pump();
+      await tester.pump();
+
+      Container container = find
+          .descendant(
+              of: find.byType(PetalIconButton),
+              matching: find.byType(Container))
+          .evaluate()
+          .first
+          .widget;
+
+      BoxDecoration decoration = container.decoration;
+
+      CustomIconButton iconButton = find
+          .descendant(
+              of: find.byType(PetalIconButton),
+              matching: find.byType(CustomIconButton))
+          .evaluate()
+          .first
+          .widget;
+
+      expect(decoration.color, expectedColor);
+      expect(iconButton.icon.toString(), Icon(expectedIcon).toString());
     });
 
     testWidgets("has child CustomIconButton with correct params",
@@ -52,7 +89,7 @@ void main() {
           .widget;
 
       expect(but.color, Colors.white);
-      expect(but.icon.toString(), Icon(Icons.store).toString());
+      expect(but.icon.toString(), Icon(CustomIcons.workLifeBalance).toString());
     });
   });
 }
