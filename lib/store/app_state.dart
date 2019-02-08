@@ -58,11 +58,11 @@ class AppState {
       other is AppState &&
         runtimeType == other.runtimeType &&
         number == other.number &&
-        //flowerProgress == other.flowerProgress;
-        isProgressIdentical(petals, other.petals);
+        //petals == other.petals;
+        isMapEqual(petals, other.petals);
 }
 
-bool isProgressIdentical(Map a, Map b) {
+bool isMapEqual(Map a, Map b) {
   if (a.length != b.length) return false;
   return a.keys.every((key) => b.containsKey(key) && a[key] == b[key]);
 }

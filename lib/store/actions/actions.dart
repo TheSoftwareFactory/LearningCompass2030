@@ -2,16 +2,6 @@ import 'package:learning_compass_exp/data/models/petal_names.dart';
 
 class IncrementNumberAction {}
 
-class DecrementNumberAction {}
-
-class SetNumberAction {
-  final int number;
-
-  SetNumberAction(this.number);
-}
-
-
-
 class SetPetalSizeAction {
   final double petalSize;
   final PetalName petalName;
