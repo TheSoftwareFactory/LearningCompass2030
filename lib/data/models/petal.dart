@@ -6,20 +6,23 @@ class Petal {
   final double progress;
   final PetalName name;
   final double angle;
+  final IconData icon;
 
-  Petal({this.color = Colors.brown, this.progress = 50.0, @required this.name, this.angle = 0.0});
+  Petal({this.color = Colors.brown, this.progress = 50.0, @required this.name, this.angle = 0.0, this.icon = Icons.error_outline});
 
   Petal copyWith({
     Color color,
     double progress,
     PetalName name,
     double angle,
+    IconData icon,
   }) {
     return Petal(
       color: color ?? this.color,
       progress: progress ?? this.progress,
       name: name ?? this.name,
       angle: angle ?? this.angle,
+      icon: icon ?? this.icon,
     );
   }
 
@@ -28,7 +31,8 @@ class Petal {
       color.hashCode ^
       progress.hashCode ^
       name.hashCode ^
-      angle.hashCode;
+      angle.hashCode ^
+      icon.hashCode;
 
 
   // Not sure which == for map should be used for this function...
@@ -40,5 +44,6 @@ class Petal {
               color == other.color &&
               progress == other.progress &&
               name == other.name &&
-              angle == other.angle;
+              angle == other.angle &&
+              icon == other.icon;
 }
