@@ -59,7 +59,7 @@ void main() {
       expect(containerInsideButton.constraints, BoxConstraints(maxHeight: 300 /4, minHeight: 300 / 4, maxWidth: 300 / 4, minWidth: 300 / 4));
     });
 
-    testWidgets("minimizes flower when it is tapped in the middle when it is large", (WidgetTester tester) async {
+    testWidgets("removes icons when it is tapped in the middle when it is large", (WidgetTester tester) async {
       await setUpWidget(tester, store);
 
       Finder invisibleButton = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(GestureDetector));

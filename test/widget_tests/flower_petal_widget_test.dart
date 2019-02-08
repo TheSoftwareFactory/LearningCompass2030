@@ -22,26 +22,6 @@ void main() {
       //middleware: createStoreMiddleware(),
     );
 
-    testWidgets("sets petal size correctly initially",
-        (WidgetTester tester) async {
-      /*
-      await setUpWidget(tester, store);
-
-      LayoutBuilder builder = find.byType(LayoutBuilder).evaluate().first.widget;
-      print(builder.);
-
-
-      Container cont = find.byType(Container).evaluate().first.widget;
-
-      expect(
-          cont.constraints,
-          BoxConstraints.expand(
-              width: (69.6 / 100) * (500 - 45),
-              height: (69.6 / 100) * (500 - 45)));
-              */
-
-    });
-
     testWidgets("has the correct angle for the petal",
         (WidgetTester tester) async {
       await setUpWidget(tester, store);

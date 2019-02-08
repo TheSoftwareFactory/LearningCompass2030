@@ -95,9 +95,9 @@ void main() {
 }
 
 Future<void> setUpWidget(WidgetTester tester, Store store) async {
-  await tester.pumpWidget(
-      LearningCompassApp(testingStore: store,)
-  );
+  await tester.pumpWidget(LearningCompassApp(
+    testingStore: store,
+  ));
 
   await tester.pump();
   await tester.pump();

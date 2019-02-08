@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:redux/redux.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
@@ -18,6 +17,8 @@ void main() {
   }
 
   group("IconCircle widget", () {
+
+    // Sets state to correspond to flower being large and icons showing.
     final Store<AppState> store = Store<AppState>(
       appReducer,
       initialState: AppState.initial().copyWith(flowerSmall: false),

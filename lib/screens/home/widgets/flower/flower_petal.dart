@@ -17,6 +17,8 @@ class FlowerPetal extends StatelessWidget {
       angle: angle,
       child: LayoutBuilder(
         builder: (context, constraints) {
+          // This is used to make rotated petals not exceed container.
+          // Max length of the petal is now half of width/height.
           double _maxWidth = constraints.maxWidth * cos(pi / 4);
           double _maxHeight = constraints.maxHeight * cos(pi / 4);
           return CustomPaint(
