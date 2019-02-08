@@ -35,9 +35,45 @@ void main() {
           .first
           .widget;
 
-      // color here will change when it is linked to state.
       expect(cont.decoration,
           BoxDecoration(color: Colors.red[900], shape: BoxShape.circle));
+    });
+
+    testWidgets("creates an icon button with given parameters",
+        (WidgetTester tester) async {
+      Color expectedColor = Colors.blue;
+      IconData expectedIcon = CustomIcons.education;
+
+      await tester.pumpWidget(MaterialApp(
+          home: Scaffold(
+              body: PetalIconButton(
+        color: expectedColor,
+        icon: expectedIcon,
+      ))));
+
+      await tester.pump();
+      await tester.pump();
+
+      Container container = find
+          .descendant(
+              of: find.byType(PetalIconButton),
+              matching: find.byType(Container))
+          .evaluate()
+          .first
+          .widget;
+
+      BoxDecoration decoration = container.decoration;
+
+      CustomIconButton iconButton = find
+          .descendant(
+              of: find.byType(PetalIconButton),
+              matching: find.byType(CustomIconButton))
+          .evaluate()
+          .first
+          .widget;
+
+      expect(decoration.color, expectedColor);
+      expect(iconButton.icon.toString(), Icon(expectedIcon).toString());
     });
 
     testWidgets("has child CustomIconButton with correct params",

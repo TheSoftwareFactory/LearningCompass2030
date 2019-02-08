@@ -80,16 +80,13 @@ void main() {
 
       FlowerPetal petal;
 
-      print(store.state.petals);
       // Might wanna separate into several tests. I left it like this to not
       // have to generate the widget 11 times.
       petal = petals.elementAt(0).widget;
-      print(petal);
       expect(petal.progress, 50.0);
       expect(petal.angle, 0.0);
       expect(petal.maxPetalSize, flower.flowerSize / 2.5);
       expect(petal.color, Colors.red[900]);
-
 
       petal = petals.elementAt(1).widget;
       expect(petal.progress, 50.0);
