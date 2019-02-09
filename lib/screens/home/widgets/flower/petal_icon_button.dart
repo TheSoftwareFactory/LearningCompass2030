@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/common/widgets/custom_icon_button.dart';
 
-class PetalIcon extends StatelessWidget {
+class PetalIconButton extends StatelessWidget {
   final Color color;
+  final IconData icon;
 
-  PetalIcon({this.color});
+  PetalIconButton({this.color, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class PetalIcon extends StatelessWidget {
         ),
         child: CustomIconButton(
           color: Colors.white,
-          icon: Icon(Icons.store),
+          icon: Icon(icon),
           onPressed: () => print('third'),
         ),
     );

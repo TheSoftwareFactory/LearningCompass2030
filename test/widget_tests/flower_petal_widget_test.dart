@@ -31,10 +31,8 @@ void main() {
       expect(
           cont.constraints,
           BoxConstraints.expand(
-              width:
-                  (store.state.flowerProgress[PetalName.education] / 100) * (500-45),
-              height: (store.state.flowerProgress[PetalName.education] / 100) *
-                  (500-45)));
+              width: (69.6 / 100) * (500 - 45),
+              height: (69.6 / 100) * (500 - 45)));
     });
 
     testWidgets("has the correct angle for the petal",
@@ -48,9 +46,6 @@ void main() {
   });
 }
 
-
-
-
 Future<void> setUpWidget(WidgetTester tester, Store store) async {
   await tester.pumpWidget(
     StoreProvider<AppState>(
@@ -60,7 +55,7 @@ Future<void> setUpWidget(WidgetTester tester, Store store) async {
           maxPetalSize: 500,
           angle: 6.9,
           color: Colors.red,
-          petalName: PetalName.education,
+          progress: 69.6,
         ),
       ),
     ),
