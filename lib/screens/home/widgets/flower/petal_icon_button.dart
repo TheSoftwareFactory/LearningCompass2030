@@ -18,7 +18,7 @@ class PetalIconButton extends StatelessWidget {
         child: CustomIconButton(
           color: Colors.white,
           icon: Icon(icon),
-          onPressed: () => print('third'),
+          onPressed: () => Navigator.pushNamed(context, "/income"),
         ),
     );
   }

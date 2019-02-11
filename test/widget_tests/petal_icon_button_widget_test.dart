@@ -17,15 +17,10 @@ void main() {
     binding.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.fullyLive;
   }
 
-  group("PetalIcon widget", () {
-    final Store<AppState> store = Store<AppState>(
-      appReducer,
-      initialState: AppState.initial(),
-      //middleware: createStoreMiddleware(),
-    );
+  group("PetalIconButton widget", () {
 
     testWidgets("is correct color and shape", (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       Container cont = find
           .descendant(
@@ -78,7 +73,7 @@ void main() {
 
     testWidgets("has child CustomIconButton with correct params",
         (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       CustomIconButton but = find
           .descendant(
@@ -94,7 +89,13 @@ void main() {
   });
 }
 
-Future<void> setUpWidget(WidgetTester tester, Store store) async {
+Future<void> setUpWidget(WidgetTester tester) async {
+  final Store<AppState> store = Store<AppState>(
+    appReducer,
+    initialState: AppState.initial().copyWith(flowerSmall: false),
+    //middleware: createStoreMiddleware(),
+  );
+
   await tester.pumpWidget(LearningCompassApp(store: store,));
 
   await tester.pump();

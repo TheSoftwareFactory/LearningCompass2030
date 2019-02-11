@@ -15,28 +15,9 @@ void main() {
   }
 
   group("FlowerPetal widget", () {
-    final Store<AppState> store = Store<AppState>(
-      appReducer,
-      initialState: AppState.initial(),
-      //middleware: createStoreMiddleware(),
-    );
-
-    testWidgets("sets petal size correctly initially",
-        (WidgetTester tester) async {
-      await setUpWidget(tester, store);
-
-      Container cont = find.byType(Container).evaluate().first.widget;
-
-      expect(
-          cont.constraints,
-          BoxConstraints.expand(
-              width: (69.6 / 100) * (500 - 45),
-              height: (69.6 / 100) * (500 - 45)));
-    });
-
     testWidgets("has the correct angle for the petal",
         (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       Transform transform = find.byType(Transform).evaluate().first.widget;
 
@@ -45,18 +26,23 @@ void main() {
   });
 }
 
-Future<void> setUpWidget(WidgetTester tester, Store store) async {
+Future<void> setUpWidget(WidgetTester tester) async {
+  final Store<AppState> store = Store<AppState>(
+    appReducer,
+    initialState: AppState.initial(),
+    //middleware: createStoreMiddleware(),
+  );
+
   await tester.pumpWidget(
     StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
         home: FlowerPetal(
-          maxPetalSize: 500,
-          angle: 6.9,
-          color: Colors.red,
-          progress: 69.6,
+            angle: 6.9,
+            color: Colors.red,
+            progress: 69.6,
+          ),
         ),
-      ),
     ),
   );
 

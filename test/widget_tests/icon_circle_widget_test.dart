@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:redux/redux.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
@@ -18,16 +17,11 @@ void main() {
   }
 
   group("IconCircle widget", () {
-    final Store<AppState> store = Store<AppState>(
-      appReducer,
-      initialState: AppState.initial(),
-      //middleware: createStoreMiddleware(),
-    );
-
     testWidgets("has correct amount of PetalIcon children",
         (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
+      expect(find.byType(IconCircle), findsOneWidget);
       int buttonCount = find
           .descendant(
               of: find.byType(IconCircle), matching: find.byType(PetalIconButton))
@@ -38,7 +32,7 @@ void main() {
     });
 
     testWidgets("has 11 icons with correct parameters", (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       List expectedValues = [
         { 'color': Colors.red[900], 'icon': CustomIcons.workLifeBalance },
@@ -67,7 +61,14 @@ void main() {
   });
 }
 
-Future<void> setUpWidget(WidgetTester tester, Store store) async {
+Future<void> setUpWidget(WidgetTester tester) async {
+  // Sets state to correspond to flower being large and icons showing.
+  final Store<AppState> store = Store<AppState>(
+    appReducer,
+    initialState: AppState.initial().copyWith(flowerSmall: false),
+    //middleware: createStoreMiddleware(),
+  );
+
   await tester.pumpWidget(LearningCompassApp(store: store,));
 
   await tester.pump();

@@ -10,16 +10,19 @@ import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
 class AppState {
   // If these variables are objects, could possibly make more complicated states relatively cleanly...?
   final int number;
+  final bool flowerSmall;
   final Map<PetalName, Petal> petals;
 
-  AppState({this.number, this.petals});
+  AppState({this.number, this.flowerSmall, this.petals});
 
   AppState copyWith({
     int number,
+    bool flowerSmall,
     Map<PetalName, Petal> petals,
   }) {
     return AppState(
       number: number ?? this.number,
+      flowerSmall: flowerSmall ?? this.flowerSmall,
       petals: petals ?? this.petals,
     );
   }
@@ -45,6 +48,7 @@ class AppState {
   factory AppState.initial() {
     return AppState(
       number: 80,
+      flowerSmall: true,
       petals: {
         PetalName.workLifeBalance: Petal(
             name: PetalName.workLifeBalance,
@@ -106,18 +110,23 @@ class AppState {
   }
 
   @override
-  int get hashCode => number.hashCode ^ petals.hashCode;
+  int get hashCode =>
+      number.hashCode ^
+      flowerSmall.hashCode ^
+      petals.hashCode;
+
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppState &&
-          runtimeType == other.runtimeType &&
-          number == other.number &&
-          _isProgressIdentical(petals, other.petals);
+        runtimeType == other.runtimeType &&
+        number == other.number &&
+        flowerSmall == other.flowerSmall &&
+        isMapEqual(petals, other.petals);
 }
 
-bool _isProgressIdentical(Map a, Map b) {
+bool isMapEqual(Map a, Map b) {
   if (a.length != b.length) return false;
   return a.keys.every((key) => b.containsKey(key) && a[key] == b[key]);
 }
