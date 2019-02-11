@@ -24,65 +24,23 @@ class AppState {
     );
   }
 
-  // Works, but ugly...
   static AppState fromJson(dynamic json) {
-    if (json == null || json["petals"] == null) {
-      return null;
+    if (json == null) return null;
+
+    AppState loadedState = AppState.initial();
+    for (dynamic item in json['petals']) {
+      if (item == null || item['name'] == null || item['progress'] == null) continue;
+      Petal correspondingPetal = loadedState.petals[petalNameFromString(item['name'])];
+      loadedState.petals[petalNameFromString(item['name'])] = correspondingPetal.copyWith(progress: item['progress'].toDouble());
     }
 
-    AppState initialDefaultState = AppState.initial();
-    Map<PetalName, Petal> loadedPetalState = Map<PetalName, Petal>();
-    for (Petal petal in initialDefaultState.petals.values) {
-      Petal newPetal = petal.copyWith(
-          progress: json["petals"][petal.name.toString()]["progress"].toDouble());
-      loadedPetalState[newPetal.name] = newPetal;
-    }
-
-    return initialDefaultState.copyWith(petals: loadedPetalState);
+    return loadedState;
   }
 
-  // Works, but ugly...
   dynamic toJson() {
-    return {
-      'petals': {
-        PetalName.workLifeBalance.toString(): {
-          'progress': petals[PetalName.workLifeBalance].progress
-        },
-        PetalName.safety.toString(): {
-          'progress': petals[PetalName.safety].progress
-        },
-        PetalName.lifeSatisfaction.toString(): {
-          'progress': petals[PetalName.lifeSatisfaction].progress
-        },
-        PetalName.health.toString(): {
-          'progress': petals[PetalName.health].progress
-        },
-        PetalName.civicEngagement.toString(): {
-          'progress': petals[PetalName.civicEngagement].progress
-        },
-        PetalName.environment.toString(): {
-          'progress': petals[PetalName.environment].progress
-        },
-        PetalName.education.toString(): {
-          'progress': petals[PetalName.education].progress
-        },
-        PetalName.community.toString(): {
-          'progress': petals[PetalName.community].progress
-        },
-        PetalName.job.toString(): {
-          'progress': petals[PetalName.job].progress
-        },
-        PetalName.income.toString(): {
-          'progress': petals[PetalName.income].progress
-        },
-        PetalName.housing.toString(): {
-          'progress': petals[PetalName.housing].progress
-        },
-      }
-    };
+    return {'petals': petals.values.toList()};
   }
 
-  // Later on this initial state will be (partially) loaded from system memory
   // This factory constructor might not even be necessary...
   factory AppState.initial() {
     return AppState(
@@ -150,18 +108,16 @@ class AppState {
   @override
   int get hashCode => number.hashCode ^ petals.hashCode;
 
-  // Not sure which == for map should be used for this function...
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppState &&
           runtimeType == other.runtimeType &&
           number == other.number &&
-          //petals == other.petals;
-          isProgressIdentical(petals, other.petals);
+          _isProgressIdentical(petals, other.petals);
 }
 
-bool isProgressIdentical(Map a, Map b) {
+bool _isProgressIdentical(Map a, Map b) {
   if (a.length != b.length) return false;
   return a.keys.every((key) => b.containsKey(key) && a[key] == b[key]);
 }

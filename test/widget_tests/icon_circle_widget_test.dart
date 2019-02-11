@@ -68,12 +68,7 @@ void main() {
 }
 
 Future<void> setUpWidget(WidgetTester tester, Store store) async {
-  await tester.pumpWidget(
-    StoreProvider<AppState>(
-      store: store,
-      child: LearningCompassApp(),
-    ),
-  );
+  await tester.pumpWidget(LearningCompassApp(store: store,));
 
   await tester.pump();
   await tester.pump();

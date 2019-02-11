@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
 
+// Probably unnecessary
 final petalAttributes = {
   PetalName.workLifeBalance.toString(): {"name": "Work Life Balance", "icon": CustomIcons.workLifeBalance, "color": Colors.red[900], "angle": 0.0},
   PetalName.safety.toString(): {"name": "Safety", "icon": CustomIcons.safety, "color": Colors.blueGrey, "angle": 2 / 11 * pi},

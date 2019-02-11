@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
-import 'package:learning_compass_exp/data/constants/petal_attributes.dart';
 
 class Petal {
   final Color color;
@@ -36,7 +35,6 @@ class Petal {
       icon.hashCode;
 
 
-  // Not sure which == for map should be used for this function...
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -48,25 +46,10 @@ class Petal {
               angle == other.angle &&
               icon == other.icon;
 
-  static Petal fromJson(dynamic json) {
-
-
-    if (json == null) {
-      return null;
-    }
-    print('here too!');
-    Map petalDetails = petalAttributes[json["name"]];
-    return Petal(
-        name: PetalName.values.firstWhere((e) => e.toString() == json["name"]),
-        icon: petalAttributes["icon"][json["name"]],
-        angle: petalAttributes[json["name"]]["angle"],
-        progress: json["progress"] as double,
-        color: json["color"] as Color);
-
-  }
-
   dynamic toJson() {
-    print("in Petal toJson");
-    return {name.toString(): {"progress": progress}};
+    return {
+      'name': name.toString(),
+      'progress': progress,
+    };
   }
 }

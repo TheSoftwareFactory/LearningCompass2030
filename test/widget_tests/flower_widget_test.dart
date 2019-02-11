@@ -7,7 +7,6 @@ import 'dart:math';
 import 'package:learning_compass_exp/screens/home/widgets/flower/flower.dart';
 import 'package:learning_compass_exp/app.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
-import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 
@@ -152,19 +151,7 @@ void main() {
 }
 
 Future<void> setUpWidget(WidgetTester tester, Store store) async {
-  await tester.pumpWidget(
-    StoreProvider<AppState>(
-      store: store,
-      child: LearningCompassApp(),
-      /*
-      child: MaterialApp(
-        home: Flower(
-          flowerSize: 347.9,
-        ),
-      ),
-      */
-    ),
-  );
+  await tester.pumpWidget(LearningCompassApp(store: store,));
 
   await tester.pump();
   await tester.pump();
