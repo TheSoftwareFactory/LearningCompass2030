@@ -8,6 +8,10 @@ import 'package:learning_compass_exp/routes.dart';
 
 // This widget is the root of your application.
 class LearningCompassApp extends StatelessWidget {
+  final Store<AppState> testingStore;
+
+  LearningCompassApp({this.testingStore});
+
   final Store<AppState> store = Store<AppState>(
     appReducer,
     initialState: AppState.initial(),
@@ -17,7 +21,7 @@ class LearningCompassApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
-      store: store,
+      store: testingStore ?? store,
       child: MaterialApp(
         initialRoute: '/',
         routes: routes,
