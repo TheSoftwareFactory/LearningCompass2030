@@ -28,7 +28,7 @@ class AppState {
   }
 
   static AppState fromJson(dynamic json) {
-    if (json == null) return null;
+    if (json == null || json['petals'] == null || json['petals'] is !Iterable) return null;
 
     AppState loadedState = AppState.initial();
     for (dynamic item in json['petals']) {
