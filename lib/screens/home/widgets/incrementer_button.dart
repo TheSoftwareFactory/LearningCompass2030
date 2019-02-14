@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
+import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/actions/actions.dart';
 
@@ -11,12 +12,12 @@ class IncrementerButton extends StatelessWidget {
     return StoreConnector<AppState, Function>(
       converter: (Store<AppState> store) {
         return () {
-          store.dispatch(IncrementNumberAction());
+          store.dispatch(IncrementPetalProgressAction(PetalName.environment));
         };
       },
-      builder: (context, callback) {
+      builder: (BuildContext context, Function callback) {
         return FloatingActionButton(
-          onPressed: () => callback(),
+          onPressed: callback,
           child: Icon(Icons.add),
         );
       }
