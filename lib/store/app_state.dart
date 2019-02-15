@@ -11,18 +11,21 @@ class AppState {
   // If these variables are objects, could possibly make more complicated states relatively cleanly...?
   final int number;
   final bool flowerSmall;
+  final bool firstStartUp;
   final Map<PetalName, Petal> petals;
 
-  AppState({this.number, this.flowerSmall, this.petals});
+  AppState({this.number, this.flowerSmall, this.firstStartUp, this.petals});
 
   AppState copyWith({
     int number,
     bool flowerSmall,
+    bool firstStartUp,
     Map<PetalName, Petal> petals,
   }) {
     return AppState(
       number: number ?? this.number,
       flowerSmall: flowerSmall ?? this.flowerSmall,
+      firstStartUp: firstStartUp ?? this.firstStartUp,
       petals: petals ?? this.petals,
     );
   }
@@ -34,6 +37,7 @@ class AppState {
     return AppState(
       number: 80,
       flowerSmall: true,
+      firstStartUp: true,
       petals: {
         PetalName.workLifeBalance: Petal(name: PetalName.workLifeBalance, color: Colors.red[900], angle: 0.0, icon: CustomIcons.workLifeBalance),
         PetalName.safety: Petal(name: PetalName.safety, color: Colors.blueGrey, angle: 2 / 11 * pi, icon: CustomIcons.safety),
@@ -54,6 +58,7 @@ class AppState {
   int get hashCode =>
       number.hashCode ^
       flowerSmall.hashCode ^
+      firstStartUp.hashCode ^
       petals.hashCode;
 
 
@@ -65,6 +70,7 @@ class AppState {
         runtimeType == other.runtimeType &&
         number == other.number &&
         flowerSmall == other.flowerSmall &&
+        firstStartUp == other.firstStartUp &&
         isMapEqual(petals, other.petals);
 }
 

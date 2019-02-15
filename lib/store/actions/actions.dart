@@ -22,3 +22,5 @@ class DecrementPetalProgressAction {
 }
 
 class ToggleFlowerSmallAction {}
+
+class FirstStartUpDoneAction {}
