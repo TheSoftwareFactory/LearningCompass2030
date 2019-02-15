@@ -5,7 +5,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
-import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 
 void main() {
@@ -16,15 +15,9 @@ void main() {
   }
 
   group("FlowerPetal widget", () {
-    final Store<AppState> store = Store<AppState>(
-      appReducer,
-      initialState: AppState.initial(),
-      //middleware: createStoreMiddleware(),
-    );
-
     testWidgets("has the correct angle for the petal",
         (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       Transform transform = find.byType(Transform).evaluate().first.widget;
 
@@ -33,7 +26,13 @@ void main() {
   });
 }
 
-Future<void> setUpWidget(WidgetTester tester, Store store) async {
+Future<void> setUpWidget(WidgetTester tester) async {
+  final Store<AppState> store = Store<AppState>(
+    appReducer,
+    initialState: AppState.initial(),
+    //middleware: createStoreMiddleware(),
+  );
+
   await tester.pumpWidget(
     StoreProvider<AppState>(
       store: store,
