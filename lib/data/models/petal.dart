@@ -35,7 +35,6 @@ class Petal {
       icon.hashCode;
 
 
-  // Not sure which == for map should be used for this function...
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -46,4 +45,11 @@ class Petal {
               name == other.name &&
               angle == other.angle &&
               icon == other.icon;
+
+  dynamic toJson() {
+    return {
+      'name': name.toString(),
+      'progress': progress,
+    };
+  }
 }
