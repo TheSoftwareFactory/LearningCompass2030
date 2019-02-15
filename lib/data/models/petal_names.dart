@@ -12,8 +12,8 @@ enum PetalName {
   housing
 }
 
-// This assumes parameter is given in the form that the built in toString() method gives.
-// For example, PetalName.education
+// Finds the equivalent PetalName value for the given string. If bad string given, returns null.
+// Expects the string to be in the form of PetalName.valueHere.toString().
 PetalName petalNameFromString(String petalAsString) {
   if (!PetalName.values.any((name) => name.toString() == petalAsString)) return null;
   return PetalName.values.firstWhere((name) => name.toString() == petalAsString);
