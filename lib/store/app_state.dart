@@ -27,6 +27,9 @@ class AppState {
     );
   }
 
+  // Used by redux_persist to convert parts of state from persistent storage (which is in JSON form) and convert into an AppState.
+  // Uses AppState.initial() to get initial values and replaces appropriate values depending on data gotten from
+  // persistent storage.
   static AppState fromJson(dynamic json) {
     if (json == null || json['petals'] == null || json['petals'] is !Iterable) return null;
 
@@ -40,11 +43,12 @@ class AppState {
     return loadedState;
   }
 
+  // Used by redux_persist to convert part of the state into JSON to store persistently. redux_persist serializer
+  // knows to call toJson in each petal in the list automatically.
   dynamic toJson() {
     return {'petals': petals.values.toList()};
   }
 
-  // This factory constructor might not even be necessary...
   factory AppState.initial() {
     return AppState(
       number: 80,
