@@ -13,6 +13,7 @@ import 'package:learning_compass_exp/store/app_state.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     SchedulerBinding.instance.addPostFrameCallback((_) {
       if (!StoreProvider.of<AppState>(context).state.firstStartUp) return _;
       return showDialog(
@@ -21,6 +22,7 @@ class HomeScreen extends StatelessWidget {
             return WelcomeDialog();
           });
     });
+
 
     return Scaffold(
       appBar: AppBar(
