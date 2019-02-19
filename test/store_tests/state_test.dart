@@ -102,6 +102,7 @@ main() {
 
       expect(defaultAppState.petals, null);
       expect(defaultAppState.flowerSmall, null);
+      expect(defaultAppState.firstStartUp, null);
       expect(defaultAppState.number, null);
     });
     group('has an overriden hashCode method', () {
@@ -112,6 +113,7 @@ main() {
 
         int expectedHash = initialState.number.hashCode ^
             initialState.flowerSmall.hashCode ^
+            initialState.firstStartUp.hashCode ^
             initialState.petals.hashCode;
 
         expect(initialState.hashCode, expectedHash);
