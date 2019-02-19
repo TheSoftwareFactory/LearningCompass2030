@@ -8,6 +8,7 @@ import 'package:learning_compass_exp/screens/home/widgets/drawer/drawer.dart';
 import 'package:learning_compass_exp/screens/home/welcome_dialog.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
+import 'package:learning_compass_exp/store/actions/actions.dart';
 
 
 // Had to change this widget into stateful because I couldn't figure out a good
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context) {
             return WelcomeDialog();
           });
+      StoreProvider.of<AppState>(context).dispatch(FirstStartUpDoneAction());
     });
   }
 

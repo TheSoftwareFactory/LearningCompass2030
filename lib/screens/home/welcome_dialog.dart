@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:redux/redux.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-
-import 'package:learning_compass_exp/store/app_state.dart';
-import 'package:learning_compass_exp/store/actions/actions.dart';
 
 class WelcomeDialog extends StatelessWidget {
-
   /// Builds the top of the Welcome dialog. Includes the green (cosmetic) bar
   /// and icon on the top.
   Widget _buildTop() {
@@ -44,42 +38,36 @@ class WelcomeDialog extends StatelessWidget {
 
   /// Builds the buttons on the bottom of the dialog. Contains two buttons:
   /// SKIP and TAKE A TOUR.
-  Widget _buttonBar() {
-    return StoreConnector<AppState, VoidCallback>(
-        converter: (Store<AppState> store) =>
-            () => store.dispatch(FirstStartUpDoneAction()),
-        builder: (BuildContext context, VoidCallback callback) {
-          return ButtonBar(
-            mainAxisSize: MainAxisSize.min,
-            alignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              FlatButton(
-                child: Text('SKIP'),
-                onPressed: () {
-                  callback();
-                  Navigator.of(context).pop();
-                },
-                color: Colors.transparent,
-              ),
-              FlatButton(
-                child: Text('TAKE A TOUR'),
-                onPressed: () {
-                  callback();
-                  Navigator.of(context).pop();
-                },
-                color: Colors.transparent,
-              )
-            ],
-          );
-        });
+  Widget _buttonBar(BuildContext context) {
+    return ButtonBar(
+      mainAxisSize: MainAxisSize.min,
+      alignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        FlatButton(
+          child: Text('SKIP'),
+          onPressed: () {
+            //callback();
+            Navigator.pop(context);
+          },
+          color: Colors.transparent,
+        ),
+        FlatButton(
+          child: Text('TAKE A TOUR'),
+          onPressed: () {
+            //callback();
+            Navigator.pop(context);
+          },
+          color: Colors.transparent,
+        )
+      ],
+    );
   }
 
   /// Builds the actual welcome message of the dialog. Includes a welcome
   /// header and a body of text. Uses a scrollable view.
   Widget _buildBody(BuildContext context) {
     return Container(
-      height:
-      MediaQuery.of(context).orientation == Orientation.portrait
+      height: MediaQuery.of(context).orientation == Orientation.portrait
           ? 180
           : 105,
       child: ListView(
@@ -101,12 +89,10 @@ class WelcomeDialog extends StatelessWidget {
               'life by providing you with valuable information.'),
           Padding(
             padding: EdgeInsets.only(top: 10),
-            child: Text(
-                'To familiarize yourself with the functionality of'
-                    'the app you can TAKE A TOUR of the apps features'
-                    'below. Alternatively if you like to explore for'
-                    'yourself you can select SKIP'),
-
+            child: Text('To familiarize yourself with the functionality of'
+                'the app you can TAKE A TOUR of the apps features'
+                'below. Alternatively if you like to explore for'
+                'yourself you can select SKIP'),
           ),
         ],
       ),
@@ -116,9 +102,8 @@ class WelcomeDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0)
-        ),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         child: Container(
             height: 370.0,
             width: 200.0,
@@ -126,7 +111,7 @@ class WelcomeDialog extends StatelessWidget {
               children: <Widget>[
                 _buildTop(),
                 _buildBody(context),
-                _buttonBar(),
+                _buttonBar(context),
               ],
             )));
   }
