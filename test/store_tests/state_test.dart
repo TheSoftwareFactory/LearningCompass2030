@@ -106,9 +106,7 @@ main() {
       expect(defaultAppState.number, null);
     });
     group('has an overriden hashCode method', () {
-      test(
-          "that produces a correct value",
-          () {
+      test("that produces a correct value", () {
         AppState initialState = AppState.initial();
 
         int expectedHash = initialState.number.hashCode ^
@@ -121,9 +119,7 @@ main() {
     });
 
     group('has an overriden operator== method', () {
-      test(
-          "that produces correct results",
-          () {
+      test("that produces correct results", () {
         Map<PetalName, Petal> firstMap = {
           PetalName.environment:
               Petal(name: PetalName.lifeSatisfaction, progress: 67, angle: 78)
@@ -140,9 +136,7 @@ main() {
     });
 
     group('has a copyWith method', () {
-      test(
-          'that copies the AppState its called on correctly',
-          () {
+      test('that copies the AppState its called on correctly', () {
         AppState originalAppState = AppState.initial();
         AppState copiedAppState = originalAppState.copyWith();
 
@@ -150,9 +144,7 @@ main() {
         expect(copiedAppState == originalAppState, true);
       });
 
-      test(
-          "that copies the AppState except for given parameter",
-          () {
+      test("that copies the AppState except for given parameter", () {
         AppState originalAppState = AppState.initial();
         AppState modifiedAppState = originalAppState.copyWith(number: 69);
 
@@ -169,42 +161,74 @@ main() {
         expect(AppState.fromJson(null), null);
       });
 
-      test('that returns null if given a non-empty parameter but without petals property', () {
+      test(
+          'that returns null if given a non-empty parameter but without petals property',
+          () {
         dynamic testInput = {'something': 123, 'here': "too"};
 
         expect(AppState.fromJson(testInput), null);
       });
 
-      test('that returns AppState initial state when parameter proper petals is  empty', () {
+      test(
+          'that returns AppState initial state when parameter proper petals is  empty',
+          () {
         dynamic testInput = {'petals': {}};
 
         expect(AppState.fromJson(testInput), null);
       });
 
-      test('that returns a new, modified initial state that has the json values provided', () {
-        dynamic testInput = {'petals': [{'name': PetalName.education.toString(), 'progress': 56}, {'name': PetalName.civicEngagement.toString(), 'progress': 100}]};
+      test(
+          'that returns a new, modified initial state that has the json values provided',
+          () {
+        dynamic testInput = {
+          'petals': [
+            {'name': PetalName.education.toString(), 'progress': 56},
+            {'name': PetalName.civicEngagement.toString(), 'progress': 100}
+          ],
+          'firstStartUp': false
+        };
 
         AppState expectedAppState = AppState.initial();
-        expectedAppState.petals[PetalName.education] = expectedAppState.petals[PetalName.education].copyWith(progress: 56);
-        expectedAppState.petals[PetalName.civicEngagement] = expectedAppState.petals[PetalName.civicEngagement].copyWith(progress: 100);
+        expectedAppState.petals[PetalName.education] =
+            expectedAppState.petals[PetalName.education].copyWith(progress: 56);
+        expectedAppState.petals[PetalName.civicEngagement] = expectedAppState
+            .petals[PetalName.civicEngagement]
+            .copyWith(progress: 100);
+        expectedAppState = expectedAppState.copyWith(firstStartUp: false);
 
         expect(AppState.fromJson(testInput), equals(expectedAppState));
       });
 
-      test('that returns new default initial state when given an empty iterable', () {
+      test(
+          'that returns new default initial state when given an empty iterable',
+          () {
         dynamic testInput = {'petals': []};
 
         expect(AppState.fromJson(testInput), AppState.initial());
       });
 
-      test('that returns the default initial state if given a parameter with no names', () {
-        dynamic testInput = {'petals': [{'progress': 56}, {'progress': 100}]};
+      test(
+          'that returns the default initial state if given a parameter with no names',
+          () {
+        dynamic testInput = {
+          'petals': [
+            {'progress': 56},
+            {'progress': 100}
+          ]
+        };
 
         expect(AppState.fromJson(testInput), AppState.initial());
       });
 
-      test('that returns the default initial state if given a parameter with no progress property', () {
-        dynamic testInput = {'petals': [{'name': PetalName.education.toString()}, {'name': PetalName.civicEngagement.toString()}]};
+      test(
+          'that returns the default initial state if given a parameter with no progress property',
+          () {
+        dynamic testInput = {
+          'petals': [
+            {'name': PetalName.education.toString()},
+            {'name': PetalName.civicEngagement.toString()}
+          ]
+        };
 
         expect(AppState.fromJson(testInput), AppState.initial());
       });
@@ -213,7 +237,10 @@ main() {
     group('has a toJson method', () {
       test('that returns the relevant state values when state is initial', () {
         AppState initialState = AppState.initial();
-        dynamic expectedOutput = {'petals': initialState.petals.values.toList()};
+        dynamic expectedOutput = {
+          'firstStartUp': true,
+          'petals': initialState.petals.values.toList()
+        };
 
         // The redux_persist library serializer handles converting each item in the
         // list into a JSON object.

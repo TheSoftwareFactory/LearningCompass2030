@@ -43,13 +43,20 @@ class AppState {
       loadedState.petals[petalNameFromString(item['name'])] = correspondingPetal.copyWith(progress: item['progress'].toDouble());
     }
 
+    if (json['firstStartUp'] != null) {
+      loadedState = loadedState.copyWith(firstStartUp: json['firstStartUp'] as bool);
+    }
+
     return loadedState;
   }
 
   // Used by redux_persist to convert part of the state into JSON to store persistently. redux_persist serializer
   // knows to call toJson in each petal in the list automatically.
   dynamic toJson() {
-    return {'petals': petals.values.toList()};
+    return {
+      'firstStartUp': firstStartUp,
+      'petals': petals.values.toList()
+    };
   }
 
   factory AppState.initial() {
