@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:redux/redux.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'dart:math';
 
 import 'package:learning_compass_exp/screens/home/widgets/flower/flower_menu.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/icon_circle.dart';
 import 'package:learning_compass_exp/app.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 
@@ -19,14 +16,8 @@ void main() {
   }
 
   group("FlowerMenu widget", () {
-    final Store<AppState> store = Store<AppState>(
-      appReducer,
-      initialState: AppState.initial(),
-      //middleware: createStoreMiddleware(),
-    );
-
     testWidgets('has an invisible button with correct (small) size initially', (WidgetTester tester) async  {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       Finder invisibleButton = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(GestureDetector));
       expect(invisibleButton, findsOneWidget);
@@ -36,7 +27,7 @@ void main() {
     });
 
     testWidgets('does not contain IconCircle initially', (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       Finder iconCircles = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(IconCircle));
 
@@ -44,7 +35,7 @@ void main() {
     });
 
     testWidgets("expands flower upon tapping it", (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       Finder invisibleButton = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(GestureDetector));
 
@@ -60,9 +51,9 @@ void main() {
     });
 
     testWidgets("removes icons when it is tapped in the middle when it is large", (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
-      Finder invisibleButton = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(GestureDetector));
+      Finder invisibleButton = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(GestureDetector)).first;
 
       await tester.tap(invisibleButton);
       await tester.pumpAndSettle();
@@ -70,7 +61,6 @@ void main() {
       expect(iconCircles, findsOneWidget);
 
       invisibleButton = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(GestureDetector)).first;
-      print(invisibleButton);
 
       await tester.tap(invisibleButton);
       await tester.pumpAndSettle();
@@ -79,26 +69,20 @@ void main() {
       iconCircles = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(IconCircle));
 
       expect(iconCircles, findsNothing);
+
     });
   });
 
 
 }
 
-Future<void> setUpWidget(WidgetTester tester, Store store) async {
-  await tester.pumpWidget(
-    StoreProvider<AppState>(
-      store: store,
-      child: LearningCompassApp(),
-      /*
-      child: MaterialApp(
-        home: Flower(
-          flowerSize: 347.9,
-        ),
-      ),
-      */
-    ),
+Future<void> setUpWidget(WidgetTester tester) async {
+  final Store<AppState> store = Store<AppState>(
+    appReducer,
+    initialState: AppState.initial(),
+    //middleware: createStoreMiddleware(),
   );
+  await tester.pumpWidget(LearningCompassApp(store: store,));
 
   await tester.pump();
   await tester.pump();
