@@ -6,11 +6,11 @@ import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
 
-/// This file exports an instance of the below private class [_Constants].
+/// This file exports an instance of the below private class [_PetalConstants].
 /// Contains all implementation constants needed throughout the app.
 /// Might be split into multiple files later if needed.
 @immutable
-class _Constants {
+class _PetalConstants {
   final Petal workLifeBalance;
   final Petal safety;
   final Petal lifeSatisfaction;
@@ -23,7 +23,7 @@ class _Constants {
   final Petal income;
   final Petal housing;
 
-  _Constants({
+  _PetalConstants({
     this.workLifeBalance,
     this.safety,
     this.lifeSatisfaction,
@@ -52,11 +52,29 @@ class _Constants {
       PetalName.housing: housing,
     };
   }
+
+  List<Petal> toList() {
+    return [
+      workLifeBalance,
+      safety,
+      lifeSatisfaction,
+      health,
+      civicEngagement,
+      environment,
+      education,
+      community,
+      job,
+      income,
+      housing
+    ];
+  }
 }
 
 
+
+
 @literal
-final _Constants CONSTANTS = _Constants(
+final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
   workLifeBalance: Petal(
       name: PetalName.workLifeBalance,
       stringName: 'Work-Life Balance',
@@ -83,7 +101,7 @@ final _Constants CONSTANTS = _Constants(
       stringName: 'Health',
       color: Colors.purple,
       angle: 6 / 11 * pi,
-      icon: CustomIcons.lifeSatisfaction,
+      icon: CustomIcons.health,
       route: '/health'),
   civicEngagement: Petal(
       name: PetalName.civicEngagement,
@@ -98,7 +116,7 @@ final _Constants CONSTANTS = _Constants(
       color: Colors.green,
       angle: 10 / 11 * pi,
       icon: CustomIcons.environment,
-      route: '/health'),
+      route: '/environment'),
   education:  Petal(
       name: PetalName.education,
       stringName: 'Education',
@@ -115,7 +133,7 @@ final _Constants CONSTANTS = _Constants(
       route: '/community'),
   job: Petal(
       name: PetalName.job,
-      stringName: 'Community',
+      stringName: 'Job',
       color: Colors.blue,
       angle: 16 / 11 * pi,
       icon: CustomIcons.jobs,

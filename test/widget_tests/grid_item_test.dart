@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:learning_compass_exp/screens/home/widgets/grid_item.dart';
+import 'package:learning_compass_exp/data/models/petal.dart';
+
+import 'package:learning_compass_exp/data/constants/PETAL_CONSTANTS.dart';
 
 void main() {
   group('GridItem Widget', () {
-    final _lifeSatisfactionItem = {
-      'name': 'Life Satisfaction',
-      'color': Colors.orange[600]
-    };
+    final Petal _lifeSatisfactionItem = PETAL_CONSTANTS.lifeSatisfaction;
 
     testWidgets('draws one FlatButton with Text', (WidgetTester tester) async {
       await tester.pumpWidget(

@@ -4,23 +4,21 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
-import 'package:learning_compass_exp/data/models/petal_names.dart';
 
-import 'package:learning_compass_exp/data/constants/constants.dart';
+import 'package:learning_compass_exp/data/constants/PETAL_CONSTANTS.dart';
 
 class InfoBody extends StatelessWidget {
-  final PetalName subject;
+  final Petal subject;
 
   InfoBody({this.subject});
 
   @override
   Widget build(BuildContext context) {
-    Petal petal = CONSTANTS.toMap()[this.subject];
     return StoreConnector<AppState, double>(
-      converter: (Store<AppState> store) => store.state.progress[this.subject],
+      converter: (Store<AppState> store) => store.state.progress[this.subject.name],
       builder: (context, progress) {
         return Center(
-          child: Text('Current progress for ${petal.name} is: $progress, and its color is ${petal.color}'),
+          child: Text('Current progress for ${subject.stringName} is: $progress, and its color is ${subject.color}'),
         );
       },
     );
