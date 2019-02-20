@@ -1,15 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-import 'package:learning_compass_exp/data/models/petal_names.dart';
-import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/petal_icon_button.dart';
+import 'package:learning_compass_exp/data/constants/constants.dart';
 
 class IconCircle extends StatelessWidget {
   final double radius;
-  final Map<PetalName, Petal> petals;
 
-  IconCircle({this.radius, this.petals});
+  IconCircle({this.radius});
 
   Positioned _createStackWidget(double angle, Color color, IconData icon) {
     return Positioned(
@@ -22,9 +20,10 @@ class IconCircle extends StatelessWidget {
 
   List<Widget> _createIconStack() {
     List<Widget> list = List<Widget>();
-    for (var name in PetalName.values) {
-      list.add(_createStackWidget(petals[name].angle, petals[name].color, petals[name].icon));
+    for (var petal in CONSTANTS.toMap().values) {
+      list.add(_createStackWidget(petal.angle, petal.color, petal.icon));
     }
+
     return list;
   }
 

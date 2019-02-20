@@ -1,29 +1,22 @@
 import 'package:meta/meta.dart';
-import 'dart:math';
 import 'package:flutter/material.dart';
 
-import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
-import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
 
 @immutable
 class AppState {
-  // If these variables are objects, could possibly make more complicated states relatively cleanly...?
-  final int number;
   final bool flowerSmall;
-  final Map<PetalName, Petal> petals;
+  final Map<PetalName, double> progress;
 
-  AppState({this.number, this.flowerSmall, this.petals});
+  AppState({this.flowerSmall, this.progress});
 
   AppState copyWith({
-    int number,
     bool flowerSmall,
-    Map<PetalName, Petal> petals,
+    Map<PetalName, double> progress,
   }) {
     return AppState(
-      number: number ?? this.number,
       flowerSmall: flowerSmall ?? this.flowerSmall,
-      petals: petals ?? this.petals,
+      progress: progress ?? this.progress,
     );
   }
 
@@ -31,93 +24,59 @@ class AppState {
   // Uses AppState.initial() to get initial values and replaces appropriate values depending on data gotten from
   // persistent storage.
   static AppState fromJson(dynamic json) {
-    if (json == null || json['petals'] == null || json['petals'] is !Iterable) return null;
+    if (json == null || json['progress'] == null || json['progress'] is !Map) return null;
 
     AppState loadedState = AppState.initial();
-    for (dynamic item in json['petals']) {
-      if (item == null || item['name'] == null || item['progress'] == null) continue;
-      Petal correspondingPetal = loadedState.petals[petalNameFromString(item['name'])];
-      loadedState.petals[petalNameFromString(item['name'])] = correspondingPetal.copyWith(progress: item['progress'].toDouble());
-    }
+    for (PetalName name in PetalName.values) {
+      if (json['progress'][name.toString()] == null || json['progress'][name.toString()] <= 50) continue;
 
+      loadedState.progress[name] = json['progress'][name.toString()];
+    }
     return loadedState;
   }
 
   // Used by redux_persist to convert part of the state into JSON to store persistently. redux_persist serializer
   // knows to call toJson in each petal in the list automatically.
   dynamic toJson() {
-    return {'petals': petals.values.toList()};
+    return {'progress': {
+      PetalName.workLifeBalance.toString(): progress[PetalName.workLifeBalance],
+      PetalName.safety.toString(): progress[PetalName.safety],
+      PetalName.lifeSatisfaction.toString(): progress[PetalName.lifeSatisfaction],
+      PetalName.health.toString(): progress[PetalName.health],
+      PetalName.civicEngagement.toString(): progress[PetalName.civicEngagement],
+      PetalName.environment.toString(): progress[PetalName.environment],
+      PetalName.education.toString(): progress[PetalName.education],
+      PetalName.community.toString(): progress[PetalName.community],
+      PetalName.job.toString(): progress[PetalName.job],
+      PetalName.income.toString(): progress[PetalName.income],
+      PetalName.housing.toString(): progress[PetalName.housing],
+    }
+    };
   }
 
   factory AppState.initial() {
     return AppState(
-      number: 80,
       flowerSmall: true,
-      petals: {
-        PetalName.workLifeBalance: Petal(
-            name: PetalName.workLifeBalance,
-            color: Colors.red[900],
-            angle: 0.0,
-            icon: CustomIcons.workLifeBalance),
-        PetalName.safety: Petal(
-            name: PetalName.safety,
-            color: Colors.blueGrey,
-            angle: 2 / 11 * pi,
-            icon: CustomIcons.safety),
-        PetalName.lifeSatisfaction: Petal(
-            name: PetalName.lifeSatisfaction,
-            color: Colors.orange[600],
-            angle: 4 / 11 * pi,
-            icon: CustomIcons.lifeSatisfaction),
-        PetalName.health: Petal(
-            name: PetalName.health,
-            color: Colors.purple,
-            angle: 6 / 11 * pi,
-            icon: CustomIcons.health),
-        PetalName.civicEngagement: Petal(
-            name: PetalName.civicEngagement,
-            color: Colors.amber,
-            angle: 8 / 11 * pi,
-            icon: CustomIcons.civicEngagement),
-        PetalName.environment: Petal(
-            name: PetalName.environment,
-            color: Colors.green,
-            angle: 10 / 11 * pi,
-            icon: CustomIcons.environment),
-        PetalName.education: Petal(
-            name: PetalName.education,
-            color: Colors.lightGreen[400],
-            angle: 12 / 11 * pi,
-            icon: CustomIcons.education),
-        PetalName.community: Petal(
-            name: PetalName.community,
-            color: Colors.red[400],
-            angle: 14 / 11 * pi,
-            icon: CustomIcons.community),
-        PetalName.job: Petal(
-            name: PetalName.job,
-            color: Colors.blue,
-            angle: 16 / 11 * pi,
-            icon: CustomIcons.jobs),
-        PetalName.income: Petal(
-            name: PetalName.income,
-            color: Colors.cyan,
-            angle: 18 / 11 * pi,
-            icon: CustomIcons.income),
-        PetalName.housing: Petal(
-            name: PetalName.housing,
-            color: Colors.teal[300],
-            angle: 20 / 11 * pi,
-            icon: CustomIcons.housing),
-      },
+      progress: {
+        PetalName.workLifeBalance: 50,
+        PetalName.safety: 50,
+        PetalName.lifeSatisfaction: 50,
+        PetalName.health: 50,
+        PetalName.civicEngagement: 50,
+        PetalName.environment: 50,
+        PetalName.education: 50,
+        PetalName.community: 50,
+        PetalName.job: 50,
+        PetalName.income: 50,
+        PetalName.housing: 50,
+      }
     );
   }
 
   @override
   int get hashCode =>
-      number.hashCode ^
       flowerSmall.hashCode ^
-      petals.hashCode;
+      progress.hashCode;
 
 
   @override
@@ -125,9 +84,8 @@ class AppState {
       identical(this, other) ||
       other is AppState &&
         runtimeType == other.runtimeType &&
-        number == other.number &&
         flowerSmall == other.flowerSmall &&
-        isMapEqual(petals, other.petals);
+        isMapEqual(progress, other.progress);
 }
 
 bool isMapEqual(Map a, Map b) {
