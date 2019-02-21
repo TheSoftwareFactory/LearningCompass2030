@@ -8,8 +8,9 @@ import 'package:learning_compass_exp/data/models/petal_names.dart';
 
 class InfoBody extends StatelessWidget {
   final PetalName subject;
+  final String content;
 
-  InfoBody({this.subject});
+  InfoBody({this.subject, this.content});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,12 @@ class InfoBody extends StatelessWidget {
       converter: (Store<AppState> store) => store.state.petals[subject],
       builder: (context, petal) {
         return Center(
-          child: Text('Current progress for ${petal.name} is: ${petal.progress}, and its color is ${petal.color}'),
+          child: Column(
+            children: <Widget>[
+              Text('Current progress for ${petal.name} is: ${petal.progress}, and its color is ${petal.color}'),
+              Text('$content'),
+            ],
+          ),
         );
       },
     );

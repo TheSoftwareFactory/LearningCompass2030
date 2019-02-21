@@ -12,18 +12,21 @@ class AppState {
   final int number;
   final bool flowerSmall;
   final Map<PetalName, Petal> petals;
+  final String subroute;
 
-  AppState({this.number, this.flowerSmall, this.petals});
+  AppState({this.number, this.flowerSmall, this.petals, this.subroute});
 
   AppState copyWith({
     int number,
     bool flowerSmall,
     Map<PetalName, Petal> petals,
+    String subroute,
   }) {
     return AppState(
       number: number ?? this.number,
       flowerSmall: flowerSmall ?? this.flowerSmall,
       petals: petals ?? this.petals,
+      subroute: subroute ?? this.subroute,
     );
   }
 
@@ -47,6 +50,7 @@ class AppState {
         PetalName.income: Petal(name: PetalName.income, color: Colors.cyan, angle: 18 / 11 * pi, icon: CustomIcons.income),
         PetalName.housing: Petal(name: PetalName.housing, color: Colors.teal[300], angle: 20 / 11 * pi, icon: CustomIcons.housing),
       },
+      subroute: null,
     );
   }
 
@@ -54,7 +58,8 @@ class AppState {
   int get hashCode =>
       number.hashCode ^
       flowerSmall.hashCode ^
-      petals.hashCode;
+      petals.hashCode ^
+      subroute.hashCode;
 
 
   // Not sure which == for map should be used for this function...
@@ -65,7 +70,8 @@ class AppState {
         runtimeType == other.runtimeType &&
         number == other.number &&
         flowerSmall == other.flowerSmall &&
-        isMapEqual(petals, other.petals);
+        isMapEqual(petals, other.petals) &&
+        subroute == other.subroute;
 }
 
 bool isMapEqual(Map a, Map b) {
