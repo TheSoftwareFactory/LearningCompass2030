@@ -13,8 +13,8 @@ main() {
   group('PETAL CONSTANTS', () {
     test('return correct value for Work-Life Balance', () {
       Petal expectedValue = Petal(
+          'Work-Life Balance',
           name: PetalName.workLifeBalance,
-          stringName: 'Work-Life Balance',
           color: Colors.red[900],
           angle: 0.0,
           icon: CustomIcons.workLifeBalance,
@@ -25,8 +25,8 @@ main() {
 
     test('return correct value for Safety', () {
       Petal expectedValue = Petal(
+          'Safety',
           name: PetalName.safety,
-          stringName: 'Safety',
           color: Colors.blueGrey,
           angle: 2 / 11 * pi,
           icon: CustomIcons.safety,
@@ -37,8 +37,8 @@ main() {
 
     test('return correct value for Life Satisfaction', () {
       Petal expectedValue = Petal(
+          'Life Satisfaction',
           name: PetalName.lifeSatisfaction,
-          stringName: 'Life Satisfaction',
           color: Colors.orange[600],
           angle: 4 / 11 * pi,
           icon: CustomIcons.lifeSatisfaction,
@@ -49,8 +49,8 @@ main() {
 
     test('return correct value for Health', () {
       Petal expectedValue = Petal(
+          'Health',
           name: PetalName.health,
-          stringName: 'Health',
           color: Colors.purple,
           angle: 6 / 11 * pi,
           icon: CustomIcons.health,
@@ -61,8 +61,8 @@ main() {
 
     test('return correct value for Civic Engagement', () {
       Petal expectedValue = Petal(
+          'Civic Engagement',
           name: PetalName.civicEngagement,
-          stringName: 'Civic Engagement',
           color: Colors.amber,
           angle: 8 / 11 * pi,
           icon: CustomIcons.civicEngagement,
@@ -73,8 +73,8 @@ main() {
 
     test('return correct value for Environment', () {
       Petal expectedValue = Petal(
+          'Environment',
           name: PetalName.environment,
-          stringName: 'Environment',
           color: Colors.green,
           angle: 10 / 11 * pi,
           icon: CustomIcons.environment,
@@ -85,8 +85,8 @@ main() {
 
     test('return correct value for Education', () {
       Petal expectedValue = Petal(
+          'Education',
           name: PetalName.education,
-          stringName: 'Education',
           color: Colors.lightGreen[400],
           angle: 12 / 11 * pi,
           icon: CustomIcons.education,
@@ -97,8 +97,8 @@ main() {
 
     test('return correct value for Community', () {
       Petal expectedValue = Petal(
+          'Community',
           name: PetalName.community,
-          stringName: 'Community',
           color: Colors.red[400],
           angle: 14 / 11 * pi,
           icon: CustomIcons.community,
@@ -109,8 +109,8 @@ main() {
 
     test('return correct value for Job', () {
       Petal expectedValue = Petal(
+          'Job',
           name: PetalName.job,
-          stringName: 'Job',
           color: Colors.blue,
           angle: 16 / 11 * pi,
           icon: CustomIcons.jobs,
@@ -121,8 +121,8 @@ main() {
 
     test('return correct value for Income', () {
       Petal expectedValue = Petal(
+          'Income',
           name: PetalName.income,
-          stringName: 'Income',
           color: Colors.cyan,
           angle: 18 / 11 * pi,
           icon: CustomIcons.income,
@@ -133,8 +133,8 @@ main() {
 
     test('return correct value for Housing', () {
       Petal expectedValue = Petal(
+          'Housing',
           name: PetalName.housing,
-          stringName: 'Housing',
           color: Colors.teal[300],
           angle: 20 / 11 * pi,
           icon: CustomIcons.housing,
@@ -145,16 +145,16 @@ main() {
 
     test('provides a toList() method that produces a list of petals correctly', () {
       Petal oneExpectedValue = Petal(
+          'Housing',
           name: PetalName.housing,
-          stringName: 'Housing',
           color: Colors.teal[300],
           angle: 20 / 11 * pi,
           icon: CustomIcons.housing,
           route: '/housing');
 
       Petal anotherExpectedValue = Petal(
+          'Civic Engagement',
           name: PetalName.civicEngagement,
-          stringName: 'Civic Engagement',
           color: Colors.amber,
           angle: 8 / 11 * pi,
           icon: CustomIcons.civicEngagement,
@@ -167,16 +167,16 @@ main() {
 
     test('provides a toMap() method that produces a map of petals correctly', () {
       Petal oneExpectedValue = Petal(
+          'Housing',
           name: PetalName.housing,
-          stringName: 'Housing',
           color: Colors.teal[300],
           angle: 20 / 11 * pi,
           icon: CustomIcons.housing,
           route: '/housing');
 
       Petal anotherExpectedValue = Petal(
+          'Civic Engagement',
           name: PetalName.civicEngagement,
-          stringName: 'Civic Engagement',
           color: Colors.amber,
           angle: 8 / 11 * pi,
           icon: CustomIcons.civicEngagement,

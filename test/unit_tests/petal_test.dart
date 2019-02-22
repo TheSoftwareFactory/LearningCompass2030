@@ -8,10 +8,10 @@ main() {
   group('Petal', () {
     test('creation generates a new instance correctly when given only name',
         () {
-      Petal petal = Petal(name: PetalName.lifeSatisfaction, stringName: 'Life Satisfaction');
+      Petal petal = Petal('Life Satisfaction', name: PetalName.lifeSatisfaction,);
 
       expect(petal.name, PetalName.lifeSatisfaction);
-      expect(petal.stringName, 'Life Satisfaction');
+      expect(petal.toString(), 'Life Satisfaction');
       expect(petal.angle, 0.0);
       expect(petal.color, Colors.brown);
     });
@@ -20,21 +20,21 @@ main() {
         'creation generates a new instance correctly when given specific parameters',
         () {
       Petal petal = Petal(
+          'Work-Life Balance',
           name: PetalName.workLifeBalance,
-          stringName: 'Work-Life Balance',
           angle: 6.7,
           color: Colors.green);
 
       expect(petal.name, PetalName.workLifeBalance);
-      expect(petal.stringName, 'Work-Life Balance');
+      expect(petal.toString(), 'Work-Life Balance');
       expect(petal.angle, 6.7);
       expect(petal.color, Colors.green);
     });
 
     test('has an overriden hashCode method that works correctly', () {
       Petal petal = Petal(
+          'Work-Life Balance',
           name: PetalName.workLifeBalance,
-          stringName: 'Work-Life Balance',
           angle: 6.7,
           color: Colors.green,
           icon: Icons.print);
@@ -51,13 +51,13 @@ main() {
 
     test('has an overriden operator == that works correctly', () {
       Petal firstPetal = Petal(
+          'Work-Life Balance',
           name: PetalName.workLifeBalance,
-          stringName: 'Work-Life Balance',
           angle: 6.7,
           color: Colors.green);
       Petal secondPetal = Petal(
+          'Work-Life Balance',
           name: PetalName.workLifeBalance,
-          stringName: 'Work-Life Balance',
           angle: 6.7,
           color: Colors.green);
 
@@ -69,8 +69,8 @@ main() {
         'has a copyWith function that correctly copies another instance creating a new instance',
         () {
       Petal petal = Petal(
+          'Work-Life Balance',
           name: PetalName.workLifeBalance,
-          stringName: 'Work-Life Balance',
           angle: 6.7,
           color: Colors.green);
       Petal copiedPetal = petal.copyWith();
@@ -83,8 +83,8 @@ main() {
         'has a copyWith function that correctly copies another instance except given parameters',
         () {
       Petal petal = Petal(
+          'Work-Life Balance',
           name: PetalName.workLifeBalance,
-          stringName: 'Work-Life Balance',
           angle: 6.7,
           color: Colors.green);
       Petal modifiedPetal =

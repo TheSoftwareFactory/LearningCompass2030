@@ -18,7 +18,7 @@ class InfoBody extends StatelessWidget {
       converter: (Store<AppState> store) => store.state.progress[this.subject.name],
       builder: (context, progress) {
         return Center(
-          child: Text('Current progress for ${subject.stringName} is: $progress, and its color is ${subject.color}'),
+          child: Text('Current progress for ${subject.toString()} is: $progress, and its color is ${subject.color}'),
         );
       },
     );

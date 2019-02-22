@@ -44,6 +44,7 @@ void main() {
           home: Scaffold(
               body: PetalIconButton(
                 petal: Petal(
+                  'Education',
                   color: expectedColor,
                   icon: expectedIcon,
                 ),

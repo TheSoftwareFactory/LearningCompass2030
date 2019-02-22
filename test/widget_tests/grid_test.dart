@@ -98,7 +98,7 @@ void main() {
       for (var i = 0; i < 11; i++) {
         gridItem = items.elementAt(i).widget;
         final expectedValue = data[i];
-        expect(gridItem.item.stringName, expectedValue['name']);
+        expect(gridItem.item.toString(), expectedValue['name']);
         expect(gridItem.item.color, expectedValue['color']);
       }
     });

@@ -16,7 +16,7 @@ class GridItem extends StatelessWidget {
         color: item.color,
         child: Center(
           child: Text(
-            '${item.stringName}',
+            '${item.toString()}',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16.0,
