@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 
 class Petal {
-  final Color color;
-  final PetalName name;
   final String _stringName;
+  final PetalName name;
+  final Color color;
   final double angle;
   final IconData icon;
   final String route;
+  final String pathToAssetData;
 
-  Petal(this._stringName, {this.color = Colors.brown, @required this.name, this.angle = 0.0, this.icon = Icons.error_outline, this.route = '/'});
+  Petal(this._stringName, {this.color = Colors.brown, @required this.name, this.angle = 0.0, this.icon = Icons.error_outline, this.route = '/', this.pathToAssetData});
 
   Petal copyWith({
     Color color,
