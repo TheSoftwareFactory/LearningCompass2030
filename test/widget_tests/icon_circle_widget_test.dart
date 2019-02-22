@@ -54,8 +54,8 @@ void main() {
       for (int i = 0; i < 1; i++) {
         iconButton = buttons.elementAt(0).widget;
         final expected = expectedValues[i];
-        expect(iconButton.color, expected['color']);
-        expect(iconButton.icon, expected['icon']);
+        expect(iconButton.petal.color, expected['color']);
+        expect(iconButton.petal.icon, expected['icon']);
       }
     });
   });

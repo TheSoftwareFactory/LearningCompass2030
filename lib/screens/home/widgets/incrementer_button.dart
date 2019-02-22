@@ -6,6 +6,8 @@ import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/actions/actions.dart';
 
+
+/// Dummy widget to show functionality of random things
 class IncrementerButton extends StatelessWidget {
   @override
   Widget build(BuildContext build) {
