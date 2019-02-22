@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
-import 'package:learning_compass_exp/screens/info/info_body.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
-import 'package:learning_compass_exp/screens/info/chapter_selection_bar.dart';
+import 'package:learning_compass_exp/screens/info/info_view.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 
 class InfoScreen extends StatelessWidget {
@@ -19,29 +18,11 @@ class InfoScreen extends StatelessWidget {
 
   InfoScreen({this.name});
 
-  String _getContent(subroute) {
-    final current = chapters.firstWhere((item) => item['title'] == subroute, orElse: () => '');
-    if(current == '') {
-      return current;
-    } else {
-      return current['content'];
-    }
-  }
-
-  // Get a darker version of a color
-  Color _shadedColor(color) {
-    return Color.fromRGBO(
-        (color.red*0.9).round(),
-        (color.green*0.8).round(),
-        (color.blue*0.8).round(),
-        1.0
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     // the color will be read from the petal constants in the future
     Color _color = Colors.orange[600];
+
     return StoreConnector<AppState, String>(
     converter: (Store<AppState> store) => store.state.subroute,
     builder: (context, subroute) {
@@ -49,15 +30,20 @@ class InfoScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text('$name'),
             backgroundColor: _color,
-            bottom: new PreferredSize(
-                preferredSize: const Size.fromHeight(40.0),
-                child: ChapterSelectionBar(subroute,
-                    chapters.map((item) => item['title']).toList(),
-                    _shadedColor(_color),
-                )
-            ),
-          ),
-          body: InfoBody(subject: name, content: _getContent(subroute)),
+          ), body: Center(child: Column(children: [
+            Text('add the chapter index/menu here'),
+            RaisedButton(
+              child: Text('chapter button'),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>
+                        InfoView(name: name, color: _color, chapters: chapters,)
+                    )
+                );
+              },
+            )
+      ])),
       );
     });
     }
