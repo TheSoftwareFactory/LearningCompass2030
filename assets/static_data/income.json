@@ -1,0 +1,42 @@
+{
+  "name": "Income",
+  "chapters": [
+    {
+      "title": "Introduction",
+      "description": "Introducing the new and exciting concept of income!",
+      "content": [
+        {
+          "title": "",
+          "type": "text",
+          "data": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+        },
+        {
+          "title": "",
+          "type": "text",
+          "data": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+        }
+      ]
+    },
+    {
+      "title": "More on income",
+      "description": "Some cool serious info on income.",
+      "content": [
+        {
+          "title": "First part",
+          "type": "text",
+          "data": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+        },
+        {
+          "title": "Second part",
+          "type": "text",
+          "data": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+        },
+        {
+          "title": "How bout a video?",
+          "type": "video",
+          "data": "https://www.youtube.com/embed/o08ykAqLOxk"
+        }
+      ]
+    }
+  ]
+}
