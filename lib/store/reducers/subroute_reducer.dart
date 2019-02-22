@@ -7,6 +7,5 @@ final subrouteReducer = combineReducers<String>([
 ]);
 
 String _changeSubroute(String currentRoute, ChangeSubrouteAction action) {
-  print(action.subroute);
   return action.subroute;
 }

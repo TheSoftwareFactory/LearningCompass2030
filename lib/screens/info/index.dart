@@ -28,20 +28,36 @@ class InfoScreen extends StatelessWidget {
     }
   }
 
+  // Get a darker version of a color
+  Color _shadedColor(color) {
+    return Color.fromRGBO(
+        (color.red*0.9).round(),
+        (color.green*0.8).round(),
+        (color.blue*0.8).round(),
+        1.0
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    // the color will be read from the petal constants in the future
+    Color _color = Colors.orange[600];
     return StoreConnector<AppState, String>(
     converter: (Store<AppState> store) => store.state.subroute,
     builder: (context, subroute) {
       return Scaffold(
           appBar: AppBar(
             title: Text('$name'),
-            backgroundColor: Colors.orange,
+            backgroundColor: _color,
             bottom: new PreferredSize(
                 preferredSize: const Size.fromHeight(40.0),
-                child: ChapterSelectionBar(subroute, chapters.map((item) => item['title']).toList())),
+                child: ChapterSelectionBar(subroute,
+                    chapters.map((item) => item['title']).toList(),
+                    _shadedColor(_color),
+                )
+            ),
           ),
-          body: InfoBody(subject: name, content: _getContent(subroute))
+          body: InfoBody(subject: name, content: _getContent(subroute)),
       );
     });
     }

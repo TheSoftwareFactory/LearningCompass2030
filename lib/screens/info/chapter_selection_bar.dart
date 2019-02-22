@@ -7,8 +7,9 @@ import 'package:learning_compass_exp/store/actions/actions.dart';
 class ChapterSelectionBar extends StatelessWidget {
   final String subroute;
   final List chapters;
+  final Color shadedColor;
 
-  ChapterSelectionBar(this.subroute, this.chapters);
+  ChapterSelectionBar(this.subroute, this.chapters, this.shadedColor);
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +22,11 @@ class ChapterSelectionBar extends StatelessWidget {
       return Container(
         padding: EdgeInsets.only(left: 20, right: 30),
         height: 40.0,
-        color: Colors.orange[700],
+        color: shadedColor,
         child: DropdownButtonHideUnderline(
             child: Theme(
                 data: Theme.of(context).copyWith(
-                    canvasColor: Colors.orange[700],
+                    canvasColor: shadedColor,
                     brightness: Brightness.dark),
                 child: DropdownButton<String>(
                     elevation: 1,
@@ -35,22 +36,18 @@ class ChapterSelectionBar extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
                         fontSize: 16),
-                    items: [
-                      DropdownMenuItem<String>(
-                          value: 'Introduction', child: Text('Introduction')),
-                      DropdownMenuItem<String>(
-                          value: 'Outlook on life',
-                          child: Text('Outlook on life')),
-                      DropdownMenuItem<String>(
-                          value: 'Life events', child: Text('Life events')),
-                    ],
+                    items: chapters.map((chapter) =>
+                        DropdownMenuItem<String>(
+                            value: chapter,
+                            child: Text(chapter))
+                        ).toList(),
                     onChanged: (selection) {
                       changeRoute(selection);
                     }
                     )
             )
         ),
-      );
+        );
     });
   }
 }
