@@ -9,6 +9,7 @@ import 'package:learning_compass_exp/screens/home/widgets/flower/petal_icon_butt
 import 'package:learning_compass_exp/common/widgets/custom_icon_button.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
+import 'package:learning_compass_exp/data/models/petal.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
@@ -42,8 +43,11 @@ void main() {
       await tester.pumpWidget(MaterialApp(
           home: Scaffold(
               body: PetalIconButton(
-        color: expectedColor,
-        icon: expectedIcon,
+                petal: Petal(
+                  'Education',
+                  color: expectedColor,
+                  icon: expectedIcon,
+                ),
       ))));
 
       await tester.pump();

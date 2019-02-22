@@ -3,36 +3,40 @@ import 'package:learning_compass_exp/data/models/petal_names.dart';
 
 class Petal {
   final Color color;
-  final double progress;
   final PetalName name;
+  final String _stringName;
   final double angle;
   final IconData icon;
+  final String route;
 
-  Petal({this.color = Colors.brown, this.progress = 50.0, @required this.name, this.angle = 0.0, this.icon = Icons.error_outline});
+  Petal(this._stringName, {this.color = Colors.brown, @required this.name, this.angle = 0.0, this.icon = Icons.error_outline, this.route = '/'});
 
   Petal copyWith({
     Color color,
-    double progress,
     PetalName name,
+    String stringName,
     double angle,
     IconData icon,
+    String route,
   }) {
     return Petal(
+      stringName ?? this._stringName,
       color: color ?? this.color,
-      progress: progress ?? this.progress,
       name: name ?? this.name,
       angle: angle ?? this.angle,
       icon: icon ?? this.icon,
+      route: route ?? this.route,
     );
   }
 
   @override
   int get hashCode =>
       color.hashCode ^
-      progress.hashCode ^
       name.hashCode ^
+      _stringName.hashCode ^
       angle.hashCode ^
-      icon.hashCode;
+      icon.hashCode ^
+      route.hashCode;
 
 
   @override
@@ -41,15 +45,14 @@ class Petal {
           other is Petal &&
               runtimeType == other.runtimeType &&
               color == other.color &&
-              progress == other.progress &&
               name == other.name &&
+              _stringName == other._stringName &&
               angle == other.angle &&
-              icon == other.icon;
+              icon == other.icon &&
+              route == other.route;
 
-  dynamic toJson() {
-    return {
-      'name': name.toString(),
-      'progress': progress,
-    };
+  @override
+  String toString() {
+    return _stringName;
   }
 }
