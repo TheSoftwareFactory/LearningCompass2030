@@ -4,6 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:learning_compass_exp/screens/home/widgets/grid.dart';
 import 'package:learning_compass_exp/screens/home/widgets/grid_item.dart';
 
+import 'package:learning_compass_exp/data/models/petal.dart';
+
+import 'package:learning_compass_exp/data/constants/PETAL_CONSTANTS.dart';
+
 void main() {
   group('Grid Widget', () {
     testWidgets('adds a GridView', (WidgetTester tester) async {
@@ -75,10 +79,7 @@ void main() {
       );
 
       final List data = [
-        { 'name': 'Jobs', 'color': Colors.blue },
-        { 'name': 'Income', 'color': Colors.cyan },
-        { 'name': 'Housing', 'color': Colors.teal[300] },
-        { 'name': 'Work Life Balance', 'color': Colors.red[600] },
+        { 'name': 'Work-Life Balance', 'color': Colors.red[900] },
         { 'name': 'Safety', 'color': Colors.blueGrey },
         { 'name': 'Life Satisfaction', 'color': Colors.orange[600] },
         { 'name': 'Health', 'color': Colors.purple },
@@ -86,6 +87,9 @@ void main() {
         { 'name': 'Environment', 'color': Colors.green },
         { 'name': 'Education', 'color': Colors.lightGreen[400] },
         { 'name': 'Community', 'color': Colors.red[400] },
+        { 'name': 'Job', 'color': Colors.blue },
+        { 'name': 'Income', 'color': Colors.cyan },
+        { 'name': 'Housing', 'color': Colors.teal[300] },
       ];
 
       Iterable items = find.byType(GridItem).evaluate();
@@ -94,8 +98,8 @@ void main() {
       for (var i = 0; i < 11; i++) {
         gridItem = items.elementAt(i).widget;
         final expectedValue = data[i];
-        expect(gridItem.item['name'], expectedValue['name']);
-        expect(gridItem.item['color'], expectedValue['color']);
+        expect(gridItem.item.toString(), expectedValue['name']);
+        expect(gridItem.item.color, expectedValue['color']);
       }
     });
   });

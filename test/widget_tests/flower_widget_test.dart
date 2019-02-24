@@ -27,7 +27,7 @@ void main() {
 
     testWidgets("sets size correctly around the flower",
         (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       await tester.pump();
       await tester.pump();
@@ -46,7 +46,7 @@ void main() {
 
     testWidgets("sets insets correctly around the flower to center it",
         (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       Container cont = find
           .descendant(of: find.byType(Flower), matching: find.byType(Container))
@@ -60,7 +60,7 @@ void main() {
     });
 
     testWidgets("has a Stack widget", (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       Container cont = find
           .descendant(of: find.byType(Flower), matching: find.byType(Container))
@@ -72,14 +72,14 @@ void main() {
     });
 
     testWidgets("contains 11 petals", (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       expect(find.byType(FlowerPetal).evaluate().length, 11);
     });
 
     testWidgets("assigns correct parameters to Flower Petals",
         (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       var petals = find.byType(FlowerPetal).evaluate();
 
@@ -143,7 +143,7 @@ void main() {
     });
 
     testWidgets("is correct size when it is small", (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       expect(store.state.flowerSmall, isTrue);
 
@@ -157,7 +157,7 @@ void main() {
     });
 
     testWidgets('is correct size when it is large', (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       Finder invisibleButton = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(GestureDetector));
 
@@ -178,13 +178,14 @@ void main() {
 
 }
 
-Future<void> setUpWidget(WidgetTester tester, Store store) async {
-  await tester.pumpWidget(
-    StoreProvider<AppState>(
-      store: store,
-      child: LearningCompassApp(),
-    ),
+Future<void> setUpWidget(WidgetTester tester) async {
+  final Store<AppState> store = Store<AppState>(
+    appReducer,
+    initialState: AppState.initial(),
+    //middleware: createStoreMiddleware(),
   );
+
+  await tester.pumpWidget(LearningCompassApp(store: store,));
 
   await tester.pump();
   await tester.pump();

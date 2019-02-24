@@ -3,25 +3,17 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
-import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/routes.dart';
 
 // This widget is the root of your application.
 class LearningCompassApp extends StatelessWidget {
-  final Store<AppState> testingStore;
+  final Store<AppState> store;
 
-  LearningCompassApp({this.testingStore});
-
-  final Store<AppState> store = Store<AppState>(
-    appReducer,
-    initialState: AppState.initial(),
-    //middleware: createStoreMiddleware(),
-  );
-
+  LearningCompassApp({Key key, this.store}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
-      store: testingStore ?? store,
+      store: store,
       child: MaterialApp(
         initialRoute: '/',
         routes: routes,

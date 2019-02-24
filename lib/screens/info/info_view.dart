@@ -3,23 +3,22 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
-import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/screens/info/chapter_selection_bar.dart';
 import 'package:learning_compass_exp/screens/info/info_body.dart';
+import 'package:learning_compass_exp/data/models/petal.dart';
 
 class InfoView extends StatelessWidget {
-  final PetalName name;
-  final Color color;
+  final Petal petal;
   final List chapters;
 
-  InfoView({this.name, this.color, this.chapters});
+  InfoView({this.petal, this.chapters});
 
   String _getContent(subroute) {
     final current = chapters.firstWhere((item) => item['title'] == subroute, orElse: () => '');
     if(current == '') {
       return current;
     } else {
-      return current['content'];
+      return current['content'].toString();
     }
   }
 
@@ -40,17 +39,17 @@ class InfoView extends StatelessWidget {
     builder: (context, subroute) {
       return Scaffold(
         appBar: AppBar(
-          title: Text('$name'),
-          backgroundColor: color,
+          title: Text('${petal.toString()}'),
+          backgroundColor: petal.color,
           bottom: new PreferredSize(
               preferredSize: const Size.fromHeight(40.0),
               child: ChapterSelectionBar(subroute,
-                chapters.map((item) => item['title']).toList(),
-                _shadedColor(color),
+                chapters.map((chapter) => chapter['title']).toList(),
+                _shadedColor(petal.color),
               )
           ),
         ),
-        body: InfoBody(subject: name, content: _getContent(subroute)),
+        body: InfoBody(subject: petal, content: _getContent(subroute)),
       );
     });
   }

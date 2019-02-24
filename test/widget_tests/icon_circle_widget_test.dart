@@ -17,17 +17,9 @@ void main() {
   }
 
   group("IconCircle widget", () {
-
-    // Sets state to correspond to flower being large and icons showing.
-    final Store<AppState> store = Store<AppState>(
-      appReducer,
-      initialState: AppState.initial().copyWith(flowerSmall: false),
-      //middleware: createStoreMiddleware(),
-    );
-
     testWidgets("has correct amount of PetalIcon children",
         (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       expect(find.byType(IconCircle), findsOneWidget);
       int buttonCount = find
@@ -40,7 +32,7 @@ void main() {
     });
 
     testWidgets("has 11 icons with correct parameters", (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       List expectedValues = [
         { 'color': Colors.red[900], 'icon': CustomIcons.workLifeBalance },
@@ -62,17 +54,22 @@ void main() {
       for (int i = 0; i < 1; i++) {
         iconButton = buttons.elementAt(0).widget;
         final expected = expectedValues[i];
-        expect(iconButton.color, expected['color']);
-        expect(iconButton.icon, expected['icon']);
+        expect(iconButton.petal.color, expected['color']);
+        expect(iconButton.petal.icon, expected['icon']);
       }
     });
   });
 }
 
-Future<void> setUpWidget(WidgetTester tester, Store store) async {
-  await tester.pumpWidget(
-    LearningCompassApp(testingStore: store,)
+Future<void> setUpWidget(WidgetTester tester) async {
+  // Sets state to correspond to flower being large and icons showing.
+  final Store<AppState> store = Store<AppState>(
+    appReducer,
+    initialState: AppState.initial().copyWith(flowerSmall: false),
+    //middleware: createStoreMiddleware(),
   );
+
+  await tester.pumpWidget(LearningCompassApp(store: store,));
 
   await tester.pump();
   await tester.pump();

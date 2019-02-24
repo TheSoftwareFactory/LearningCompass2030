@@ -9,6 +9,7 @@ import 'package:learning_compass_exp/screens/home/widgets/flower/petal_icon_butt
 import 'package:learning_compass_exp/common/widgets/custom_icon_button.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
+import 'package:learning_compass_exp/data/models/petal.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
@@ -18,14 +19,9 @@ void main() {
   }
 
   group("PetalIconButton widget", () {
-    final Store<AppState> store = Store<AppState>(
-      appReducer,
-      initialState: AppState.initial().copyWith(flowerSmall: false),
-      //middleware: createStoreMiddleware(),
-    );
 
     testWidgets("is correct color and shape", (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       Container cont = find
           .descendant(
@@ -47,8 +43,11 @@ void main() {
       await tester.pumpWidget(MaterialApp(
           home: Scaffold(
               body: PetalIconButton(
-        color: expectedColor,
-        icon: expectedIcon,
+                petal: Petal(
+                  'Education',
+                  color: expectedColor,
+                  icon: expectedIcon,
+                ),
       ))));
 
       await tester.pump();
@@ -78,7 +77,7 @@ void main() {
 
     testWidgets("has child CustomIconButton with correct params",
         (WidgetTester tester) async {
-      await setUpWidget(tester, store);
+      await setUpWidget(tester);
 
       CustomIconButton but = find
           .descendant(
@@ -94,10 +93,14 @@ void main() {
   });
 }
 
-Future<void> setUpWidget(WidgetTester tester, Store store) async {
-  await tester.pumpWidget(LearningCompassApp(
-    testingStore: store,
-  ));
+Future<void> setUpWidget(WidgetTester tester) async {
+  final Store<AppState> store = Store<AppState>(
+    appReducer,
+    initialState: AppState.initial().copyWith(flowerSmall: false),
+    //middleware: createStoreMiddleware(),
+  );
+
+  await tester.pumpWidget(LearningCompassApp(store: store,));
 
   await tester.pump();
   await tester.pump();
