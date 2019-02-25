@@ -5,7 +5,7 @@ import 'package:learning_compass_exp/screens/info/index.dart';
 
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 
-import 'screens/home/widgets/drawer/tabbed_app_bar/tabbed_app_bar.dart';
+import 'screens/home/widgets/drawer/tabbed_app_bar/tabbed_bar.dart';
 
 final routes = <String, WidgetBuilder>{
   '/': (context) => HomeScreen(),
