@@ -4,7 +4,7 @@ import 'package:learning_compass_exp/screens/home/widgets/drawer/tabbed_app_bar/
 
 
 //this will come from json
-const List choicesBodies = [
+const List<ChoiceBody> choicesBodies = const <ChoiceBody>[
   const ChoiceBody('title', 'body'),
   const ChoiceBody('title', 'body'),
   const ChoiceBody('title', 'body'),
@@ -14,9 +14,9 @@ const List choicesBodies = [
 //this will come from json
 const List<Choice> choices = const <Choice>[
   const Choice(title: 'OECD', body: choicesBodies ),
-  const Choice(title: 'TRENDS' ),
-  const Choice(title: 'FRAMEWORK',  ),
-  const Choice(title: 'ANALYSIS',  ),
+  const Choice(title: 'TRENDS', body: choicesBodies ),
+  const Choice(title: 'FRAMEWORK',  body: choicesBodies ),
+  const Choice(title: 'ANALYSIS',  body: choicesBodies ),
 ];
 
 
