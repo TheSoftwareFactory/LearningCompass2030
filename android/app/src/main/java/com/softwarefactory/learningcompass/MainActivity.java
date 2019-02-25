@@ -1,4 +1,4 @@
-package com.example.learningcompassexp;
+package com.softwarefactory.learningcompass;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
