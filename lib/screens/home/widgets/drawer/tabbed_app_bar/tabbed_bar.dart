@@ -30,7 +30,7 @@ const List<Choice> choices = const <Choice>[
         length: choices.length,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Tabbed AppBar'),
+            title: const Text('About Learning Compass'),
             bottom: TabBar(
               isScrollable: true,
               tabs: choices.map((Choice choice) {
@@ -45,6 +45,7 @@ const List<Choice> choices = const <Choice>[
             children: choices.map((Choice choice) {
               return Padding(
                 padding: const EdgeInsets.all(16.0),
+                child: ChoiceWidget(choice: choice),
               );
             }).toList(),
           ),
