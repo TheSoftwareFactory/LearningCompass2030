@@ -31,14 +31,18 @@ main() {
 
       expect(defaultAppState.progress, null);
       expect(defaultAppState.flowerSmall, null);
+      expect(defaultAppState.firstStartUp, null);
     });
+    
     group('has an overriden hashCode method', () {
       test("that produces a correct value", () {
         AppState initialState = AppState.initial();
 
         int expectedHash =
-            initialState.flowerSmall.hashCode ^ initialState.progress.hashCode;
-
+            initialState.flowerSmall.hashCode ^ 
+            initialState.progress.hashCode ^
+            initialState.firstStartUp.hashCode;
+        
         expect(initialState.hashCode, expectedHash);
       });
     });
@@ -83,8 +87,7 @@ main() {
         expect(AppState.fromJson(null), null);
       });
 
-      test(
-          'that returns null if given a non-empty parameter but without progress property',
+      test('that returns null if given a non-empty parameter but without progress property',
           () {
         dynamic testInput = {'something': 123, 'here': "too"};
 
@@ -107,12 +110,14 @@ main() {
           'progress': {
             PetalName.education.toString(): 56.0,
             PetalName.civicEngagement.toString(): 100.0
-          }
+          },
+          'firstStartUp': false
         };
 
         AppState expectedAppState = AppState.initial();
         expectedAppState.progress[PetalName.education] = 56.0;
         expectedAppState.progress[PetalName.civicEngagement] = 100.0;
+        expectedAppState = expectedAppState.copyWith(firstStartUp: false);
 
         expect(AppState.fromJson(testInput), equals(expectedAppState));
       });
@@ -124,8 +129,7 @@ main() {
         expect(AppState.fromJson(testInput), AppState.initial());
       });
 
-      test(
-          'that returns the default initial state if given a parameter with invalid names',
+      test('that returns the default initial state if given a parameter with invalid names',
           () {
         dynamic testInput = {
           'progress': {'invalidName': 56, 'anotherInvalidName': 100}
@@ -151,7 +155,8 @@ main() {
             'PetalName.job': 50.0,
             'PetalName.income': 50.0,
             'PetalName.housing': 50.0
-          }
+          },
+          'firstStartUp': true,
         };
 
         expect(initialState.toJson(), expectedOutput);

@@ -10,19 +10,17 @@ import 'package:learning_compass_exp/store/actions/actions.dart';
 /// Dummy widget to show functionality of random things
 class IncrementerButton extends StatelessWidget {
   @override
-  Widget build(BuildContext build) {
+  Widget build(BuildContext context) {
     return StoreConnector<AppState, Function>(
-      converter: (Store<AppState> store) {
-        return () {
-          store.dispatch(IncrementPetalProgressAction(PetalName.environment));
-        };
-      },
-      builder: (BuildContext context, Function callback) {
-        return FloatingActionButton(
-          onPressed: callback,
-          child: Icon(Icons.add),
-        );
-      }
-    );
+        converter: (Store<AppState> store) {
+      return () {
+        store.dispatch(IncrementPetalProgressAction(PetalName.environment));
+      };
+    }, builder: (BuildContext context, Function callback) {
+      return FloatingActionButton(
+        onPressed: () => callback,
+        child: Icon(Icons.add),
+      );
+    });
   }
 }

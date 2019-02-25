@@ -7,16 +7,19 @@ import 'package:learning_compass_exp/data/models/petal_names.dart';
 class AppState {
   final bool flowerSmall;
   final Map<PetalName, double> progress;
+  final bool firstStartUp;
 
-  AppState({this.flowerSmall, this.progress});
+  AppState({this.flowerSmall, this.progress, this.firstStartUp});
 
   AppState copyWith({
     bool flowerSmall,
     Map<PetalName, double> progress,
+    bool firstStartUp,
   }) {
     return AppState(
       flowerSmall: flowerSmall ?? this.flowerSmall,
       progress: progress ?? this.progress,
+      firstStartUp: firstStartUp ?? this.firstStartUp,
     );
   }
 
@@ -29,9 +32,13 @@ class AppState {
     AppState loadedState = AppState.initial();
     for (PetalName name in PetalName.values) {
       if (json['progress'][name.toString()] == null || json['progress'][name.toString()] <= 50) continue;
-
       loadedState.progress[name] = json['progress'][name.toString()];
     }
+    
+    if (json['firstStartUp'] != null) {
+      loadedState = loadedState.copyWith(firstStartUp: json['firstStartUp'] as bool);
+    }
+    
     return loadedState;
   }
 
@@ -50,7 +57,8 @@ class AppState {
       PetalName.job.toString(): progress[PetalName.job],
       PetalName.income.toString(): progress[PetalName.income],
       PetalName.housing.toString(): progress[PetalName.housing],
-    }
+    },
+      'firstStartUp': firstStartUp,
     };
   }
 
@@ -69,14 +77,16 @@ class AppState {
         PetalName.job: 50,
         PetalName.income: 50,
         PetalName.housing: 50,
-      }
+      },
+      firstStartUp: true,
     );
   }
 
   @override
   int get hashCode =>
       flowerSmall.hashCode ^
-      progress.hashCode;
+      progress.hashCode ^
+      firstStartUp.hashCode;
 
 
   @override
@@ -85,7 +95,8 @@ class AppState {
       other is AppState &&
         runtimeType == other.runtimeType &&
         flowerSmall == other.flowerSmall &&
-        isMapEqual(progress, other.progress);
+        isMapEqual(progress, other.progress) &&
+        firstStartUp == other.firstStartUp;
 }
 
 bool isMapEqual(Map a, Map b) {
