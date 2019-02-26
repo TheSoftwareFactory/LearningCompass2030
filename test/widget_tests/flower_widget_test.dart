@@ -181,7 +181,7 @@ void main() {
 Future<void> setUpWidget(WidgetTester tester) async {
   final Store<AppState> store = Store<AppState>(
     appReducer,
-    initialState: AppState.initial(),
+    initialState: AppState.initial().copyWith(firstStartUp: false),
     //middleware: createStoreMiddleware(),
   );
 

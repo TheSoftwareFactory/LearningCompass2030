@@ -21,3 +21,4 @@ class ChangeSubrouteAction {
 
   ChangeSubrouteAction(this.subroute);
 }
+class FirstStartUpDoneAction {}

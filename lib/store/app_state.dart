@@ -8,18 +8,21 @@ class AppState {
   final bool flowerSmall;
   final String subroute;
   final Map<PetalName, double> progress;
+  final bool firstStartUp;
 
-  AppState({this.flowerSmall, this.progress, this.subroute});
+  AppState({this.flowerSmall, this.progress, this.subroute, this.firstStartUp});
 
   AppState copyWith({
     bool flowerSmall,
     String subroute,
     Map<PetalName, double> progress,
+    bool firstStartUp,
   }) {
     return AppState(
       flowerSmall: flowerSmall ?? this.flowerSmall,
       subroute: subroute ?? this.subroute,
       progress: progress ?? this.progress,
+      firstStartUp: firstStartUp ?? this.firstStartUp,
     );
   }
 
@@ -32,9 +35,13 @@ class AppState {
     AppState loadedState = AppState.initial();
     for (PetalName name in PetalName.values) {
       if (json['progress'][name.toString()] == null || json['progress'][name.toString()] <= 50) continue;
-
       loadedState.progress[name] = json['progress'][name.toString()];
     }
+    
+    if (json['firstStartUp'] != null) {
+      loadedState = loadedState.copyWith(firstStartUp: json['firstStartUp'] as bool);
+    }
+    
     return loadedState;
   }
 
@@ -53,7 +60,8 @@ class AppState {
       PetalName.job.toString(): progress[PetalName.job],
       PetalName.income.toString(): progress[PetalName.income],
       PetalName.housing.toString(): progress[PetalName.housing],
-    }
+    },
+      'firstStartUp': firstStartUp,
     };
   }
 
@@ -73,15 +81,10 @@ class AppState {
         PetalName.job: 50,
         PetalName.income: 50,
         PetalName.housing: 50,
-      }
+      },
+      firstStartUp: true,
     );
   }
-
-  @override
-  int get hashCode =>
-      flowerSmall.hashCode ^
-      subroute.hashCode ^
-      progress.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -90,7 +93,15 @@ class AppState {
         runtimeType == other.runtimeType &&
         flowerSmall == other.flowerSmall &&
         subroute == other.subroute &&
-        isMapEqual(progress, other.progress);
+        isMapEqual(progress, other.progress) &&
+        firstStartUp == other.firstStartUp;
+
+  @override
+  int get hashCode =>
+      flowerSmall.hashCode ^
+      subroute.hashCode ^
+      progress.hashCode ^
+      firstStartUp.hashCode;
 }
 
 bool isMapEqual(Map a, Map b) {
