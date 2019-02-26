@@ -18,9 +18,7 @@ class IncrementerButton extends StatelessWidget {
       };
     }, builder: (BuildContext context, Function callback) {
       return FloatingActionButton(
-        onPressed: () {
-          return callback();
-        },
+        onPressed: () => callback(),
         child: Icon(Icons.add),
       );
     });

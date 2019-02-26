@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -62,7 +63,8 @@ class _ChapterIndexCardState extends State<ChapterIndexCard> {
           ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(5)),
             child: Ink.image(
-              image: AssetImage('assets/images/education1.jpg'),
+              // TODO: random images. not relevant. so change to something relevant.
+              image: AssetImage(Random().nextInt(2) % 2 == 0 ? 'assets/images/introduction.jpg' : 'assets/images/stop.jpg'),
               width: 1000,
               height: 1000,
               fit: BoxFit.cover,

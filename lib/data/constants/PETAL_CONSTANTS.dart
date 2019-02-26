@@ -80,7 +80,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     icon: CustomIcons.workLifeBalance,
     route: '/work_life_balance',
     pathToAssetData: 'assets/static_data/income.json',
-    pathToThemeImage: 'assets/images/education1.jpg',
+    pathToThemeImage: 'assets/images/work-life-balance1.jpg',
   ),
   safety: Petal(
     'Safety',
