@@ -7,7 +7,7 @@ class MenuListTile extends StatelessWidget {
   final IconData icon;
 
   //Default values
-  static const _defaultTitleText = 'about';
+  static const _defaultTitleText = 'About Learning Compass';
   static const _defaultRoute = '/drawer/about';
   static const _defaultListTileIcon = Icons.lightbulb_outline;
 
