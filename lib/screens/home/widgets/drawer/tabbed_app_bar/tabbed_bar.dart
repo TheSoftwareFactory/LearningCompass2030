@@ -9,6 +9,16 @@ class Choice {
 }
 
 
+//this will come from json
+const List<Choice> choices = const <Choice>[
+  const Choice(title: 'OECD', videoLink: 'link' ),
+  const Choice(title: 'TRENDS' ),
+  const Choice(title: 'FRAMEWORK',  ),
+  const Choice(title: 'ANALYSIS',  ),
+];
+
+
+
 
 
   class AboutTabbedAppBar extends StatelessWidget {
