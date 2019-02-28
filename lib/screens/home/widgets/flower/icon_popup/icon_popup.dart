@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/data/models/petal.dart';
+import 'package:learning_compass_exp/screens/home/widgets/flower/icon_popup/progress_bar.dart';
 
 class IconPopup extends StatelessWidget {
   final Petal petal;
@@ -12,12 +13,10 @@ class IconPopup extends StatelessWidget {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: Container(
-        width: 100,
-        height: 200,
+        height: 180,
         child: Column(
           children: <Widget>[
             Container(
-              //color: Colors.blue,
               decoration: BoxDecoration(
                 color: petal.color,
                 borderRadius: BorderRadius.only(
@@ -26,6 +25,7 @@ class IconPopup extends StatelessWidget {
                 ),
               ),
               padding: EdgeInsets.all(16.0),
+              margin: EdgeInsets.only(bottom: 5),
               child: SizedBox(
                 width: double.infinity,
                 child: Row(
@@ -36,19 +36,33 @@ class IconPopup extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: petal.color,
                           shape: BoxShape.circle,
-                          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 2, spreadRadius: 2)],
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 2,
+                                spreadRadius: 2)
+                          ],
                         ),
                         child: Icon(petal.icon, color: Colors.white),
                       ),
                     ),
-                    Text('${petal.toString()}', style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.w600)),
-                  ]
-                )
-              )
+                    Text('${petal.toString()}',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600)),
+                  ],
+                ),
+              ),
             ),
+            Text('Your current progress'),
             Padding(
-              padding: EdgeInsets.all(25.0),
-              child: Text('Add progress bar here'),
+              padding: EdgeInsets.all(10.0),
+              child: ProgressBar(
+                petal: petal,
+                // Progress should be retrieved from the state in the future
+                progress: 0.7,
+              ),
             ),
             RaisedButton(
               color: petal.color,
@@ -56,10 +70,14 @@ class IconPopup extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, petal.route);
               },
-              child: Text('Go to info page', style: TextStyle(color: Colors.white),),
+              child: Text(
+                'Go to info page',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
-      ],
-        )
-    ));
+          ],
+        ),
+      ),
+    );
   }
 }
