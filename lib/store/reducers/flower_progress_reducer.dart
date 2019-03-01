@@ -3,27 +3,21 @@ import 'package:redux/redux.dart';
 import 'package:learning_compass_exp/store/actions/actions.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 
-final flowerProgressReducer = combineReducers<Map<PetalName, double>>([
-  TypedReducer<Map<PetalName, double>, IncrementPetalProgressAction>(
-      _incrementPetalProgress),
-  TypedReducer<Map<PetalName, double>, DecrementPetalProgressAction>(
-      _decrementPetalProgress),
+import 'package:learning_compass_exp/store/construct_progress_state.dart';
+
+final flowerProgressReducer =
+    combineReducers<Map<PetalName, ConstructProgressState>>([
+  TypedReducer<Map<PetalName, ConstructProgressState>, SetChapterAsReadAction>(
+      _setChapterAsRead),
 ]);
 
-Map<PetalName, double> _incrementPetalProgress(
-    Map<PetalName, double> progress, IncrementPetalProgressAction action) {
-  Map<PetalName, double> newMap = Map.from(progress);
-  newMap[action.petalName] = newMap[action.petalName] >= 100
-      ? newMap[action.petalName]
-      : newMap[action.petalName] + 1;
-  return newMap;
-}
-
-Map<PetalName, double> _decrementPetalProgress(
-    Map<PetalName, double> progress, DecrementPetalProgressAction action) {
-  Map<PetalName, double> newMap = Map.from(progress);
-  newMap[action.petalName] = newMap[action.petalName] <= 50
-      ? newMap[action.petalName]
-      : newMap[action.petalName] - 1;
+Map<PetalName, ConstructProgressState> _setChapterAsRead(
+    Map<PetalName, ConstructProgressState> progress,
+    SetChapterAsReadAction action) {
+  Map<PetalName, ConstructProgressState> newMap = Map.from(progress);
+  newMap[action.constructName].constructProgress[action.chapterId] =
+      newMap[action.constructName]
+          .constructProgress[action.chapterId]
+          .copyWith(read: true);
   return newMap;
 }

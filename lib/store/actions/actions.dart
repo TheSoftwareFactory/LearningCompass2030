@@ -8,6 +8,13 @@ class IncrementPetalProgressAction {
   IncrementPetalProgressAction(this.petalName);
 }
 
+class SetChapterAsReadAction {
+  final PetalName constructName;
+  final int chapterId;
+
+  SetChapterAsReadAction(this.constructName, this.chapterId);
+}
+
 class DecrementPetalProgressAction {
   final PetalName petalName;
 

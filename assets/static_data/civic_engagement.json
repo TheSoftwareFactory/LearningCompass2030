@@ -1,11 +1,11 @@
 {
-  "id": 10,
-  "name": "Income",
+  "id": 5,
+  "name": "Civic Engagement",
   "chapters": [
     {
       "id": 1,
       "title": "Introduction",
-      "description": "Introducing the new and exciting concept of income!",
+      "description": "Introducing the new and exciting concept of Civic Engagement!",
       "content": [
         {
           "title": "",
@@ -21,7 +21,7 @@
     },
     {
       "id": 2,
-      "title": "More on income",
+      "title": "More on Civic Engagement",
       "description": "Some cool serious info on income.",
       "content": [
         {
@@ -38,6 +38,28 @@
           "title": "How bout a video?",
           "type": "video",
           "data": "https://www.youtube.com/embed/o08ykAqLOxk"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Still more on Civic Engagement?",
+      "description": "The third amazing chapter in the spectacular world of Civic Engagement!",
+      "content": [
+        {
+          "title": "First part",
+          "type": "text",
+          "data": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+        },
+        {
+          "title": "Second part",
+          "type": "text",
+          "data": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+        },
+        {
+          "title": "",
+          "type": "text",
+          "data": "Very short non-titled piece of content."
         }
       ]
     }

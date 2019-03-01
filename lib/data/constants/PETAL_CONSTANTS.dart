@@ -79,7 +79,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     angle: 0.0,
     icon: CustomIcons.workLifeBalance,
     route: '/work_life_balance',
-    pathToAssetData: 'assets/static_data/income.json',
+    pathToAssetData: 'assets/static_data/work-life_balance.json',
     pathToThemeImage: 'assets/images/work-life-balance1.jpg',
   ),
   safety: Petal(
@@ -89,7 +89,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     angle: 2 / 11 * pi,
     icon: CustomIcons.safety,
     route: '/safety',
-    pathToAssetData: 'assets/static_data/income.json',
+    pathToAssetData: 'assets/static_data/safety.json',
     pathToThemeImage: 'assets/images/safety1.jpg',
   ),
   lifeSatisfaction: Petal(
@@ -99,7 +99,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     angle: 4 / 11 * pi,
     icon: CustomIcons.lifeSatisfaction,
     route: '/life_satisfaction',
-    pathToAssetData: 'assets/static_data/income.json',
+    pathToAssetData: 'assets/static_data/life_satisfaction.json',
     pathToThemeImage: 'assets/images/life-satisfaction1.jpg',
   ),
   health: Petal(
@@ -109,7 +109,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     angle: 6 / 11 * pi,
     icon: CustomIcons.health,
     route: '/health',
-    pathToAssetData: 'assets/static_data/income.json',
+    pathToAssetData: 'assets/static_data/health.json',
     pathToThemeImage: 'assets/images/health1.jpg',
   ),
   civicEngagement: Petal(
@@ -119,7 +119,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     angle: 8 / 11 * pi,
     icon: CustomIcons.civicEngagement,
     route: '/civic_engagement',
-    pathToAssetData: 'assets/static_data/income.json',
+    pathToAssetData: 'assets/static_data/civic_engagement.json',
     pathToThemeImage: 'assets/images/civic-engagement1.jpg',
   ),
   environment: Petal(
@@ -129,7 +129,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     angle: 10 / 11 * pi,
     icon: CustomIcons.environment,
     route: '/environment',
-    pathToAssetData: 'assets/static_data/income.json',
+    pathToAssetData: 'assets/static_data/environment.json',
     pathToThemeImage: 'assets/images/environment1.jpg',
   ),
   education: Petal(
@@ -139,7 +139,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     angle: 12 / 11 * pi,
     icon: CustomIcons.education,
     route: '/education',
-    pathToAssetData: 'assets/static_data/income.json',
+    pathToAssetData: 'assets/static_data/education.json',
     pathToThemeImage: 'assets/images/education1.jpg',
   ),
   community: Petal(
@@ -149,7 +149,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     angle: 14 / 11 * pi,
     icon: CustomIcons.community,
     route: '/community',
-    pathToAssetData: 'assets/static_data/income.json',
+    pathToAssetData: 'assets/static_data/community.json',
     pathToThemeImage: 'assets/images/community1.jpg',
   ),
   job: Petal(
@@ -159,7 +159,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     angle: 16 / 11 * pi,
     icon: CustomIcons.jobs,
     route: '/jobs',
-    pathToAssetData: 'assets/static_data/income.json',
+    pathToAssetData: 'assets/static_data/jobs.json',
     pathToThemeImage: 'assets/images/jobs1.jpg',
   ),
   income: Petal(
@@ -179,7 +179,7 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     angle: 20 / 11 * pi,
     icon: CustomIcons.housing,
     route: '/housing',
-    pathToAssetData: 'assets/static_data/income.json',
+    pathToAssetData: 'assets/static_data/housing.json',
     pathToThemeImage: 'assets/images/housing1.jpg',
   ),
 );

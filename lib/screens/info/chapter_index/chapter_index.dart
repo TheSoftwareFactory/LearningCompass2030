@@ -57,6 +57,7 @@ class ChapterIndex extends StatelessWidget {
                     return _topTitle(context);
                   }
                   return ChapterIndexCard(
+                      subject: subject,
                       data: _chapters[index],
                       navigateToInfoView: () =>
                           _navigateToInfoView(context, _chapters.sublist(1)));

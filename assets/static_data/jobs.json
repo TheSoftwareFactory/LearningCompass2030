@@ -1,0 +1,23 @@
+{
+  "id": 9,
+  "name": "Jobs",
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Introduction",
+      "description": "Introducing the new and exciting concept of Jobs!",
+      "content": [
+        {
+          "title": "",
+          "type": "text",
+          "data": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+        },
+        {
+          "title": "",
+          "type": "text",
+          "data": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+        }
+      ]
+    }
+  ]
+}

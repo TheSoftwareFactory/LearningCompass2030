@@ -5,6 +5,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
+import 'package:learning_compass_exp/store/construct_progress_state.dart';
 
 import 'package:learning_compass_exp/data/constants/PETAL_CONSTANTS.dart';
 
@@ -15,12 +16,22 @@ class Flower extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _transformIntoPetals(Map<PetalName, double> progress) {
+
+    List<Widget> _transformIntoPetals(
+        Map<PetalName, ConstructProgressState> progress) {
+      double _minFlowerSize = 50;
+      double _maxFlowerSize = 100;
+      double _flowerSizeDifference = _maxFlowerSize - _minFlowerSize;
+
       List<Widget> list = List<Widget>();
       for (var petal in PETAL_CONSTANTS.toList()) {
         list.add(FlowerPetal(
           angle: petal.angle,
-          progress: progress != null ? progress[petal.name] : 50,
+          progress: progress != null
+              ? _flowerSizeDifference *
+                      progress[petal.name].getConstructProgressPerCent() +
+                  _minFlowerSize
+              : 50,
           color: petal.color,
         ));
       }
@@ -33,7 +44,7 @@ class Flower extends StatelessWidget {
         double _maxSize = hasIcons
             ? (75 / 100) * constraints.maxHeight
             : constraints.maxHeight;
-        return StoreConnector<AppState, Map<PetalName, double>>(
+        return StoreConnector<AppState, Map<PetalName, ConstructProgressState>>(
           converter: (Store<AppState> store) => store.state.progress,
           builder: (context, progress) {
             return Container(

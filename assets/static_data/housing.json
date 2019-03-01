@@ -1,11 +1,11 @@
 {
-  "id": 10,
-  "name": "Income",
+  "id": 11,
+  "name": "Housing",
   "chapters": [
     {
       "id": 1,
       "title": "Introduction",
-      "description": "Introducing the new and exciting concept of income!",
+      "description": "Introducing the new and exciting concept of housing!",
       "content": [
         {
           "title": "",
@@ -21,7 +21,7 @@
     },
     {
       "id": 2,
-      "title": "More on income",
+      "title": "More on housing",
       "description": "Some cool serious info on income.",
       "content": [
         {
