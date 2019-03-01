@@ -1,4 +1,6 @@
-[
+{
+  "name": "choice",
+  "choices": [
     {
       "title": "OECD",
       "content": [
@@ -6,7 +8,7 @@
           "title": "How bout a video?",
           "body": "https://www.youtube.com/embed/o08ykAqLOxk"
         },
-        
+
         {
           "title": "",
           "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
@@ -26,14 +28,14 @@
         }
       ]
     },
-    
+
 
     {
       "title": "FRAMEWORK",
       "content": [
         {
           "title": "First part",
-          "type": "text",
+
           "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
         },
         {
@@ -128,3 +130,4 @@
     }
   ]
 
+}
