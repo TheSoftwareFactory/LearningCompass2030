@@ -6,6 +6,7 @@
       "id": 1,
       "title": "Introduction",
       "description": "Introducing the new and exciting concept of Work-Life Balance!",
+      "wordsToFind": ["satisfaction", "emotions", "feel"],
       "content": [
         {
           "title": "",
@@ -23,6 +24,7 @@
       "id": 2,
       "title": "More on Work-Life Balance",
       "description": "Some cool serious info on income.",
+      "wordsToFind": ["satisfaction", "emotions", "feel"],
       "content": [
         {
           "title": "First part",

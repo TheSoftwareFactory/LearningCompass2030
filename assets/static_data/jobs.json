@@ -6,6 +6,7 @@
       "id": 1,
       "title": "Introduction",
       "description": "Introducing the new and exciting concept of Jobs!",
+      "wordsToFind": ["satisfaction", "emotions", "feel"],
       "content": [
         {
           "title": "",

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:meta/meta.dart';
 import 'package:flutter/material.dart';
 
@@ -95,6 +96,12 @@ class AppState {
     // and relevant data could be extracted that way. This might lead to the fetching
     // being done twice on load atm, since the static fromJson method calls this
     // constructor as well. maxProgress could be calculated based on the json files then as well.
+
+    /*
+    dynamic content = new File('../assets/static_data/income.json').readAsStringSync();
+    print(content);
+    */
+
     return AppState(
       flowerSmall: true,
       subroute: null,
