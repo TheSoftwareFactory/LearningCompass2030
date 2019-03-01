@@ -1,31 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:learning_compass_exp/screens/home/widgets/drawer/tabbed_app_bar/tabbed_bar_choice_body.dart';
-
-class Choice {
-  const Choice({this.title, this.body});
-
-  final String title;
-  final List<ChoiceBody> body;
-//final Map body1;
-//final String videoLink;
-}
 
 
 class ChoiceWidget extends StatelessWidget {
   const ChoiceWidget({Key key, this.choice}) : super(key: key);
+  final Map<String, dynamic> choice;
 
-  final Choice choice;
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: <Widget>[ Text(choice.title),
-
-
-
-
-
-
+      children: <Widget>[ Text(choice['title']),
 
       ],
 
