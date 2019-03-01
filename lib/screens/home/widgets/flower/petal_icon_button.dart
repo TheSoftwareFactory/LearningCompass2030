@@ -12,18 +12,17 @@ class PetalIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-          color: petal.color,
-          shape: BoxShape.circle,
-        ),
-        child: CustomIconButton(
+      decoration: BoxDecoration(
+        color: petal.color,
+        shape: BoxShape.circle,
+      ),
+      child: CustomIconButton(
           color: Colors.white,
           icon: Icon(petal.icon),
           onPressed: () {
-            showDialog(context: context, builder: (_) => IconPopup(petal: petal));
-          }//Navigator.pushNamed(context, petal.route),
-    ),
+            showDialog(
+                context: context, builder: (_) => IconPopup(petal: petal));
+          }),
     );
-    }
   }
-
+}

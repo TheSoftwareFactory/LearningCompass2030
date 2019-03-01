@@ -26,33 +26,30 @@ class IconPopup extends StatelessWidget {
               ),
               padding: EdgeInsets.all(16.0),
               margin: EdgeInsets.only(bottom: 5),
-              child: SizedBox(
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10.0, right: 15.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: petal.color,
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black12,
-                                blurRadius: 2,
-                                spreadRadius: 2)
-                          ],
-                        ),
-                        child: Icon(petal.icon, color: Colors.white),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 10.0, right: 15.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: petal.color,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 2,
+                              spreadRadius: 2)
+                        ],
                       ),
+                      child: Icon(petal.icon, color: Colors.white),
                     ),
-                    Text('${petal.toString()}',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w600)),
-                  ],
-                ),
+                  ),
+                  Text('${petal.toString()}',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w600)),
+                ],
               ),
             ),
             Text('Your current progress'),

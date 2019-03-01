@@ -10,7 +10,7 @@ class ProgressBar extends StatelessWidget {
 
   // returns a percentage while making sure that the given value is in the
   // correct range
-  double _currentProgressPercentage(progress) {
+  double _currentProgressPercentage(double progress) {
     if (progress < 0.0) {
       return 0.0;
     } else if (progress > 1.0) {
@@ -37,7 +37,8 @@ class ProgressBar extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               Container(
-                width: _currentProgressPercentage(progress)*2,
+                height: 20.0,
+                width: (_currentProgressPercentage(progress)*2).roundToDouble(),
                 color: petal.color,
               ),
               Align(
