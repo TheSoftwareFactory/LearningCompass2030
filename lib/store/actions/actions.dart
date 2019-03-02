@@ -15,3 +15,9 @@ class DecrementPetalProgressAction {
 }
 
 class ToggleFlowerSmallAction {}
+
+class ChangeSubrouteAction {
+  final String subroute;
+
+  ChangeSubrouteAction(this.subroute);
+}

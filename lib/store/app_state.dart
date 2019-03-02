@@ -6,16 +6,19 @@ import 'package:learning_compass_exp/data/models/petal_names.dart';
 @immutable
 class AppState {
   final bool flowerSmall;
+  final String subroute;
   final Map<PetalName, double> progress;
 
-  AppState({this.flowerSmall, this.progress});
+  AppState({this.flowerSmall, this.progress, this.subroute});
 
   AppState copyWith({
     bool flowerSmall,
+    String subroute,
     Map<PetalName, double> progress,
   }) {
     return AppState(
       flowerSmall: flowerSmall ?? this.flowerSmall,
+      subroute: subroute ?? this.subroute,
       progress: progress ?? this.progress,
     );
   }
@@ -57,6 +60,7 @@ class AppState {
   factory AppState.initial() {
     return AppState(
       flowerSmall: true,
+      subroute: null,
       progress: {
         PetalName.workLifeBalance: 50,
         PetalName.safety: 50,
@@ -76,8 +80,8 @@ class AppState {
   @override
   int get hashCode =>
       flowerSmall.hashCode ^
+      subroute.hashCode ^
       progress.hashCode;
-
 
   @override
   bool operator ==(Object other) =>
@@ -85,6 +89,7 @@ class AppState {
       other is AppState &&
         runtimeType == other.runtimeType &&
         flowerSmall == other.flowerSmall &&
+        subroute == other.subroute &&
         isMapEqual(progress, other.progress);
 }
 

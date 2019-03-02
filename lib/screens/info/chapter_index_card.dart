@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+
+import 'package:learning_compass_exp/store/actions/actions.dart';
+import 'package:learning_compass_exp/store/app_state.dart';
 
 class ChapterIndexCard extends StatefulWidget {
   final Map<String, dynamic> data;
+  final Function navigateToInfoView;
 
-  ChapterIndexCard({this.data});
+  ChapterIndexCard({this.data, this.navigateToInfoView});
 
   @override
-  _ChapterIndexCardState createState() => _ChapterIndexCardState(data);
+  _ChapterIndexCardState createState() => _ChapterIndexCardState(data, navigateToInfoView);
 }
 
 class _ChapterIndexCardState extends State<ChapterIndexCard> {
   final Map<String, dynamic> data;
   bool _descExpanded = false;
+  final Function navigateToInfoView;
 
-  _ChapterIndexCardState(this.data);
+  _ChapterIndexCardState(this.data, this.navigateToInfoView);
 
   Widget _titleOverlay() {
     return IgnorePointer(
@@ -46,7 +53,7 @@ class _ChapterIndexCardState extends State<ChapterIndexCard> {
 
   }
 
-  Widget _titleSection() {
+  Widget _titleSection(changeRoute) {
     return SizedBox(
       height: 200,
       child: Stack(
@@ -60,7 +67,10 @@ class _ChapterIndexCardState extends State<ChapterIndexCard> {
               height: 1000,
               fit: BoxFit.cover,
               child: InkWell(
-                onTap: () => print('Going to a specific chapter page now!.... or not...'),
+                onTap: () {
+                  changeRoute();
+                  navigateToInfoView();
+                },
                 child: null,
               ),
             ),
@@ -101,15 +111,19 @@ class _ChapterIndexCardState extends State<ChapterIndexCard> {
 
   @override
   Widget build(BuildContext context) {
+    return StoreConnector<AppState, Function()>(
+        converter: (Store<AppState> store) {
+          return () => store.dispatch(ChangeSubrouteAction(data['title']));
+        }, builder: (context, changeRoute) {
     return Card(
       margin: EdgeInsets.only(bottom: 30),
       elevation: 5,
       child: Column(
         children: <Widget>[
-          _titleSection(),
+          _titleSection(changeRoute),
           _descriptionSection(),
         ],
       ),
     );
-  }
-}
+  });
+}}
