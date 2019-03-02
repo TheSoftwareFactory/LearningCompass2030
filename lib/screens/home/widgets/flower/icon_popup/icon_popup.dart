@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/icon_popup/progress_bar.dart';
+import 'package:learning_compass_exp/store/app_state.dart';
 
 class IconPopup extends StatelessWidget {
   final Petal petal;
@@ -55,10 +58,15 @@ class IconPopup extends StatelessWidget {
             Text('Your current progress'),
             Padding(
               padding: EdgeInsets.all(10.0),
-              child: ProgressBar(
-                petal: petal,
-                // Progress should be retrieved from the state in the future
-                progress: 0.7,
+              child: StoreConnector<AppState, double>(
+                converter: (Store<AppState> store) => store.state.progress[petal.name].getConstructProgressPerCent(),
+                builder: (BuildContext context, progress) {
+                  return ProgressBar(
+                    petal: petal,
+                    // Progress should be retrieved from the state in the future
+                    progress: progress,
+                  );
+                },
               ),
             ),
             RaisedButton(
