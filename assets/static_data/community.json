@@ -1,6 +1,7 @@
 {
   "id": 8,
   "name": "Community",
+  "PetalName": "PetalName.community",
   "chapters": [
     {
       "id": 1,

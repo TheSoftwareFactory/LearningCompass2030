@@ -1,6 +1,7 @@
 {
   "id": 6,
   "name": "Environment",
+  "PetalName": "PetalName.environment",
   "chapters": [
     {
       "id": 1,

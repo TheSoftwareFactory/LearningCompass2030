@@ -1,6 +1,7 @@
 {
   "id": 9,
   "name": "Jobs",
+  "PetalName": "PetalName.job",
   "chapters": [
     {
       "id": 1,

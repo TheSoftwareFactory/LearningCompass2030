@@ -19,5 +19,6 @@ Map<PetalName, ConstructProgressState> _setChapterAsRead(
       newMap[action.constructName]
           .constructProgress[action.chapterId]
           .copyWith(read: true);
+
   return newMap;
 }

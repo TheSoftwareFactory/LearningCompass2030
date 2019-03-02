@@ -1,6 +1,7 @@
 {
   "id": 1,
   "name": "Work-Life Balance",
+  "PetalName": "PetalName.workLifeBalance",
   "chapters": [
     {
       "id": 1,

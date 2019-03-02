@@ -5,7 +5,7 @@ class ChapterState {
   final int id;
   final bool read;
   final List<String> foundWords;
-  final double maxProgress;
+  final int maxProgress;
 
   ChapterState(
       {this.id,
@@ -27,12 +27,12 @@ class ChapterState {
     );
   }
 
-  // 9 points for reading the chapter and 1 for each found word.
-  // maxProgress should be made to reflect the total number of maximum points
-  // available in the chapter.
-  double getChapterProgressAbsolute() {
-    double progress = 0.0;
-    if (read) progress += 9;
+  // 7 points for reading the chapter and 1 for each found word.
+  // this has to be changed in the AppState.initial() constructor as well if it
+  // is changed here.
+  int getChapterProgressAbsolute() {
+    int progress = 0;
+    if (read) progress += 7;
 
     progress += foundWords.length;
 

@@ -1,6 +1,7 @@
 {
   "id": 4,
   "name": "Health",
+  "PetalName": "PetalName.health",
   "chapters": [
     {
       "id": 1,

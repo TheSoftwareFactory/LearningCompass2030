@@ -1,6 +1,7 @@
 {
   "id": 7,
   "name": "Education",
+  "PetalName": "PetalName.education",
   "chapters": [
     {
       "id": 1,

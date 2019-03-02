@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:meta/meta.dart';
 import 'package:flutter/material.dart';
 
@@ -32,26 +31,25 @@ class AppState {
   // Used by redux_persist to convert parts of state from persistent storage (which is in JSON form) and convert into an AppState.
   // Uses AppState.initial() to get initial values and replaces appropriate values depending on data gotten from
   // persistent storage.
-  static AppState fromJson(dynamic json) {
-    if (json == null || json['progress'] == null || json['progress'] is! Map)
-      return null;
+  static AppState fromJson(dynamic json, List<Map<String, dynamic>> decodedJson) {
+    if (json == null || json['progress'] == null || json['progress'] is! Map) return null;
 
-    AppState loadedState = AppState.initial();
+
+    AppState loadedState = AppState.initial(decodedJson);
     for (PetalName name in PetalName.values) {
       if (json['progress'][name.toString()] == null) continue;
-
-      Map<int, ChapterState> newConstructProgress =
-          new Map<int, ChapterState>();
-      for (Map chapter
-          in json['progress'][name.toString()]['constructProgress'].values) {
+      Map<int, ChapterState> newConstructProgress = new Map<int, ChapterState>();
+      for (Map chapter in json['progress'][name.toString()]['constructProgress'].values) {
         ChapterState loadedChapterState = loadedState
-            .progress[name].constructProgress[chapter['id']]
+            .progress[name]
+            .constructProgress[chapter['id']]
             .copyWith(
                 read: chapter['read'] as bool,
                 foundWords: new List<String>.from(chapter['foundWords']));
         newConstructProgress[chapter['id']] = loadedChapterState;
       }
-      loadedState.progress[name] = loadedState.progress[name]
+      loadedState.progress[name] = loadedState
+          .progress[name]
           .copyWith(constructProgress: newConstructProgress);
     }
 
@@ -87,142 +85,32 @@ class AppState {
     };
   }
 
-  // Could maybe be cleaned up or done better...?
-  factory AppState.initial() {
-    // The values for progress below have to be manually kept up-to-date with
-    // static_data files.
-    // SUGGESTION: perhaps fetch json files here to help initialize state properly and more
-    // reusably. PETAL_CONSTANTS could be used to iterate through each file
-    // and relevant data could be extracted that way. This might lead to the fetching
-    // being done twice on load atm, since the static fromJson method calls this
-    // constructor as well. maxProgress could be calculated based on the json files then as well.
-
-    /*
-    dynamic content = new File('../assets/static_data/income.json').readAsStringSync();
-    print(content);
-    */
-
-    return AppState(
-      flowerSmall: true,
-      subroute: null,
-      firstStartUp: true,
-      progress: {
-        PetalName.workLifeBalance:
-            ConstructProgressState(id: 1, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          2: ChapterState(
-            id: 2,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-        PetalName.safety: ConstructProgressState(id: 2, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          2: ChapterState(
-            id: 2,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-        PetalName.lifeSatisfaction:
-            ConstructProgressState(id: 3, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          2: ChapterState(
-            id: 2,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-        PetalName.health: ConstructProgressState(id: 4, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          2: ChapterState(
-            id: 2,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-        PetalName.civicEngagement:
-            ConstructProgressState(id: 5, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          2: ChapterState(
-            id: 2,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          3: ChapterState(
-            id: 3,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-        PetalName.environment:
-            ConstructProgressState(id: 6, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          2: ChapterState(
-            id: 2,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-        PetalName.education: ConstructProgressState(id: 7, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          2: ChapterState(
-            id: 2,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-        PetalName.community: ConstructProgressState(id: 8, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          2: ChapterState(
-            id: 2,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-        PetalName.job: ConstructProgressState(id: 9, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-        PetalName.income: ConstructProgressState(id: 10, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          2: ChapterState(
-            id: 2,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-        PetalName.housing: ConstructProgressState(id: 11, constructProgress: {
-          1: ChapterState(
-            id: 1,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-          2: ChapterState(
-            id: 2,
-            maxProgress: 14, // 9 for read and 1 for each found word
-          ),
-        }),
-      },
+  /// Generates an [AppState] instance with correct initial values.
+  ///
+  /// [_POINTSFORREAD] has to be manually kept up to date with the similar value
+  /// in [ChapterState] if it is changed.
+  factory AppState.initial(List<Map<String, dynamic>> decodedJson) {
+    const int _POINTSFORREAD = 7;
+    AppState initialState = AppState().copyWith(
+        progress: Map<PetalName, ConstructProgressState>(),
+        flowerSmall: true,
+        firstStartUp: true,
+        subroute: null
     );
+    for (Map<String, dynamic> json in decodedJson) {
+      Map<int, ChapterState> constructProgress = Map<int, ChapterState>();
+      for (Map<String, dynamic> chapter in json['chapters']) {
+        constructProgress[chapter['id']] = ChapterState(
+            id: chapter['id'],
+            read: false,
+            maxProgress: chapter['wordsToFind'].length + _POINTSFORREAD
+        );
+      }
+      initialState.progress[petalNameFromString(json['PetalName'])]
+        = ConstructProgressState(id: json['id'], constructProgress: constructProgress);
+    }
+
+    return initialState;
   }
 
   @override

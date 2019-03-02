@@ -1,6 +1,7 @@
 {
   "id": 10,
   "name": "Income",
+  "PetalName": "PetalName.income",
   "chapters": [
     {
       "id": 1,

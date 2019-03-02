@@ -1,6 +1,7 @@
 {
   "id": 5,
   "name": "Civic Engagement",
+  "PetalName": "PetalName.civicEngagement",
   "chapters": [
     {
       "id": 1,

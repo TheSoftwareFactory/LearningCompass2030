@@ -1,6 +1,7 @@
 {
   "id": 3,
   "name": "Life Satisfaction",
+  "PetalName": "PetalName.lifeSatisfaction",
   "chapters": [
     {
       "id": 1,
