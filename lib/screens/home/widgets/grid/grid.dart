@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:learning_compass_exp/screens/home/widgets/grid_item.dart';
+import 'package:learning_compass_exp/screens/home/widgets/grid/grid_item.dart';
 
 import 'package:learning_compass_exp/data/constants/PETAL_CONSTANTS.dart';
 
