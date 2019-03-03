@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 
-import 'package:learning_compass_exp/store/chapter_state.dart';
+import 'package:learning_compass_exp/data/models/chapter_state.dart';
 
 @immutable
 class ConstructProgressState {
@@ -33,7 +33,8 @@ class ConstructProgressState {
       currentProgress += chapter.getChapterProgressAbsolute();
     }
 
-    return currentProgress / _getMaxProgress();
+    double maxProgress = _getMaxProgress();
+    return maxProgress == 0 ? 0 : currentProgress / maxProgress;
   }
 
   dynamic toJson() {

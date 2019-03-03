@@ -5,7 +5,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
-import 'package:learning_compass_exp/store/construct_progress_state.dart';
+import 'package:learning_compass_exp/data/models/construct_progress_state.dart';
 
 import 'package:learning_compass_exp/data/constants/PETAL_CONSTANTS.dart';
 

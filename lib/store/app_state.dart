@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/data/models/petal_names.dart';
-import 'package:learning_compass_exp/store/construct_progress_state.dart';
-import 'package:learning_compass_exp/store/chapter_state.dart';
+import 'package:learning_compass_exp/data/models/construct_progress_state.dart';
+import 'package:learning_compass_exp/data/models/chapter_state.dart';
 
 @immutable
 class AppState {

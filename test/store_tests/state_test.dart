@@ -5,8 +5,8 @@ import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 
-import 'package:learning_compass_exp/store/construct_progress_state.dart';
-import 'package:learning_compass_exp/store/chapter_state.dart';
+import 'package:learning_compass_exp/data/models/construct_progress_state.dart';
+import 'package:learning_compass_exp/data/models/chapter_state.dart';
 
 import '../mock_data.dart';
 

@@ -3,7 +3,7 @@ import 'package:redux/redux.dart';
 import 'package:learning_compass_exp/store/actions/actions.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 
-import 'package:learning_compass_exp/store/construct_progress_state.dart';
+import 'package:learning_compass_exp/data/models/construct_progress_state.dart';
 
 final flowerProgressReducer =
     combineReducers<Map<PetalName, ConstructProgressState>>([
