@@ -11,6 +11,8 @@ import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 
+import '../mock_data.dart';
+
 void main() {
   final TestWidgetsFlutterBinding binding =
       TestWidgetsFlutterBinding.ensureInitialized();
@@ -96,7 +98,7 @@ void main() {
 Future<void> setUpWidget(WidgetTester tester) async {
   final Store<AppState> store = Store<AppState>(
     appReducer,
-    initialState: AppState.initial().copyWith(flowerSmall: false),
+    initialState: AppState.initial(MOCK_STATIC_JSON).copyWith(flowerSmall: false),
     //middleware: createStoreMiddleware(),
   );
 

@@ -40,12 +40,14 @@ class AppState {
       if (json['progress'][name.toString()] == null) continue;
       Map<int, ChapterState> newConstructProgress = new Map<int, ChapterState>();
       for (Map chapter in json['progress'][name.toString()]['constructProgress'].values) {
+        if (loadedState.progress[name].constructProgress[chapter['id']] == null) continue;
         ChapterState loadedChapterState = loadedState
             .progress[name]
             .constructProgress[chapter['id']]
             .copyWith(
                 read: chapter['read'] as bool,
                 foundWords: new List<String>.from(chapter['foundWords']));
+
         newConstructProgress[chapter['id']] = loadedChapterState;
       }
       loadedState.progress[name] = loadedState

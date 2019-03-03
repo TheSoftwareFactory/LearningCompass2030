@@ -44,12 +44,13 @@ class ConstructProgressState {
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ConstructProgressState &&
-          runtimeType == other.runtimeType &&
-          id == other.id &&
-          isMapEqual(constructProgress, other.constructProgress);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is ConstructProgressState &&
+            runtimeType == other.runtimeType &&
+            id == other.id &&
+            isMapEqual(constructProgress, other.constructProgress);
+  }
 
   @override
   int get hashCode => id.hashCode ^ constructProgress.hashCode;

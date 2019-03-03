@@ -5,25 +5,21 @@ import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 
+import 'package:learning_compass_exp/store/construct_progress_state.dart';
+import 'package:learning_compass_exp/store/chapter_state.dart';
+
+import '../mock_data.dart';
+
 main() {
   group('AppState', () {
     test('has correct initial state', () {
       final store = Store<AppState>(
         appReducer,
-        initialState: AppState.initial(),
+        initialState: AppState.initial(MOCK_STATIC_JSON),
       );
 
-      expect(store.state.progress[PetalName.workLifeBalance], 50);
-      expect(store.state.progress[PetalName.safety], 50);
-      expect(store.state.progress[PetalName.lifeSatisfaction], 50);
-      expect(store.state.progress[PetalName.health], 50);
-      expect(store.state.progress[PetalName.civicEngagement], 50);
-      expect(store.state.progress[PetalName.environment], 50);
-      expect(store.state.progress[PetalName.education], 50);
-      expect(store.state.progress[PetalName.community], 50);
-      expect(store.state.progress[PetalName.job], 50);
-      expect(store.state.progress[PetalName.income], 50);
-      expect(store.state.progress[PetalName.housing], 50);
+      expect(store.state.progress[PetalName.workLifeBalance], ConstructProgressState(id: 1, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}));
+      expect(store.state.progress[PetalName.income], ConstructProgressState(id: 10, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}));
     });
 
     test('has null values by default', () {
@@ -33,24 +29,25 @@ main() {
       expect(defaultAppState.flowerSmall, null);
       expect(defaultAppState.firstStartUp, null);
     });
-    
+
     group('has an overriden hashCode method', () {
       test("that produces a correct value", () {
-        AppState initialState = AppState.initial();
+        AppState initialState = AppState.initial(MOCK_STATIC_JSON);
 
-        int expectedHash =
-            initialState.flowerSmall.hashCode ^ 
+        int expectedHash = initialState.flowerSmall.hashCode ^
             initialState.progress.hashCode ^
+            initialState.subroute.hashCode ^
             initialState.firstStartUp.hashCode;
-        
+
         expect(initialState.hashCode, expectedHash);
       });
     });
 
     group('has an overriden operator== method', () {
       test("that produces correct results", () {
-        Map<PetalName, double> firstMap = {PetalName.environment: 56};
-        Map<PetalName, double> secondMap = {PetalName.environment: 56};
+        Map<PetalName, ConstructProgressState> firstMap = {PetalName.environment: ConstructProgressState(id: 1, constructProgress: {3: ChapterState(id: 45, maxProgress: 56, read: true, foundWords: ['asdf'])})};
+        Map<PetalName, ConstructProgressState> secondMap = {PetalName.environment: ConstructProgressState(id: 1, constructProgress: {3: ChapterState(id: 45, maxProgress: 56, read: true, foundWords: ['asdf'])})};
+
         AppState firstAppState =
             AppState(flowerSmall: false, progress: firstMap);
         AppState secondAppState =
@@ -62,7 +59,7 @@ main() {
 
     group('has a copyWith method', () {
       test('that copies the AppState its called on correctly', () {
-        AppState originalAppState = AppState.initial();
+        AppState originalAppState = AppState.initial(MOCK_STATIC_JSON);
         AppState copiedAppState = originalAppState.copyWith();
 
         expect(identical(copiedAppState, originalAppState), false);
@@ -70,13 +67,12 @@ main() {
       });
 
       test("that copies the AppState except for given parameter", () {
-        AppState originalAppState = AppState.initial();
+        AppState originalAppState = AppState.initial(MOCK_STATIC_JSON);
         AppState modifiedAppState =
             originalAppState.copyWith(flowerSmall: false);
 
         expect(modifiedAppState != originalAppState, isTrue);
-        expect(isMapEqual(modifiedAppState.progress, originalAppState.progress),
-            isTrue);
+        expect(modifiedAppState.progress == originalAppState.progress, isTrue);
         expect(originalAppState.flowerSmall, isTrue);
         expect(modifiedAppState.flowerSmall, isFalse);
       });
@@ -84,14 +80,15 @@ main() {
 
     group('has a fromJson method', () {
       test('that returns null if given a null json parameter', () {
-        expect(AppState.fromJson(null), null);
+        expect(AppState.fromJson(null, MOCK_STATIC_JSON), null);
       });
 
-      test('that returns null if given a non-empty parameter but without progress property',
+      test(
+          'that returns null if given a non-empty parameter but without progress property',
           () {
         dynamic testInput = {'something': 123, 'here': "too"};
 
-        expect(AppState.fromJson(testInput), null);
+        expect(AppState.fromJson(testInput, MOCK_STATIC_JSON), null);
       });
 
       test(
@@ -99,8 +96,8 @@ main() {
           () {
         dynamic testInput = {'progress': {}};
 
-        expect(AppState.fromJson(testInput),
-            AppState.initial()); // REMOVE IF WORKS
+        expect(AppState.fromJson(testInput, MOCK_STATIC_JSON),
+            AppState.initial(MOCK_STATIC_JSON)); // REMOVE IF WORKS
       });
 
       test(
@@ -108,53 +105,54 @@ main() {
           () {
         dynamic testInput = {
           'progress': {
-            PetalName.education.toString(): 56.0,
-            PetalName.civicEngagement.toString(): 100.0
+            PetalName.education.toString(): ConstructProgressState(id: 7, constructProgress: {1: ChapterState(id: 1, read: true, foundWords: ['asdf'])}).toJson(),
+            PetalName.civicEngagement.toString(): ConstructProgressState(id: 5, constructProgress: {1: ChapterState(id: 1, read: false, foundWords: ['asdf'])}).toJson(),
           },
-          'firstStartUp': false
+          'firstStartUp': false,
         };
 
-        AppState expectedAppState = AppState.initial();
-        expectedAppState.progress[PetalName.education] = 56.0;
-        expectedAppState.progress[PetalName.civicEngagement] = 100.0;
+        AppState expectedAppState = AppState.initial(MOCK_STATIC_JSON);
+        expectedAppState.progress[PetalName.education] = ConstructProgressState(id: 7, constructProgress: {1: ChapterState(id: 1, maxProgress: 10, read: true, foundWords: ['asdf'])});
+        expectedAppState.progress[PetalName.civicEngagement] = ConstructProgressState(id: 5, constructProgress: {1: ChapterState(id: 1, maxProgress: 10, read: false, foundWords: ['asdf'])});
         expectedAppState = expectedAppState.copyWith(firstStartUp: false);
 
-        expect(AppState.fromJson(testInput), equals(expectedAppState));
+        expect(AppState.fromJson(testInput, MOCK_STATIC_JSON), equals(expectedAppState));
       });
 
       test('that returns new default initial state when given an empty Map',
           () {
         dynamic testInput = {'progress': {}};
 
-        expect(AppState.fromJson(testInput), AppState.initial());
+        expect(AppState.fromJson(testInput, MOCK_STATIC_JSON), AppState.initial(MOCK_STATIC_JSON));
       });
 
-      test('that returns the default initial state if given a parameter with invalid names',
+      test(
+          'that returns the default initial state if given a parameter with invalid names',
           () {
         dynamic testInput = {
           'progress': {'invalidName': 56, 'anotherInvalidName': 100}
         };
 
-        expect(AppState.fromJson(testInput), AppState.initial());
+        expect(AppState.fromJson(testInput, MOCK_STATIC_JSON), AppState.initial(MOCK_STATIC_JSON));
       });
     });
 
     group('has a toJson method', () {
       test('that returns the relevant state values when state is initial', () {
-        AppState initialState = AppState.initial();
+        AppState initialState = AppState.initial(MOCK_STATIC_JSON);
         dynamic expectedOutput = {
           'progress': {
-            'PetalName.workLifeBalance': 50.0,
-            'PetalName.safety': 50.0,
-            'PetalName.lifeSatisfaction': 50.0,
-            'PetalName.health': 50.0,
-            'PetalName.civicEngagement': 50.0,
-            'PetalName.environment': 50.0,
-            'PetalName.education': 50.0,
-            'PetalName.community': 50.0,
-            'PetalName.job': 50.0,
-            'PetalName.income': 50.0,
-            'PetalName.housing': 50.0
+            'PetalName.workLifeBalance': ConstructProgressState(id: 1, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.safety': ConstructProgressState(id: 2, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.lifeSatisfaction': ConstructProgressState(id: 3, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.health': ConstructProgressState(id: 4, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.civicEngagement': ConstructProgressState(id: 5, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.environment': ConstructProgressState(id: 6, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.education': ConstructProgressState(id: 7, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.community': ConstructProgressState(id: 8, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.job': ConstructProgressState(id: 9, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.income': ConstructProgressState(id: 10, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.housing': ConstructProgressState(id: 11, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)})
           },
           'firstStartUp': true,
         };

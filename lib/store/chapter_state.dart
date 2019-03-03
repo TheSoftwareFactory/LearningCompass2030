@@ -64,6 +64,7 @@ class ChapterState {
 
 bool isListEqual(List a, List b) {
   if (a.length != b.length) return false;
+  if (a.length == 0 && b.length == 0) return true;
   int i = -1;
   return a.every((value) {
     i++;

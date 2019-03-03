@@ -3,7 +3,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter/scheduler.dart';
 
 import 'package:learning_compass_exp/screens/home/home.dart';
-import 'package:learning_compass_exp/screens/home/widgets/incrementer_button.dart';
 import 'package:learning_compass_exp/screens/home/widgets/drawer/drawer.dart';
 import 'package:learning_compass_exp/screens/home/welcome_dialog.dart';
 
@@ -47,7 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Home(),
       drawer: MenuDrawer(),
-      floatingActionButton: IncrementerButton(),
     );
   }
 }

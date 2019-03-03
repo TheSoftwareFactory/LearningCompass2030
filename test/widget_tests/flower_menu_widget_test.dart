@@ -8,6 +8,8 @@ import 'package:learning_compass_exp/app.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 
+import '../mock_data.dart';
+
 void main() {
   final TestWidgetsFlutterBinding binding =
       TestWidgetsFlutterBinding.ensureInitialized();
@@ -79,7 +81,7 @@ void main() {
 Future<void> setUpWidget(WidgetTester tester) async {
   final Store<AppState> store = Store<AppState>(
     appReducer,
-    initialState: AppState.initial().copyWith(firstStartUp: false),
+    initialState: AppState.initial(MOCK_STATIC_JSON).copyWith(firstStartUp: false),
     //middleware: createStoreMiddleware(),
   );
   await tester.pumpWidget(LearningCompassApp(store: store,));

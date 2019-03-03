@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
+import 'package:learning_compass_exp/store/app_state.dart';
+import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/screens/home/widgets/grid.dart';
 import 'package:learning_compass_exp/screens/home/widgets/grid_item.dart';
+
+import '../mock_data.dart';
 
 
 
@@ -70,9 +76,18 @@ void main() {
     });
 
     testWidgets('draws grid items with right parameters', (WidgetTester tester) async {
+      final Store<AppState> store = Store<AppState>(
+        appReducer,
+        initialState: AppState.initial(MOCK_STATIC_JSON).copyWith(flowerSmall: false),
+        //middleware: createStoreMiddleware(),
+      );
+
       await tester.pumpWidget(
         MaterialApp(
-          home: Grid(),
+          home: StoreProvider<AppState>(
+            store: store,
+            child: Grid(),
+          ),
         ),
       );
 
@@ -85,7 +100,7 @@ void main() {
         { 'name': 'Environment', 'color': Colors.green },
         { 'name': 'Education', 'color': Colors.lightGreen[400] },
         { 'name': 'Community', 'color': Colors.red[400] },
-        { 'name': 'Job', 'color': Colors.blue },
+        { 'name': 'Jobs', 'color': Colors.blue },
         { 'name': 'Income', 'color': Colors.cyan },
         { 'name': 'Housing', 'color': Colors.teal[300] },
       ];

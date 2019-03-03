@@ -11,6 +11,8 @@ import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.da
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 
+import '../mock_data.dart';
+
 void main() {
   final TestWidgetsFlutterBinding binding =
       TestWidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +23,7 @@ void main() {
   group("Flower widget", () {
     final Store<AppState> store = Store<AppState>(
       appReducer,
-      initialState: AppState.initial(),
+      initialState: AppState.initial(MOCK_STATIC_JSON),
       //middleware: createStoreMiddleware(),
     );
 
@@ -181,7 +183,7 @@ void main() {
 Future<void> setUpWidget(WidgetTester tester) async {
   final Store<AppState> store = Store<AppState>(
     appReducer,
-    initialState: AppState.initial().copyWith(firstStartUp: false),
+    initialState: AppState.initial(MOCK_STATIC_JSON).copyWith(firstStartUp: false),
     //middleware: createStoreMiddleware(),
   );
 
