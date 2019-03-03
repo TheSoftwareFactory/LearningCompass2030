@@ -1,11 +1,16 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:learning_compass_exp/screens/home/widgets/drawer/tabbed_app_bar/tabbed_bar_choice.dart';
 
 class AboutTabbedAppBar extends StatelessWidget {
 
-  static final _choicesJson = 'assets/static_data/choices.json';
-  final List< Map <String, dynamic>> _choices = json.decode(_choicesJson)['choice'];
+  static final _choicesJson = _loadAStudentAsset('assets/static_data/choices.json');
+  final List< Map <String, dynamic>> _choices = json.decode(_choicesJson)['choices'];
+
+  static Future<String> _loadAStudentAsset(String data) async {
+    return await rootBundle.loadString(data);
+  }
 
   @override
   Widget build(BuildContext context) {

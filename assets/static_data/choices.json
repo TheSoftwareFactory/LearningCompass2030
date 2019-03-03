@@ -1,4 +1,6 @@
-[
+{
+  "name": "Choices",
+  "choices": [
     {
       "title": "OECD",
       "content": [
@@ -127,4 +129,4 @@
       ]
     }
   ]
-
+}
