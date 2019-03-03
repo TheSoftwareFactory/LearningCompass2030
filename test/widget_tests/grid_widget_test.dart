@@ -87,7 +87,7 @@ void main() {
         { 'name': 'Environment', 'color': Colors.green },
         { 'name': 'Education', 'color': Colors.lightGreen[400] },
         { 'name': 'Community', 'color': Colors.red[400] },
-        { 'name': 'Job', 'color': Colors.blue },
+        { 'name': 'Jobs', 'color': Colors.blue },
         { 'name': 'Income', 'color': Colors.cyan },
         { 'name': 'Housing', 'color': Colors.teal[300] },
       ];

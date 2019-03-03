@@ -107,16 +107,16 @@ main() {
       expect(PETAL_CONSTANTS.community, expectedValue);
     });
 
-    test('return correct value for Job', () {
+    test('return correct value for Jobs', () {
       Petal expectedValue = Petal(
-          'Job',
-          name: PetalName.job,
+          'Jobs',
+          name: PetalName.jobs,
           color: Colors.blue,
           angle: 16 / 11 * pi,
           icon: CustomIcons.jobs,
-          route: '/job');
+          route: '/jobs');
 
-      expect(PETAL_CONSTANTS.job, expectedValue);
+      expect(PETAL_CONSTANTS.jobs, expectedValue);
     });
 
     test('return correct value for Income', () {

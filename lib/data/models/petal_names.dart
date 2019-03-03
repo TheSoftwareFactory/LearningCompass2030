@@ -7,7 +7,7 @@ enum PetalName {
   environment,
   education,
   community,
-  job,
+  jobs,
   income,
   housing
 }
