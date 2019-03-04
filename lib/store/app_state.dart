@@ -66,23 +66,19 @@ class AppState {
   // Used by redux_persist to convert part of the state into JSON to store persistently. redux_persist serializer
   // knows to call toJson in each petal in the list automatically.
   dynamic toJson() {
-    return {
-      'progress': {
-        PetalName.workLifeBalance.toString():
-            progress[PetalName.workLifeBalance],
-        PetalName.safety.toString(): progress[PetalName.safety],
-        PetalName.lifeSatisfaction.toString():
-            progress[PetalName.lifeSatisfaction],
-        PetalName.health.toString(): progress[PetalName.health],
-        PetalName.civicEngagement.toString():
-            progress[PetalName.civicEngagement],
-        PetalName.environment.toString(): progress[PetalName.environment],
-        PetalName.education.toString(): progress[PetalName.education],
-        PetalName.community.toString(): progress[PetalName.community],
-        PetalName.job.toString(): progress[PetalName.job],
-        PetalName.income.toString(): progress[PetalName.income],
-        PetalName.housing.toString(): progress[PetalName.housing],
-      },
+    return {'progress': {
+      PetalName.workLifeBalance.toString(): progress[PetalName.workLifeBalance],
+      PetalName.safety.toString(): progress[PetalName.safety],
+      PetalName.lifeSatisfaction.toString(): progress[PetalName.lifeSatisfaction],
+      PetalName.health.toString(): progress[PetalName.health],
+      PetalName.civicEngagement.toString(): progress[PetalName.civicEngagement],
+      PetalName.environment.toString(): progress[PetalName.environment],
+      PetalName.education.toString(): progress[PetalName.education],
+      PetalName.community.toString(): progress[PetalName.community],
+      PetalName.jobs.toString(): progress[PetalName.jobs],
+      PetalName.income.toString(): progress[PetalName.income],
+      PetalName.housing.toString(): progress[PetalName.housing],
+    },
       'firstStartUp': firstStartUp,
     };
   }
@@ -98,6 +94,7 @@ class AppState {
         flowerSmall: true,
         firstStartUp: true,
         subroute: null
+
     );
     for (Map<String, dynamic> json in decodedJson) {
       Map<int, ChapterState> constructProgress = Map<int, ChapterState>();

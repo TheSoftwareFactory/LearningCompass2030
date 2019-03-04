@@ -150,7 +150,7 @@ main() {
             'PetalName.environment': ConstructProgressState(id: 6, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
             'PetalName.education': ConstructProgressState(id: 7, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
             'PetalName.community': ConstructProgressState(id: 8, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
-            'PetalName.job': ConstructProgressState(id: 9, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.jobs': ConstructProgressState(id: 9, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
             'PetalName.income': ConstructProgressState(id: 10, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
             'PetalName.housing': ConstructProgressState(id: 11, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)})
           },

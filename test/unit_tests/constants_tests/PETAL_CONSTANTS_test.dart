@@ -134,7 +134,7 @@ main() {
     test('return correct value for Jobs', () {
       Petal expectedValue = Petal(
         'Jobs',
-        name: PetalName.job,
+        name: PetalName.jobs,
         color: Colors.blue,
         angle: 16 / 11 * pi,
         icon: CustomIcons.jobs,
@@ -143,7 +143,7 @@ main() {
         pathToThemeImage: 'assets/images/jobs1.jpg',
       );
 
-      expect(PETAL_CONSTANTS.job, expectedValue);
+      expect(PETAL_CONSTANTS.jobs, expectedValue);
     });
 
     test('return correct value for Income', () {

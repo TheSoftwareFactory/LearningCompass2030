@@ -19,7 +19,7 @@ class _PetalConstants {
   final Petal environment;
   final Petal education;
   final Petal community;
-  final Petal job;
+  final Petal jobs;
   final Petal income;
   final Petal housing;
 
@@ -32,7 +32,7 @@ class _PetalConstants {
     this.environment,
     this.education,
     this.community,
-    this.job,
+    this.jobs,
     this.income,
     this.housing,
   });
@@ -47,7 +47,7 @@ class _PetalConstants {
       PetalName.environment: environment,
       PetalName.education: education,
       PetalName.community: community,
-      PetalName.job: job,
+      PetalName.jobs: jobs,
       PetalName.income: income,
       PetalName.housing: housing,
     };
@@ -63,7 +63,7 @@ class _PetalConstants {
       environment,
       education,
       community,
-      job,
+      jobs,
       income,
       housing
     ];
@@ -152,9 +152,9 @@ final _PetalConstants PETAL_CONSTANTS = _PetalConstants(
     pathToAssetData: 'assets/static_data/community.json',
     pathToThemeImage: 'assets/images/community1.jpg',
   ),
-  job: Petal(
+  jobs: Petal(
     'Jobs',
-    name: PetalName.job,
+    name: PetalName.jobs,
     color: Colors.blue,
     angle: 16 / 11 * pi,
     icon: CustomIcons.jobs,

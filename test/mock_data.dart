@@ -126,7 +126,7 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
   },
   {
     "id": 9,
-    "PetalName": "PetalName.job",
+    "PetalName": "PetalName.jobs",
     "chapters": [
       {
         "id": 1,
