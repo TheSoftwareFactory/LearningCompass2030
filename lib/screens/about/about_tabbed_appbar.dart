@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:learning_compass_exp/screens/about/about_tabbarview.dart';
-import 'package:learning_compass_exp/screens/about/about_appbar.dart';
+
 
 class AboutTabbedAppBar extends StatelessWidget {
 
@@ -23,17 +23,21 @@ class AboutTabbedAppBar extends StatelessWidget {
         else {
           var _choices = json.decode(snapshot.data)['choices'];
           print(_choices);
-
           return DefaultTabController(
-            length: _choices.length,
-            child: Scaffold(
-              appBar: AboutAppBar(choices: [_choices]),
-                ),
-              ),
+              length: _choices.length,
+              child: Scaffold(
+                appBar: ,
+                body: AboutTabBarView(choices: [_choices]),
 
-
+              ));
 
   }
+
+
+}
+    );
+  }
+
 
 
 }
