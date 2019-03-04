@@ -1,43 +1,54 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:learning_compass_exp/screens/about/about_tabbarview.dart';
-
+import 'package:learning_compass_exp/screens/about/about_tabbarview_choice.dart';
 
 class AboutTabbedAppBar extends StatelessWidget {
 
-  static final _choicesJson = 'assets/static_data/choices.json';
+  final List<dynamic> choices;
+  const AboutTabbedAppBar({Key key, this.choices}) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
-
-    return FutureBuilder<String>(
-      future: DefaultAssetBundle.of(context).loadString(_choicesJson),
-      builder: (context,snapshot){
-
-
-        if (!snapshot.hasData) {
-          return Center(
-            child: Text("Loading ....."),
-          );
-        }
-
-        else {
-          var _choices = json.decode(snapshot.data)['choices'];
-          print(_choices);
           return DefaultTabController(
-              length: _choices.length,
+              length: this.choices.length,
               child: Scaffold(
-                appBar: ,
-                body: AboutTabBarView(choices: [_choices]),
+                appBar: AppBar(
+                    title: const Text('About Learning Compass'),
+                    bottom: TabBar( isScrollable: true,
+                        tabs: _convertJsonToListOfChoiceTabBars(this.choices))
+                ),
+                body: TabBarView(children: _convertJsonToListOfChoiceViews(this.choices)  ,
 
-              ));
+              )));
 
   }
 
 
-}
-    );
+
+
+  List<Widget> _convertJsonToListOfChoiceTabBars(List<dynamic> json) {
+    List<Widget> newList = new List<Widget>();
+
+    json.forEach((element) {
+      newList.add(Tab(text: element['title'],
+      ));
+    });
+
+    return newList;
   }
 
 
+  List<Widget> _convertJsonToListOfChoiceViews(List<dynamic> json) {
+    List<Widget> choiceList = new List<Widget>();
+
+    json.forEach((element) {
+      choiceList.add(Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: AboutTabBarViewChoice(choice: element),
+      ));
+    });
+
+    return choiceList;
+  }
 
 }

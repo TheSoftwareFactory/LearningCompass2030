@@ -10,7 +10,13 @@ class AboutTabBarViewChoice extends StatelessWidget {
   Widget build(BuildContext context) {
     // About TabBarView Choice Widget
     return ListView(
-      children: <Widget>[ Text(choice['title']),
+      children: <Widget>[
+        Text(choice['title'],
+
+
+
+
+        ),
 
       ],
 
