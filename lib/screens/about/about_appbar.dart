@@ -1,16 +1,45 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:learning_compass_exp/screens/home/widgets/drawer/tabbed_app_bar/tabbed_bar_choice.dart';
 
-class AboutTabbedAppBar extends StatelessWidget {
+class  AboutTabBar extends StatelessWidget{
 
- static final _choicesJson = 'assets/static_data/choices.json';
+  const AboutTabBar({Key key, this.choices}) : super(key: key);
+  final List<dynamic> choices;
+
+  List<Widget> _convertJsonToListOfChoiceTabBars(List<dynamic> json) {
+    List<Widget> newList = new List<Widget>();
+
+    json.forEach((element) {
+      newList.add(Tab(text: element['title'],
+      ));
+    });
+
+    return newList;
+  }
+
   @override
   Widget build(BuildContext context) {
-
-
-
+    // About TabBars
+    return AppBar(
+      title: const Text('About Learning Compass'),
+      bottom:  TabBar(tabs: _convertJsonToListOfChoiceTabBars(choices), isScrollable: true,),
+    );
   }
 
 
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+

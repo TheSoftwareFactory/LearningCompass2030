@@ -5,7 +5,7 @@ import 'package:learning_compass_exp/screens/about/about_tabbarview_choice.dart'
 
 class  AboutTabBarView extends StatelessWidget{
 
-  const AboutTabBarView({Key key, this.choices}) : super(key: key);
+  const AboutTabBarView({Key key, @required this.choices}) : super(key: key);
   final List<dynamic> choices;
 
   List<Widget> _convertJsonToListOfChoiceViews(List<dynamic> json) {
@@ -23,7 +23,7 @@ class  AboutTabBarView extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    // About TabBarView Widget
+    //returns  About TabBarViews
     return TabBarView(children: _convertJsonToListOfChoiceViews(choices) );
   }
 
