@@ -27,22 +27,10 @@ class AboutTabbedAppBar extends StatelessWidget {
           return DefaultTabController(
             length: _choices.length,
             child: Scaffold(
-              appBar: AppBar(
-                title: const Text('About Learning Compass'),
-                bottom: TabBar(
-                  isScrollable: true,
-                  tabs: AboutAppBar(choices: [_choices]),
+              appBar: AboutAppBar(choices: [_choices]),
                 ),
               ),
-              body: AboutTabBarView(choices: [_choices]),
-              ),
-            ),
-          );
-        }
 
-      }
-
-    );
 
 
   }

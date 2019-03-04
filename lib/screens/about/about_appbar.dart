@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class  AboutTabBar extends StatelessWidget{
+class  AboutAppBar extends StatelessWidget{
 
-  const AboutTabBar({Key key, this.choices}) : super(key: key);
+  const AboutAppBar({Key key, this.choices}) : super(key: key);
   final List<dynamic> choices;
 
   List<Widget> _convertJsonToListOfChoiceTabBars(List<dynamic> json) {
@@ -24,22 +24,6 @@ class  AboutTabBar extends StatelessWidget{
       bottom:  TabBar(tabs: _convertJsonToListOfChoiceTabBars(choices), isScrollable: true,),
     );
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
-
 
 
 
