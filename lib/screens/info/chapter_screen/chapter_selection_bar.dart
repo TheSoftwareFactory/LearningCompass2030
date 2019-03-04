@@ -26,8 +26,7 @@ class ChapterSelectionBar extends StatelessWidget {
         child: DropdownButtonHideUnderline(
             child: Theme(
                 data: Theme.of(context).copyWith(
-                    canvasColor: shadedColor,
-                    brightness: Brightness.dark),
+                    canvasColor: shadedColor, brightness: Brightness.dark),
                 child: DropdownButton<String>(
                     elevation: 1,
                     isExpanded: true,
@@ -36,18 +35,14 @@ class ChapterSelectionBar extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
                         fontSize: 16),
-                    items: chapters.map((chapter) =>
-                        DropdownMenuItem<String>(
-                            value: chapter,
-                            child: Text(chapter))
-                        ).toList(),
+                    items: chapters
+                        .map((chapter) => DropdownMenuItem<String>(
+                            value: chapter, child: Text(chapter)))
+                        .toList(),
                     onChanged: (selection) {
                       changeRoute(selection);
-                    }
-                    )
-            )
-        ),
-        );
+                    }))),
+      );
     });
   }
 }

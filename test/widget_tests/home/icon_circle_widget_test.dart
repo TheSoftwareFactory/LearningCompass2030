@@ -9,7 +9,7 @@ import 'package:learning_compass_exp/screens/home/widgets/flower/icon_circle.dar
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
 
-import '../mock_data.dart';
+import '../../mock_data.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =

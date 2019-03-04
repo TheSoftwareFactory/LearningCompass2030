@@ -5,8 +5,6 @@ import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/screens/info/chapter_index/chapter_index_card.dart';
 import 'package:learning_compass_exp/screens/info/chapter_screen/chapter_screen.dart';
 
-// TODO: should be renamed to reflect the fact this is the base of the index page
-// for a construct and not specific chapter pages of said construct.
 class ChapterIndex extends StatelessWidget {
   final Petal subject;
 

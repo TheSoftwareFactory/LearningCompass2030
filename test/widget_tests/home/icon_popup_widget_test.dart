@@ -6,17 +6,13 @@ import 'package:learning_compass_exp/screens/home/widgets/flower/icon_popup/prog
 import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/data/constants/PETAL_CONSTANTS.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
-import 'package:learning_compass_exp/screens/home/widgets/grid.dart';
-import 'package:learning_compass_exp/screens/home/widgets/grid_item.dart';
 
-import '../mock_data.dart';
+import '../../mock_data.dart';
 
 main() {
   group('IconPopup Widget', () {

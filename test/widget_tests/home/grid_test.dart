@@ -8,7 +8,7 @@ import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/screens/home/widgets/grid.dart';
 import 'package:learning_compass_exp/screens/home/widgets/grid_item.dart';
 
-import '../mock_data.dart';
+import '../../mock_data.dart';
 
 
 

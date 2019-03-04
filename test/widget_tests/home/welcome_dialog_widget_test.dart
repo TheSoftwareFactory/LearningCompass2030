@@ -7,7 +7,7 @@ import 'package:learning_compass_exp/app.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 
-import '../mock_data.dart';
+import '../../mock_data.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
