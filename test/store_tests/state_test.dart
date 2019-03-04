@@ -21,7 +21,7 @@ main() {
       expect(store.state.progress[PetalName.environment], 50);
       expect(store.state.progress[PetalName.education], 50);
       expect(store.state.progress[PetalName.community], 50);
-      expect(store.state.progress[PetalName.job], 50);
+      expect(store.state.progress[PetalName.jobs], 50);
       expect(store.state.progress[PetalName.income], 50);
       expect(store.state.progress[PetalName.housing], 50);
     });
@@ -152,7 +152,7 @@ main() {
             'PetalName.environment': 50.0,
             'PetalName.education': 50.0,
             'PetalName.community': 50.0,
-            'PetalName.job': 50.0,
+            'PetalName.jobs': 50.0,
             'PetalName.income': 50.0,
             'PetalName.housing': 50.0
           },

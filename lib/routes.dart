@@ -13,8 +13,8 @@ final routes = <String, WidgetBuilder>{
   '/education': (context) => InfoScreen(
     petal: PETAL_CONSTANTS.education,
   ),
-  '/job': (context) => InfoScreen(
-    petal: PETAL_CONSTANTS.job,
+  '/jobs': (context) => InfoScreen(
+    petal: PETAL_CONSTANTS.jobs,
   ),
   '/housing': (context) => InfoScreen(
     petal: PETAL_CONSTANTS.housing,
