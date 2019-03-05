@@ -20,7 +20,7 @@ class AboutTabBarViewChoice extends StatelessWidget {
   List<Widget> _jsonToChoiceBodyList( Map<String, dynamic>json) {
     List<Widget> choiceBodyList = new List<Widget>();
 
-    choiceBodyList.add(Text(json['title']));
+    choiceBodyList.add(Text(json['title'], textAlign: TextAlign.center,));
 
     json['content'].forEach((element) {
       choiceBodyList.add(Padding(

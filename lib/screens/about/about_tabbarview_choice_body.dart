@@ -23,7 +23,7 @@ class AboutTabBarViewChoiceBody extends StatelessWidget {
 
     if(choiceBody['title'] == '' ) {
       return  ListTile(
-          title: Text(choiceBody['body']));
+          title: Text(choiceBody['body'],), );
     }
     else {
 
@@ -31,7 +31,7 @@ class AboutTabBarViewChoiceBody extends StatelessWidget {
           children: <Widget>[
 
             ListTile(
-              title: Text(choiceBody['title']),
+              title: Text(choiceBody['title'], textAlign: TextAlign.center),
             ),
 
             Divider(),
