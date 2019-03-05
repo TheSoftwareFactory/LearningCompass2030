@@ -11,7 +11,7 @@ class AboutTabBarViewChoiceBody extends StatelessWidget {
   Widget build(BuildContext context) {
     // About About TabBarView Choice Body Widget
     return Card(
-
+       color: Colors.white70,
         child:  _choiceBody(choiceBody)
 
 

@@ -5,13 +5,8 @@
       "title": "OECD",
       "content": [
         {
-          "title": "How bout a video?",
-          "body": "https://www.youtube.com/embed/o08ykAqLOxk"
-        },
-
-        {
-          "title": "",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "title": "Introduction",
+          "body": " OECD Education 2030 stakeholders have co-developed the Learning Compass 2030 that shows how young people can navigate their lives and their world. This Learning Framework 2030 offers a vision and some underpinning principles for the future of education systems. It is about orientation, not prescription "
         }
       ]
     },
@@ -19,12 +14,12 @@
       "title": "TRENDS",
       "content": [
         {
-          "title": "First part",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "title": "",
+          "body": "The world is evolving at an incredible speed. Mega trends refer to the current trends that predict what the world in 2030 would look like, such as globalisation, technological and climate change, which create numerous challenges and opportunities. "
         },
         {
-          "title": "Second part",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "title": "",
+          "body": "Some of the key mega trends are presented in line with the 11 areas of the OECD Well-being Framework, which includes: jobs, income, housing, work-life balance, safety, life satisfaction, health, civic engagement, environment, education and community.  "
         }
       ]
     },
@@ -34,72 +29,55 @@
       "title": "FRAMEWORK",
       "content": [
         {
-          "title": "First part",
+          "title": "Job",
 
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "body": " Due to digitalisation and automation of tasks, some sectors are likely to lose jobs, replaced by machines. "
         },
         {
-          "title": "Second part",
+          "title": "Income",
           "type": "text",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "body": "The income gap between rich and poor is getting wider and wider. "
         },
         {
-          "title": "How bout a video?",
-          "body": "https://www.youtube.com/embed/o08ykAqLOxk"
+          "title": "Housing",
+          "body": "Living in a secured place with decent conditions is getting harder and harder."
         },
 
         {
-          "title": "First part",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "title": " Work-Life Balance ",
+          "body": " Although people spend more and more time at work, they still value quality leisure time. "
         },
         {
-          "title": "Second part",
+          "title": "Safety",
           "type": "text",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "body": "Threats such as safety walking at night or terrorism, as well as emerging threats such as cyber-bullying both make the world more VUCA. "
         },
         {
-          "title": "How bout a video?",
-          "body": "https://www.youtube.com/embed/o08ykAqLOxk"
+          "title": "Life Satisfaction",
+          "body": "The advancement of technology contributes to life satisfaction."
         },
 
         {
-          "title": "First part",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "title": "Health",
+          "body": "Although children’s health is affected by obesity, teenage suicide rate has decreased."
         },
         {
-          "title": "Second part",
+          "title": "Civic Engagement ",
           "type": "text",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "body": "There is low confidence in national governments."
         },
         {
-          "title": "How bout a video?",
-          "body": "https://www.youtube.com/embed/o08ykAqLOxk"
-        },
-
-        {
-          "title": "First part",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
-        },
-        {
-          "title": "Second part",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
-        },
-        {
-          "title": "How bout a video?",
-          "body": "https://www.youtube.com/embed/o08ykAqLOxk"
+          "title": "Environment",
+          "body": " Water quality, air pollution and biodiversity have emerged as relevant challenges."
         },
 
         {
-          "title": "First part",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "title": "Education",
+          "body": "Advancement of technology creates important changes in education."
         },
         {
-          "title": "Second part",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
-        },
-        {
-          "title": "How bout a video?",
-          "body": "https://www.youtube.com/embed/o08ykAqLOxk"
+          "title": "Community",
+          "body": "Gets more diverse."
         }
       ]
     },
@@ -107,24 +85,23 @@
 
     {
       "title": "ANALYSIS",
-      "description": "Some cool serious info on income.",
       "content": [
         {
-          "title": "First part",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "title": "Employers",
+          "body": " Employers’ demands on students competencies include: human and meta skills in time of automation and digitalization; core concept in modern disciples, such as entrepreneurship and wellness, taught in a modern way, for example using an interdisciplinary approach. with essential content so as to understand the world; skills to manage themselves including reskilling and upskilling for life-long learning; knowledge to use AI to make the most out of it; skills for non-routine interpersonal and non-routine analytic jobs. "
         },
         {
-          "title": "Second part",
-          "body": "Life satisfaction is the way in which people show their emotions, feelings and how they feel about their directions and options for the future. It is a measure of well-being. "
+          "title": "Teachers",
+          "body": " Teachers’ demands on students competencies include: disciplinary knowledge so that they are equipped with the basic knowledge; management skills such as cognitive and meta-cognitive skills, social and emotional skills, and physical and practical skills, which are more and more needed in society and in the workforce; attitudes and values such as tolerance and good behaviour towards the other. "
         },
         {
-          "title": "How bout a video?",
-          "body": "https://www.youtube.com/embed/o08ykAqLOxk"
+          "title": "Parents",
+          "body": "Parents’ demands on students competencies include: learning academic knowledge and traditional core subjects such as math, reading, writing, and sciences to thrive in their workplace, management skills such as technology skills, cognitive and social-emotional skills; attitudes and values such as respect for self and others, honesty, compassion, love for one another, tolerance, global awareness and perspective, cultural sensitivity and the pursuit for life satisfaction through the sense of agency."
         },
 
         {
-          "title": "How bout a video?",
-          "body": "https://www.youtube.com/embed/o08ykAqLOxk"
+          "title": "Students",
+          "body": "Students present different needs, focus and interests depending on different stages of their development and education. At a young age, they want education to be fun, social, practical and a place where they can learn a variety of knowledge. In secondary education, they want education to be career focused and in post-secondary education, they want education to be job market oriented in order to facilitate their integration on the job market. "
         }
       ]
     }
