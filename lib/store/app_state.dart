@@ -2,22 +2,27 @@ import 'package:meta/meta.dart';
 import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/data/models/petal_names.dart';
+import 'package:learning_compass_exp/data/models/construct_progress_state.dart';
+import 'package:learning_compass_exp/data/models/chapter_state.dart';
 
 @immutable
 class AppState {
   final bool flowerSmall;
-  final Map<PetalName, double> progress;
+  final String subroute;
+  final Map<PetalName, ConstructProgressState> progress;
   final bool firstStartUp;
 
-  AppState({this.flowerSmall, this.progress, this.firstStartUp});
+  AppState({this.flowerSmall, this.progress, this.subroute, this.firstStartUp});
 
   AppState copyWith({
     bool flowerSmall,
-    Map<PetalName, double> progress,
+    String subroute,
+    Map<PetalName, ConstructProgressState> progress,
     bool firstStartUp,
   }) {
     return AppState(
       flowerSmall: flowerSmall ?? this.flowerSmall,
+      subroute: subroute ?? this.subroute,
       progress: progress ?? this.progress,
       firstStartUp: firstStartUp ?? this.firstStartUp,
     );
@@ -26,19 +31,35 @@ class AppState {
   // Used by redux_persist to convert parts of state from persistent storage (which is in JSON form) and convert into an AppState.
   // Uses AppState.initial() to get initial values and replaces appropriate values depending on data gotten from
   // persistent storage.
-  static AppState fromJson(dynamic json) {
-    if (json == null || json['progress'] == null || json['progress'] is !Map) return null;
+  static AppState fromJson(dynamic json, List<Map<String, dynamic>> decodedJson) {
+    if (json == null || json['progress'] == null || json['progress'] is! Map) return null;
 
-    AppState loadedState = AppState.initial();
+
+    AppState loadedState = AppState.initial(decodedJson);
     for (PetalName name in PetalName.values) {
-      if (json['progress'][name.toString()] == null || json['progress'][name.toString()] <= 50) continue;
-      loadedState.progress[name] = json['progress'][name.toString()];
+      if (json['progress'][name.toString()] == null) continue;
+      Map<int, ChapterState> newConstructProgress = new Map<int, ChapterState>();
+      for (Map chapter in json['progress'][name.toString()]['constructProgress'].values) {
+        if (loadedState.progress[name].constructProgress[chapter['id']] == null) continue;
+        ChapterState loadedChapterState = loadedState
+            .progress[name]
+            .constructProgress[chapter['id']]
+            .copyWith(
+                read: chapter['read'] as bool,
+                foundWords: new List<String>.from(chapter['foundWords']));
+
+        newConstructProgress[chapter['id']] = loadedChapterState;
+      }
+      loadedState.progress[name] = loadedState
+          .progress[name]
+          .copyWith(constructProgress: newConstructProgress);
     }
-    
+
     if (json['firstStartUp'] != null) {
-      loadedState = loadedState.copyWith(firstStartUp: json['firstStartUp'] as bool);
+      loadedState =
+          loadedState.copyWith(firstStartUp: json['firstStartUp'] as bool);
     }
-    
+
     return loadedState;
   }
 
@@ -62,41 +83,51 @@ class AppState {
     };
   }
 
-  factory AppState.initial() {
-    return AppState(
-      flowerSmall: true,
-      progress: {
-        PetalName.workLifeBalance: 50,
-        PetalName.safety: 50,
-        PetalName.lifeSatisfaction: 50,
-        PetalName.health: 50,
-        PetalName.civicEngagement: 50,
-        PetalName.environment: 50,
-        PetalName.education: 50,
-        PetalName.community: 50,
-        PetalName.jobs: 50,
-        PetalName.income: 50,
-        PetalName.housing: 50,
-      },
-      firstStartUp: true,
+  /// Generates an [AppState] instance with correct initial values.
+  ///
+  /// [_POINTSFORREAD] has to be manually kept up to date with the similar value
+  /// in [ChapterState] if it is changed.
+  factory AppState.initial(List<Map<String, dynamic>> decodedJson) {
+    const int _POINTSFORREAD = 7;
+    AppState initialState = AppState().copyWith(
+        progress: Map<PetalName, ConstructProgressState>(),
+        flowerSmall: true,
+        firstStartUp: true,
+        subroute: null
+
     );
+    for (Map<String, dynamic> json in decodedJson) {
+      Map<int, ChapterState> constructProgress = Map<int, ChapterState>();
+      for (Map<String, dynamic> chapter in json['chapters']) {
+        constructProgress[chapter['id']] = ChapterState(
+            id: chapter['id'],
+            read: false,
+            maxProgress: chapter['wordsToFind'].length + _POINTSFORREAD
+        );
+      }
+      initialState.progress[petalNameFromString(json['PetalName'])]
+        = ConstructProgressState(id: json['id'], constructProgress: constructProgress);
+    }
+
+    return initialState;
   }
-
-  @override
-  int get hashCode =>
-      flowerSmall.hashCode ^
-      progress.hashCode ^
-      firstStartUp.hashCode;
-
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppState &&
-        runtimeType == other.runtimeType &&
-        flowerSmall == other.flowerSmall &&
-        isMapEqual(progress, other.progress) &&
-        firstStartUp == other.firstStartUp;
+          runtimeType == other.runtimeType &&
+          flowerSmall == other.flowerSmall &&
+          subroute == other.subroute &&
+          isMapEqual(progress, other.progress) &&
+          firstStartUp == other.firstStartUp;
+
+  @override
+  int get hashCode =>
+      flowerSmall.hashCode ^
+      subroute.hashCode ^
+      progress.hashCode ^
+      firstStartUp.hashCode;
 }
 
 bool isMapEqual(Map a, Map b) {

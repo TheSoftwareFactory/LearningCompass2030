@@ -1,4 +1,3 @@
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -21,6 +20,7 @@ class LearningCompassApp extends StatelessWidget {
         title: 'Learning Compass',
         theme: ThemeData(
           primaryColor: Colors.green,
+          textTheme: ThemeData().textTheme.copyWith(body1: TextStyle().copyWith(fontSize: 17), title: TextStyle().copyWith(fontSize: 30))
         ),
       ),
     );
