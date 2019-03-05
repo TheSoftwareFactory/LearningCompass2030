@@ -15,9 +15,9 @@ class AboutTabbedAppBar extends StatelessWidget {
                 appBar: AppBar(
                     title: const Text('About Learning Compass'),
                     bottom: TabBar( isScrollable: true,
-                        tabs: _convertJsonToListOfChoiceTabBars(this.choices))
+                        tabs: _jsonToListOfChoiceTabBars(this.choices))
                 ),
-                body: TabBarView(children: _convertJsonToListOfChoiceViews(this.choices)  ,
+                body: TabBarView(children: _jsonToListOfChoiceViews(this.choices)  ,
 
               )));
 
@@ -26,7 +26,7 @@ class AboutTabbedAppBar extends StatelessWidget {
 
 
 
-  List<Widget> _convertJsonToListOfChoiceTabBars(List<dynamic> json) {
+  List<Widget> _jsonToListOfChoiceTabBars(List<dynamic> json) {
     List<Widget> newList = new List<Widget>();
 
     json.forEach((element) {
@@ -38,7 +38,7 @@ class AboutTabbedAppBar extends StatelessWidget {
   }
 
 
-  List<Widget> _convertJsonToListOfChoiceViews(List<dynamic> json) {
+  List<Widget> _jsonToListOfChoiceViews(List<dynamic> json) {
     List<Widget> choiceList = new List<Widget>();
 
     json.forEach((element) {

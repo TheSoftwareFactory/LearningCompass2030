@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class AboutTabBarViewChoiceBody extends StatelessWidget {
   const AboutTabBarViewChoiceBody({Key key, this.choiceBody}) : super(key: key);
-  final Map<String, String> choiceBody;
+  final Map<String, dynamic> choiceBody;
 
 
   @override
@@ -12,20 +12,38 @@ class AboutTabBarViewChoiceBody extends StatelessWidget {
     // About About TabBarView Choice Body Widget
     return Card(
 
-      child: Column(
-        children: <Widget>[
+        child:  _choiceBody(choiceBody)
 
-          ListTile(
-            title: Text(choiceBody['title']),
-          ),
 
-          Divider(),
-
-          ListTile(
-              title: Text(choiceBody['body'])),
-
-        ],
-      ),
     );
 
-  }}
+  }
+
+  _choiceBody( Map<String, dynamic> choiceBody ){
+
+    if(choiceBody['title'] == '' ) {
+      return  ListTile(
+          title: Text(choiceBody['body']));
+    }
+    else {
+
+      return Column(
+          children: <Widget>[
+
+            ListTile(
+              title: Text(choiceBody['title']),
+            ),
+
+            Divider(),
+
+            ListTile(
+                title: Text(choiceBody['body'])),]);
+
+    }
+
+  }
+
+
+}
+
+
