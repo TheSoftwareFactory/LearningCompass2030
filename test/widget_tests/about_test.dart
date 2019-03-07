@@ -49,7 +49,7 @@ void main() {
     expect(find.byType(TabBar), findsWidgets);
     expect(find.byType(Tab), findsWidgets);
 
-      }
+       }
 
 
   );
