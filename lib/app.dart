@@ -20,6 +20,7 @@ class LearningCompassApp extends StatelessWidget {
         title: 'Learning Compass',
         theme: ThemeData(
           primaryColor: Colors.green,
+          textTheme: ThemeData().textTheme.copyWith(body1: TextStyle().copyWith(fontSize: 17), title: TextStyle().copyWith(fontSize: 30))
         ),
       ),
     );

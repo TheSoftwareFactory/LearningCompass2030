@@ -1,220 +1,162 @@
-import 'dart:math';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:redux/redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
-import 'package:learning_compass_exp/data/models/petal.dart';
-import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
+
+import 'package:learning_compass_exp/data/models/construct_progress_state.dart';
+import 'package:learning_compass_exp/data/models/chapter_state.dart';
+
+import '../mock_data.dart';
 
 main() {
   group('AppState', () {
     test('has correct initial state', () {
       final store = Store<AppState>(
         appReducer,
-        initialState: AppState.initial(),
+        initialState: AppState.initial(MOCK_STATIC_JSON),
       );
 
-      expect(store.state.number, 80);
-      expect(
-          store.state.petals[PetalName.workLifeBalance],
-          Petal(
-              name: PetalName.workLifeBalance,
-              color: Colors.red[900],
-              angle: 0.0,
-              icon: CustomIcons.workLifeBalance));
-      expect(
-          store.state.petals[PetalName.safety],
-          Petal(
-              name: PetalName.safety,
-              color: Colors.blueGrey,
-              angle: 2 / 11 * pi,
-              icon: CustomIcons.safety));
-      expect(
-          store.state.petals[PetalName.lifeSatisfaction],
-          Petal(
-              name: PetalName.lifeSatisfaction,
-              color: Colors.orange[600],
-              angle: 4 / 11 * pi,
-              icon: CustomIcons.lifeSatisfaction));
-      expect(
-          store.state.petals[PetalName.health],
-          Petal(
-              name: PetalName.health,
-              color: Colors.purple,
-              angle: 6 / 11 * pi,
-              icon: CustomIcons.health));
-      expect(
-          store.state.petals[PetalName.civicEngagement],
-          Petal(
-              name: PetalName.civicEngagement,
-              color: Colors.amber,
-              angle: 8 / 11 * pi,
-              icon: CustomIcons.civicEngagement));
-      expect(
-          store.state.petals[PetalName.environment],
-          Petal(
-              name: PetalName.environment,
-              color: Colors.green,
-              angle: 10 / 11 * pi,
-              icon: CustomIcons.environment));
-      expect(
-          store.state.petals[PetalName.education],
-          Petal(
-              name: PetalName.education,
-              color: Colors.lightGreen[400],
-              angle: 12 / 11 * pi,
-              icon: CustomIcons.education));
-      expect(
-          store.state.petals[PetalName.community],
-          Petal(
-              name: PetalName.community,
-              color: Colors.red[400],
-              angle: 14 / 11 * pi,
-              icon: CustomIcons.community));
-      expect(
-          store.state.petals[PetalName.job],
-          Petal(
-              name: PetalName.job,
-              color: Colors.blue,
-              angle: 16 / 11 * pi,
-              icon: CustomIcons.jobs));
-      expect(
-          store.state.petals[PetalName.income],
-          Petal(
-              name: PetalName.income,
-              color: Colors.cyan,
-              angle: 18 / 11 * pi,
-              icon: CustomIcons.income));
-      expect(
-          store.state.petals[PetalName.housing],
-          Petal(
-              name: PetalName.housing,
-              color: Colors.teal[300],
-              angle: 20 / 11 * pi,
-              icon: CustomIcons.housing));
+      expect(store.state.progress[PetalName.workLifeBalance], ConstructProgressState(id: 1, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}));
+      expect(store.state.progress[PetalName.income], ConstructProgressState(id: 10, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}));
     });
 
     test('has null values by default', () {
       AppState defaultAppState = AppState();
 
-      expect(defaultAppState.petals, null);
+      expect(defaultAppState.progress, null);
       expect(defaultAppState.flowerSmall, null);
-      expect(defaultAppState.number, null);
+      expect(defaultAppState.firstStartUp, null);
     });
-    group('has an overriden hashCode method', () {
-      test(
-          "that produces a correct value",
-          () {
-        AppState initialState = AppState.initial();
 
-        int expectedHash = initialState.number.hashCode ^
-            initialState.flowerSmall.hashCode ^
-            initialState.petals.hashCode;
+    group('has an overriden hashCode method', () {
+      test("that produces a correct value", () {
+        AppState initialState = AppState.initial(MOCK_STATIC_JSON);
+
+        int expectedHash = initialState.flowerSmall.hashCode ^
+            initialState.progress.hashCode ^
+            initialState.subroute.hashCode ^
+            initialState.firstStartUp.hashCode;
 
         expect(initialState.hashCode, expectedHash);
       });
     });
 
     group('has an overriden operator== method', () {
-      test(
-          "that produces correct results",
-          () {
-        Map<PetalName, Petal> firstMap = {
-          PetalName.environment:
-              Petal(name: PetalName.lifeSatisfaction, progress: 67, angle: 78)
-        };
-        Map<PetalName, Petal> secondMap = {
-          PetalName.environment:
-              Petal(name: PetalName.lifeSatisfaction, progress: 67, angle: 78)
-        };
-        AppState firstAppState = AppState(number: 56, petals: firstMap);
-        AppState secondAppState = AppState(number: 56, petals: secondMap);
+      test("that produces correct results", () {
+        Map<PetalName, ConstructProgressState> firstMap = {PetalName.environment: ConstructProgressState(id: 1, constructProgress: {3: ChapterState(id: 45, maxProgress: 56, read: true, foundWords: ['asdf'])})};
+        Map<PetalName, ConstructProgressState> secondMap = {PetalName.environment: ConstructProgressState(id: 1, constructProgress: {3: ChapterState(id: 45, maxProgress: 56, read: true, foundWords: ['asdf'])})};
 
-        expect(firstAppState == secondAppState, true);
+        AppState firstAppState =
+            AppState(flowerSmall: false, progress: firstMap);
+        AppState secondAppState =
+            AppState(flowerSmall: false, progress: secondMap);
+
+        expect(firstAppState == secondAppState, isTrue);
       });
     });
 
     group('has a copyWith method', () {
-      test(
-          'that copies the AppState its called on correctly',
-          () {
-        AppState originalAppState = AppState.initial();
+      test('that copies the AppState its called on correctly', () {
+        AppState originalAppState = AppState.initial(MOCK_STATIC_JSON);
         AppState copiedAppState = originalAppState.copyWith();
 
         expect(identical(copiedAppState, originalAppState), false);
         expect(copiedAppState == originalAppState, true);
       });
 
-      test(
-          "that copies the AppState except for given parameter",
-          () {
-        AppState originalAppState = AppState.initial();
-        AppState modifiedAppState = originalAppState.copyWith(number: 69);
+      test("that copies the AppState except for given parameter", () {
+        AppState originalAppState = AppState.initial(MOCK_STATIC_JSON);
+        AppState modifiedAppState =
+            originalAppState.copyWith(flowerSmall: false);
 
-        expect(modifiedAppState != originalAppState, true);
-        expect(
-            isMapEqual(modifiedAppState.petals, originalAppState.petals), true);
-        expect(originalAppState.number, 80);
-        expect(modifiedAppState.number, 69);
+        expect(modifiedAppState != originalAppState, isTrue);
+        expect(modifiedAppState.progress == originalAppState.progress, isTrue);
+        expect(originalAppState.flowerSmall, isTrue);
+        expect(modifiedAppState.flowerSmall, isFalse);
       });
     });
 
     group('has a fromJson method', () {
       test('that returns null if given a null json parameter', () {
-        expect(AppState.fromJson(null), null);
+        expect(AppState.fromJson(null, MOCK_STATIC_JSON), null);
       });
 
-      test('that returns null if given a non-empty parameter but without petals property', () {
+      test(
+          'that returns null if given a non-empty parameter but without progress property',
+          () {
         dynamic testInput = {'something': 123, 'here': "too"};
 
-        expect(AppState.fromJson(testInput), null);
+        expect(AppState.fromJson(testInput, MOCK_STATIC_JSON), null);
       });
 
-      test('that returns AppState initial state when parameter proper petals is  empty', () {
-        dynamic testInput = {'petals': {}};
+      test(
+          'that returns AppState initial state when parameter proper petals is  empty',
+          () {
+        dynamic testInput = {'progress': {}};
 
-        expect(AppState.fromJson(testInput), null);
+        expect(AppState.fromJson(testInput, MOCK_STATIC_JSON),
+            AppState.initial(MOCK_STATIC_JSON)); // REMOVE IF WORKS
       });
 
-      test('that returns a new, modified initial state that has the json values provided', () {
-        dynamic testInput = {'petals': [{'name': PetalName.education.toString(), 'progress': 56}, {'name': PetalName.civicEngagement.toString(), 'progress': 100}]};
+      test(
+          'that returns a new, modified initial state that has the json values provided',
+          () {
+        dynamic testInput = {
+          'progress': {
+            PetalName.education.toString(): ConstructProgressState(id: 7, constructProgress: {1: ChapterState(id: 1, read: true, foundWords: ['asdf'])}).toJson(),
+            PetalName.civicEngagement.toString(): ConstructProgressState(id: 5, constructProgress: {1: ChapterState(id: 1, read: false, foundWords: ['asdf'])}).toJson(),
+          },
+          'firstStartUp': false,
+        };
 
-        AppState expectedAppState = AppState.initial();
-        expectedAppState.petals[PetalName.education] = expectedAppState.petals[PetalName.education].copyWith(progress: 56);
-        expectedAppState.petals[PetalName.civicEngagement] = expectedAppState.petals[PetalName.civicEngagement].copyWith(progress: 100);
+        AppState expectedAppState = AppState.initial(MOCK_STATIC_JSON);
+        expectedAppState.progress[PetalName.education] = ConstructProgressState(id: 7, constructProgress: {1: ChapterState(id: 1, maxProgress: 10, read: true, foundWords: ['asdf'])});
+        expectedAppState.progress[PetalName.civicEngagement] = ConstructProgressState(id: 5, constructProgress: {1: ChapterState(id: 1, maxProgress: 10, read: false, foundWords: ['asdf'])});
+        expectedAppState = expectedAppState.copyWith(firstStartUp: false);
 
-        expect(AppState.fromJson(testInput), equals(expectedAppState));
+        expect(AppState.fromJson(testInput, MOCK_STATIC_JSON), equals(expectedAppState));
       });
 
-      test('that returns new default initial state when given an empty iterable', () {
-        dynamic testInput = {'petals': []};
+      test('that returns new default initial state when given an empty Map',
+          () {
+        dynamic testInput = {'progress': {}};
 
-        expect(AppState.fromJson(testInput), AppState.initial());
+        expect(AppState.fromJson(testInput, MOCK_STATIC_JSON), AppState.initial(MOCK_STATIC_JSON));
       });
 
-      test('that returns the default initial state if given a parameter with no names', () {
-        dynamic testInput = {'petals': [{'progress': 56}, {'progress': 100}]};
+      test(
+          'that returns the default initial state if given a parameter with invalid names',
+          () {
+        dynamic testInput = {
+          'progress': {'invalidName': 56, 'anotherInvalidName': 100}
+        };
 
-        expect(AppState.fromJson(testInput), AppState.initial());
-      });
-
-      test('that returns the default initial state if given a parameter with no progress property', () {
-        dynamic testInput = {'petals': [{'name': PetalName.education.toString()}, {'name': PetalName.civicEngagement.toString()}]};
-
-        expect(AppState.fromJson(testInput), AppState.initial());
+        expect(AppState.fromJson(testInput, MOCK_STATIC_JSON), AppState.initial(MOCK_STATIC_JSON));
       });
     });
 
     group('has a toJson method', () {
       test('that returns the relevant state values when state is initial', () {
-        AppState initialState = AppState.initial();
-        dynamic expectedOutput = {'petals': initialState.petals.values.toList()};
+        AppState initialState = AppState.initial(MOCK_STATIC_JSON);
+        dynamic expectedOutput = {
+          'progress': {
+            'PetalName.workLifeBalance': ConstructProgressState(id: 1, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.safety': ConstructProgressState(id: 2, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.lifeSatisfaction': ConstructProgressState(id: 3, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.health': ConstructProgressState(id: 4, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.civicEngagement': ConstructProgressState(id: 5, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.environment': ConstructProgressState(id: 6, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.education': ConstructProgressState(id: 7, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.community': ConstructProgressState(id: 8, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.jobs': ConstructProgressState(id: 9, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.income': ConstructProgressState(id: 10, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)}),
+            'PetalName.housing': ConstructProgressState(id: 11, constructProgress: {1: ChapterState(id: 1, maxProgress: 10)})
+          },
+          'firstStartUp': true,
+        };
 
-        // The redux_persist library serializer handles converting each item in the
-        // list into a JSON object.
         expect(initialState.toJson(), expectedOutput);
       });
     });
