@@ -28,7 +28,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   test: ^1.5.1
+  flutter_launcher_icons: "^0.7.0"
 
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
@@ -43,16 +49,31 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/static_data/choices.json
-   - assets/images/oecd.jpg
-   - assets/images/analysis.jpg
-   - assets/images/framework.jpg
-   - assets/images/trends.jpg
-
-
-
-
-
+    - assets/images/flower.png
+    - assets/images/introduction.jpg
+    - assets/images/stop.jpg
+    - assets/images/education1.jpg
+    - assets/images/civic-engagement1.jpg
+    - assets/images/community1.jpg
+    - assets/images/environment1.jpg
+    - assets/images/health1.jpg
+    - assets/images/housing1.jpg
+    - assets/images/income1.jpg
+    - assets/images/jobs1.jpg
+    - assets/images/life-satisfaction1.jpg
+    - assets/images/safety1.jpg
+    - assets/images/work-life-balance1.jpg
+    - assets/static_data/work-life_balance.json
+    - assets/static_data/safety.json
+    - assets/static_data/life_satisfaction.json
+    - assets/static_data/health.json
+    - assets/static_data/civic_engagement.json
+    - assets/static_data/environment.json
+    - assets/static_data/education.json
+    - assets/static_data/community.json
+    - assets/static_data/jobs.json
+    - assets/static_data/income.json
+    - assets/static_data/housing.json
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -84,3 +105,4 @@ flutter:
     - family:  CustomIcons
       fonts:
         - asset: fonts/CustomIcons.ttf
+
