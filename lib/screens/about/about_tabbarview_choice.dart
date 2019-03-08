@@ -12,9 +12,6 @@ class AboutTabBarViewChoice extends StatelessWidget {
     // About TabBarView Choice Widget
     return Container(
 
-        constraints: BoxConstraints.expand(
-          height: Theme.of(context).textTheme.display1.fontSize * 1.1 + 200.0,
-        ),
         padding: const EdgeInsets.all(8.0),
         alignment: Alignment.center,
 
@@ -43,7 +40,7 @@ class AboutTabBarViewChoice extends StatelessWidget {
 
     json['content'].forEach((element) {
       choiceBodyList.add(Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(top: 8.0),
         child: AboutTabBarViewChoiceBody(choiceBody: element),
       ));
     });

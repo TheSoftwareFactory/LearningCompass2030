@@ -11,7 +11,7 @@ class AboutTabBarViewChoiceBody extends StatelessWidget {
   Widget build(BuildContext context) {
     // About About TabBarView Choice Body Widget
     return Card(
-       color: Colors.white70,
+       color: Colors.white,
         child:  _choiceBody(choiceBody)
 
 
@@ -22,7 +22,7 @@ class AboutTabBarViewChoiceBody extends StatelessWidget {
   _choiceBody( Map<String, dynamic> choiceBody ){
 
     if(choiceBody['title'] == '' ) {
-      return  ListTile(
+      return  ListTile(contentPadding:EdgeInsets.all(16.0),
           title: Text(choiceBody['body'],), );
     }
     else {
@@ -31,12 +31,12 @@ class AboutTabBarViewChoiceBody extends StatelessWidget {
           children: <Widget>[
 
             ListTile(
-              title: Text(choiceBody['title'], textAlign: TextAlign.center),
+              title: Text(choiceBody['title'], textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
             ),
 
             Divider(),
 
-            ListTile(
+            ListTile( contentPadding:EdgeInsets.all(16.0),
                 title: Text(choiceBody['body'])),]);
 
     }

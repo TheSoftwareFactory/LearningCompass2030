@@ -42,10 +42,9 @@ class AboutTabbedAppBar extends StatelessWidget {
     List<Widget> choiceList = new List<Widget>();
 
     json.forEach((element) {
-      choiceList.add(Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: AboutTabBarViewChoice(choice: element),
-      ));
+
+
+      choiceList.add( AboutTabBarViewChoice(choice: element));
     });
 
     return choiceList;

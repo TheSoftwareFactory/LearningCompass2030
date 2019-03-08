@@ -10,23 +10,23 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return  FutureBuilder<String>(
 
-      future:  DefaultAssetBundle.of(context).loadString(_choicesJson),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
+        future:  DefaultAssetBundle.of(context).loadString(_choicesJson),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
 
-              return Center(
-                child: Text("Loading  ..."),
-              );
-            }
+            return Center(
+              child: Text("Loading  ..."),
+            );
+          }
 
-            else{
-              var _choices = json.decode(snapshot.data)['choices'];
-              print(_choices);
-              return AboutTabbedAppBar(choices: _choices);
-
-            }
+          else{
+            var _choices = json.decode(snapshot.data)['choices'];
+            print(_choices);
+            return AboutTabbedAppBar(choices: _choices);
 
           }
+
+        }
     );
   }
 
