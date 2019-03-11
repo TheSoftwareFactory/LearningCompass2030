@@ -7,7 +7,11 @@
       "id": 1,
       "title": "Introduction",
       "description": "Introducing the new and exciting concept of Jobs!",
-      "wordsToFind": ["satisfaction", "emotions", "feel"],
+      "wordsToFind": [
+        {"word": "satisfaction", "bonusInfo": "Something amazingly special facts about satisfaction!"},
+        {"word": "emotions", "bonusInfo": "Perhaps a fun fact about emotions?"},
+        {"word": "feel", "bonusInfo": "Nothing makes you feel good like feelings. True story."}
+      ],
       "content": [
         {
           "title": "",

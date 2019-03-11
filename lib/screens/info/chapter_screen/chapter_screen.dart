@@ -7,6 +7,8 @@ import 'package:learning_compass_exp/screens/info/chapter_screen/chapter_selecti
 import 'package:learning_compass_exp/screens/info/chapter_screen/chapter_screen_body.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 
+import 'package:learning_compass_exp/services/magic_words_service.dart';
+
 class ChapterScreen extends StatelessWidget {
   final Petal petal;
   final List<dynamic> chapters;
@@ -15,12 +17,12 @@ class ChapterScreen extends StatelessWidget {
   ChapterScreen({this.petal, this.chapters, this.chapterDescription});
 
   Map _getContent(subroute) {
-    final current = chapters.firstWhere((item) => item['title'] == subroute, orElse: () => []);
+    final Map<String, dynamic> current = chapters.firstWhere((item) => item['title'] == subroute, orElse: () => []);
     if (current == '') {
       print(current);
-      return current;
+      return findMagicWords(current);
     } else {
-      return current;
+      return findMagicWords(deepCopyChapter(current));
     }
   }
 
@@ -65,4 +67,35 @@ class ChapterScreen extends StatelessWidget {
       );
     });
   }
+}
+
+
+
+
+
+Map<String, dynamic> deepCopyChapter(Map<String, dynamic> chapter) {
+  Map<String, dynamic> copy = Map<String, dynamic>();
+  copy['id'] = chapter['id'];
+
+  String title = chapter['title'];
+  String desc = chapter['description'];
+  List<Map<String, dynamic>> wordsToFind = List<Map<String, dynamic>>.from(chapter['wordsToFind']);
+  List<Map<String, dynamic>> content = List<Map<String, dynamic>>.from(chapter['content']);
+
+  copy['title'] = title.substring(0);
+  copy['description'] = desc.substring(0);
+  copy['wordsToFind'] = wordsToFind;
+  copy['content'] = List<Map<String, dynamic>>();
+  List<Map<String, dynamic>> copyContent = List<Map<String, dynamic>>();
+  content.forEach((cont) {
+    copyContent.add({
+      "title": cont['title'],
+      "type": cont['type'],
+      "data": cont['data']
+    });
+  });
+
+  copy['content'] = copyContent;
+
+  return copy;
 }

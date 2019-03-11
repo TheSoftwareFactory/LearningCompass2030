@@ -3,9 +3,11 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/data/models/petal.dart';
+import 'package:learning_compass_exp/data/models/chapter_state.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/actions/actions.dart';
 import 'package:learning_compass_exp/screens/info/chapter_screen/chapter_content.dart';
+import 'package:learning_compass_exp/screens/info/chapter_screen/magic_word_bar.dart';
 
 class ChapterScreenBody extends StatelessWidget {
   final Map<String, dynamic> chapter;
@@ -15,10 +17,10 @@ class ChapterScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, bool>(
+    return StoreConnector<AppState, ChapterState>(
         converter: (Store<AppState> store) => store
-            .state.progress[subject.name].constructProgress[chapter['id']].read,
-        builder: (context, read) {
+            .state.progress[subject.name].constructProgress[chapter['id']],
+        builder: (context, chapterState) {
           return ListView.separated(
             padding: EdgeInsets.only(top: 20),
             itemCount: chapter['content'].length +
@@ -32,17 +34,29 @@ class ChapterScreenBody extends StatelessWidget {
             itemBuilder: (context, index) {
               // Add header and a trailer.
               if (index == 0) {
-                return Container(
-                  color: Colors.black38,
-                  padding: EdgeInsets.all(30),
-                  child: Text(
-                    chapter['description'],
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline
-                        .copyWith(color: Colors.white),
-                  ),
+                return Column(
+                  children: <Widget>[
+                    SizedBox(
+                      width: 250,
+                      //height: 50,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: MagicWordBar(petal: subject, chapterState: chapterState),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.black38,
+                      padding: EdgeInsets.all(30),
+                      child: Text(
+                        chapter['description'],
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline
+                            .copyWith(color: Colors.white),
+                      ),
+                    ),
+                  ],
                 );
               } else if (index == chapter['content'].length + 1) {
                 return Container(
@@ -60,14 +74,16 @@ class ChapterScreenBody extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10))),
                           padding: EdgeInsets.only(
                               right: 5, left: 5, top: 10, bottom: 10),
-                          onPressed: read
+                          onPressed: chapterState.read
                               ? null
                               : () {
                                   callback();
                                   Navigator.pop(context, true);
                                 },
                           child: Text(
-                            read ? 'You\'ve already read this chapter' : 'I agree to the te.... I mean I\'ve read this chapter!',
+                            chapterState.read
+                                ? 'You\'ve already read this chapter'
+                                : 'I agree to the te.... I mean I\'ve read this chapter!',
                             textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.button,
                           ),
@@ -78,7 +94,10 @@ class ChapterScreenBody extends StatelessWidget {
 
               index -= 1;
               return ChapterContent(
-                  data: chapter['content'][index], color: subject.color);
+                  data: chapter['content'][index],
+                  chapterState: chapterState,
+                  color: subject.color,
+                  petal: subject);
             },
           );
         });
