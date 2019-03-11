@@ -2,14 +2,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:redux/redux.dart';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:test/widget_tests/flower_widget_test.dart
-import 'dart:math';
-=======
->>>>>>> d0f21bd63ba159d27a3bf2a27146d54f0fd9954c:test/widget_tests/home/flower_widget_test.dart
-
->>>>>>> tabbedAppbar
 import 'package:learning_compass_exp/screens/home/widgets/flower/flower.dart';
 import 'package:learning_compass_exp/screens/home/widgets/flower/flower_menu.dart';
 import 'package:learning_compass_exp/app.dart';
