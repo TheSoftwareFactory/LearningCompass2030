@@ -8,10 +8,11 @@ class MenuDrawerHeader extends StatelessWidget {
   final CircleAvatar photo;
 
   //Default values
-  static const _defaultPhotoText = 'defaultText';
+  static const _defaultName = 'Firstname Lastname';
+  static const _defaultEmail= 'firstname.lastname@example.com';
   static const CircleAvatar _defaultPhoto = const CircleAvatar();
 
-  MenuDrawerHeader({this.name = _defaultPhotoText, this.email= _defaultPhotoText,
+  MenuDrawerHeader({this.name = _defaultName, this.email= _defaultEmail,
     this.photo = _defaultPhoto});
 
   @override

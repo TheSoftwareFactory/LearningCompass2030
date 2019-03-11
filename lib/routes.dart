@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:learning_compass_exp/screens/about/about.dart';
 import 'package:learning_compass_exp/screens/home/index.dart';
 import 'package:learning_compass_exp/screens/info/index.dart';
-
 import 'package:learning_compass_exp/data/constants/PETAL_CONSTANTS.dart';
+
 
 final routes = <String, WidgetBuilder>{
   '/': (context) => HomeScreen(),
@@ -40,4 +40,7 @@ final routes = <String, WidgetBuilder>{
   '/community': (context) => InfoScreen(
     petal: PETAL_CONSTANTS.community,
   ),
+
+  //Drawer
+  '/drawer/about': (context) => About(),
 };

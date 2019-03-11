@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter/scheduler.dart';
-
 import 'package:learning_compass_exp/screens/home/home.dart';
 import 'package:learning_compass_exp/screens/home/widgets/drawer/drawer.dart';
 import 'package:learning_compass_exp/screens/home/welcome_dialog.dart';
-
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/actions/actions.dart';
 
