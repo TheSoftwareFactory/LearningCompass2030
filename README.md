@@ -11,10 +11,10 @@ Structure of the Flutter App:
 
 #`lib`
 
-* `common/widgets`: Contains the common widget in the App.
-* `data`: Contains the data and model used in the App.
+* `common/widgets`: Contains the common widgets in the App.
+* `data`: Contains the data and models used in the App.
 * `screens`: This is the code for the screens in the App. 
 * `store`: This is the code that contains the redux part of the App. 
 * `app.dart` : This is the entry point of the App. 
 * `main.dart`: This is where the individual part of the App are put together. 
-* `routes.dart`: This contains the app routes.  
+* `routes.dart`: This contains the App's screen routes.  
