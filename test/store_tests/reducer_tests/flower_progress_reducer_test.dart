@@ -68,5 +68,46 @@ main() {
               .read,
           isTrue);
     });
+
+    test('should add correct found magic word to the correct chapter of the correct construct in the state in response to WordFoundAction', () {
+      final store = Store<AppState>(
+        appReducer,
+        initialState: AppState.initial(MOCK_STATIC_JSON),
+      );
+
+      expect(store.state.progress[PetalName.education].constructProgress[1].foundWords, []);
+
+      store.dispatch(WordFoundAction(PetalName.education, 1, 'amazement'));
+
+      expect(store.state.progress[PetalName.education].constructProgress[1].foundWords, ['amazement']);
+    });
+
+    test('should not add word as found if it is found previously in response to WordFoundAction', () {
+      final store = Store<AppState>(
+        appReducer,
+        initialState: AppState.initial(MOCK_STATIC_JSON),
+      );
+
+      expect(store.state.progress[PetalName.education].constructProgress[1].foundWords, []);
+
+      store.dispatch(WordFoundAction(PetalName.education, 1, 'amazement'));
+      store.dispatch(WordFoundAction(PetalName.education, 1, 'amazement'));
+
+      expect(store.state.progress[PetalName.education].constructProgress[1].foundWords, ['amazement']);
+    });
+
+    test('should add multiple different words as found in response to WordFoundAction', () {
+      final store = Store<AppState>(
+        appReducer,
+        initialState: AppState.initial(MOCK_STATIC_JSON),
+      );
+
+      expect(store.state.progress[PetalName.education].constructProgress[1].foundWords, []);
+
+      store.dispatch(WordFoundAction(PetalName.education, 1, 'amazement'));
+      store.dispatch(WordFoundAction(PetalName.education, 1, 'balls'));
+
+      expect(store.state.progress[PetalName.education].constructProgress[1].foundWords, ['amazement', 'balls']);
+    });
   });
 }

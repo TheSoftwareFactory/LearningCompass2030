@@ -110,7 +110,7 @@ class WelcomeDialog extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 _buildTop(),
-                _buildBody(context),
+                Expanded(child: _buildBody(context)),
                 _buttonBar(context),
               ],
             )));
