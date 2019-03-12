@@ -34,7 +34,7 @@ class WordFoundDialog extends StatelessWidget {
         child: Icon(
           Icons.star,
           size: size,
-          color: Colors.yellow[700],
+          color: isWordFound ? Color.fromRGBO(140, 110, 0, 1) : Colors.yellow[700],
         ),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
