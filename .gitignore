@@ -39,6 +39,7 @@ build/
 **/android/app/src/main/gen/com/example/learningcompassexp/BuildConfig.java
 **/android/app/src/main/gen/com/example/learningcompassexp/Manifest.java
 **/android/app/src/main/gen/com/example/learningcompassexp/R.java
+**/android/key.properties
 
 
 # iOS/XCode related
