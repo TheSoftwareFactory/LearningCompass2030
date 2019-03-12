@@ -5,6 +5,8 @@ import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/data/models/construct_progress_state.dart';
 import 'package:learning_compass_exp/data/models/chapter_state.dart';
 
+import 'package:learning_compass_exp/data/constants/MISC_CONSTANTS.dart';
+
 @immutable
 class AppState {
   final bool flowerSmall;
@@ -88,7 +90,6 @@ class AppState {
   /// [_POINTSFORREAD] has to be manually kept up to date with the similar value
   /// in [ChapterState] if it is changed.
   factory AppState.initial(List<Map<String, dynamic>> decodedJson) {
-    const int _POINTSFORREAD = 7;
     AppState initialState = AppState().copyWith(
         progress: Map<PetalName, ConstructProgressState>(),
         flowerSmall: true,
@@ -102,7 +103,7 @@ class AppState {
         constructProgress[chapter['id']] = ChapterState(
             id: chapter['id'],
             read: false,
-            maxProgress: chapter['wordsToFind'].length + _POINTSFORREAD
+            maxProgress: chapter['wordsToFind'].length + POINTS_FOR_READ,
         );
       }
       initialState.progress[petalNameFromString(json['PetalName'])]

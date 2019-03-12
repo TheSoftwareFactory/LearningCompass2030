@@ -30,7 +30,6 @@ class ChapterContent extends StatelessWidget {
     List<dynamic> magicWords = List<dynamic>();
     if (data['magicWords'] != null) {
       magicWords = data['magicWords'];
-      magicWords.sort((a, b) => a['index'].compareTo(b['index']));
     }
 
     List<TextSpan> texts = splitDataIntoPieces(content, magicWords, 0, context);
