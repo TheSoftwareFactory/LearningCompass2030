@@ -19,8 +19,8 @@ main() {
         angle: 0.0,
         icon: CustomIcons.workLifeBalance,
         route: '/work_life_balance',
-        pathToAssetData: 'assets/static_data/work-life_balance.json',
-        pathToThemeImage: 'assets/images/work-life-balance1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/work-life_balance.json',
+        pathToThemeImage: 'assets/images/constructs/work-life-balance1.jpg',
       );
 
       expect(PETAL_CONSTANTS.workLifeBalance, expectedValue);
@@ -34,8 +34,8 @@ main() {
         angle: 2 / 11 * pi,
         icon: CustomIcons.safety,
         route: '/safety',
-        pathToAssetData: 'assets/static_data/safety.json',
-        pathToThemeImage: 'assets/images/safety1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/safety.json',
+        pathToThemeImage: 'assets/images/constructs/safety1.jpg',
       );
 
       expect(PETAL_CONSTANTS.safety, expectedValue);
@@ -49,8 +49,8 @@ main() {
         angle: 4 / 11 * pi,
         icon: CustomIcons.lifeSatisfaction,
         route: '/life_satisfaction',
-        pathToAssetData: 'assets/static_data/life_satisfaction.json',
-        pathToThemeImage: 'assets/images/life-satisfaction1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/life_satisfaction.json',
+        pathToThemeImage: 'assets/images/constructs/life-satisfaction1.jpg',
       );
 
       expect(PETAL_CONSTANTS.lifeSatisfaction, expectedValue);
@@ -64,8 +64,8 @@ main() {
         angle: 6 / 11 * pi,
         icon: CustomIcons.health,
         route: '/health',
-        pathToAssetData: 'assets/static_data/health.json',
-        pathToThemeImage: 'assets/images/health1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/health.json',
+        pathToThemeImage: 'assets/images/constructs/health1.jpg',
       );
 
       expect(PETAL_CONSTANTS.health, expectedValue);
@@ -79,8 +79,8 @@ main() {
         angle: 8 / 11 * pi,
         icon: CustomIcons.civicEngagement,
         route: '/civic_engagement',
-        pathToAssetData: 'assets/static_data/civic_engagement.json',
-        pathToThemeImage: 'assets/images/civic-engagement1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/civic_engagement.json',
+        pathToThemeImage: 'assets/images/constructs/civic-engagement1.jpg',
       );
 
       expect(PETAL_CONSTANTS.civicEngagement, expectedValue);
@@ -94,8 +94,8 @@ main() {
         angle: 10 / 11 * pi,
         icon: CustomIcons.environment,
         route: '/environment',
-        pathToAssetData: 'assets/static_data/environment.json',
-        pathToThemeImage: 'assets/images/environment1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/environment.json',
+        pathToThemeImage: 'assets/images/constructs/environment1.jpg',
       );
 
       expect(PETAL_CONSTANTS.environment, expectedValue);
@@ -109,8 +109,8 @@ main() {
         angle: 12 / 11 * pi,
         icon: CustomIcons.education,
         route: '/education',
-        pathToAssetData: 'assets/static_data/education.json',
-        pathToThemeImage: 'assets/images/education1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/education.json',
+        pathToThemeImage: 'assets/images/constructs/education1.jpg',
       );
 
       expect(PETAL_CONSTANTS.education, expectedValue);
@@ -124,8 +124,8 @@ main() {
         angle: 14 / 11 * pi,
         icon: CustomIcons.community,
         route: '/community',
-        pathToAssetData: 'assets/static_data/community.json',
-        pathToThemeImage: 'assets/images/community1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/community.json',
+        pathToThemeImage: 'assets/images/constructs/community1.jpg',
       );
 
       expect(PETAL_CONSTANTS.community, expectedValue);
@@ -139,8 +139,8 @@ main() {
         angle: 16 / 11 * pi,
         icon: CustomIcons.jobs,
         route: '/jobs',
-        pathToAssetData: 'assets/static_data/jobs.json',
-        pathToThemeImage: 'assets/images/jobs1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/jobs.json',
+        pathToThemeImage: 'assets/images/constructs/jobs1.jpg',
       );
 
       expect(PETAL_CONSTANTS.jobs, expectedValue);
@@ -154,8 +154,8 @@ main() {
         angle: 18 / 11 * pi,
         icon: CustomIcons.income,
         route: '/income',
-        pathToAssetData: 'assets/static_data/income.json',
-        pathToThemeImage: 'assets/images/income1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/income.json',
+        pathToThemeImage: 'assets/images/constructs/income1.jpg',
       );
 
       expect(PETAL_CONSTANTS.income, expectedValue);
@@ -169,8 +169,8 @@ main() {
         angle: 20 / 11 * pi,
         icon: CustomIcons.housing,
         route: '/housing',
-        pathToAssetData: 'assets/static_data/housing.json',
-        pathToThemeImage: 'assets/images/housing1.jpg',
+        pathToAssetData: 'assets/static_data/constructs/housing.json',
+        pathToThemeImage: 'assets/images/constructs/housing1.jpg',
       );
 
       expect(PETAL_CONSTANTS.housing, expectedValue);
@@ -184,8 +184,8 @@ main() {
           angle: 20 / 11 * pi,
           icon: CustomIcons.housing,
           route: '/housing',
-          pathToAssetData: 'assets/static_data/housing.json',
-          pathToThemeImage: 'assets/images/housing1.jpg');
+          pathToAssetData: 'assets/static_data/constructs/housing.json',
+          pathToThemeImage: 'assets/images/constructs/housing1.jpg');
 
       Petal anotherExpectedValue = Petal('Civic Engagement',
           name: PetalName.civicEngagement,
@@ -193,8 +193,8 @@ main() {
           angle: 8 / 11 * pi,
           icon: CustomIcons.civicEngagement,
           route: '/civic_engagement',
-          pathToAssetData: 'assets/static_data/civic_engagement.json',
-          pathToThemeImage: 'assets/images/civic-engagement1.jpg');
+          pathToAssetData: 'assets/static_data/constructs/civic_engagement.json',
+          pathToThemeImage: 'assets/images/constructs/civic-engagement1.jpg');
 
       expect(PETAL_CONSTANTS.toList() is List<Petal>, isTrue);
       expect(PETAL_CONSTANTS.toList()[10], oneExpectedValue);
@@ -209,8 +209,8 @@ main() {
           angle: 20 / 11 * pi,
           icon: CustomIcons.housing,
           route: '/housing',
-          pathToAssetData: 'assets/static_data/housing.json',
-          pathToThemeImage: 'assets/images/housing1.jpg');
+          pathToAssetData: 'assets/static_data/constructs/housing.json',
+          pathToThemeImage: 'assets/images/constructs/housing1.jpg');
 
       Petal anotherExpectedValue = Petal('Civic Engagement',
           name: PetalName.civicEngagement,
@@ -218,8 +218,8 @@ main() {
           angle: 8 / 11 * pi,
           icon: CustomIcons.civicEngagement,
           route: '/civic_engagement',
-          pathToAssetData: 'assets/static_data/civic_engagement.json',
-          pathToThemeImage: 'assets/images/civic-engagement1.jpg');
+          pathToAssetData: 'assets/static_data/constructs/civic_engagement.json',
+          pathToThemeImage: 'assets/images/constructs/civic-engagement1.jpg');
 
       expect(PETAL_CONSTANTS.toMap() is Map<PetalName, Petal>, isTrue);
       expect(PETAL_CONSTANTS.toMap()[PetalName.housing], oneExpectedValue);
