@@ -1,5 +1,7 @@
 import 'package:meta/meta.dart';
 
+import 'package:learning_compass_exp/data/constants/MISC_CONSTANTS.dart';
+
 @immutable
 class ChapterState {
   final int id;
@@ -11,7 +13,7 @@ class ChapterState {
       {this.id,
       this.read = false,
       this.foundWords = const [],
-      this.maxProgress = 14});
+      this.maxProgress = POINTS_FOR_READ});
 
   ChapterState copyWith({
     int id,
@@ -32,7 +34,7 @@ class ChapterState {
   // is changed here.
   int getChapterProgressAbsolute() {
     int progress = 0;
-    if (read) progress += 7;
+    if (read) progress += POINTS_FOR_READ;
 
     progress += foundWords.length;
 

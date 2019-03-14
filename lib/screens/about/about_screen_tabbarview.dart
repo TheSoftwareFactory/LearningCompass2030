@@ -57,7 +57,7 @@ class AboutScreenTabBarView extends StatelessWidget {
   return new BoxDecoration(
   image: new DecorationImage(
     fit: BoxFit.fill,
-      image: new AssetImage('assets/images/'+choiceTitle.toLowerCase() +'.jpg'))
+      image: new AssetImage('assets/images/about/'+choiceTitle.toLowerCase() +'.jpg'))
   );
 
 

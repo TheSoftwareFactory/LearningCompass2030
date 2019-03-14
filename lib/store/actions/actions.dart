@@ -7,6 +7,14 @@ class SetChapterAsReadAction {
   SetChapterAsReadAction(this.constructName, this.chapterId);
 }
 
+class WordFoundAction {
+  final PetalName constructName;
+  final int chapterId;
+  final String word;
+
+  WordFoundAction(this.constructName, this.chapterId, this.word);
+}
+
 class ToggleFlowerSmallAction {}
 
 class ChangeSubrouteAction {

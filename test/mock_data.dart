@@ -8,9 +8,13 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "title": "Introduction",
         "description":
         "Introducing the new and exciting concept of Work-Life Balance",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
-          {"title": "", "type": "text", "data": "some short data here"},
+          {"title": "", "type": "text", "data": "Some short data here"},
         ]
       }
     ]
@@ -24,7 +28,11 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "title": "Introduction",
         "description":
         "Introducing the new and exciting concept of Work-Life Balance",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
           {"title": "", "type": "text", "data": "some short data here"},
         ]
@@ -40,7 +48,11 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "title": "Introduction",
         "description":
         "Introducing the new and exciting concept of Work-Life Balance",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
           {"title": "", "type": "text", "data": "some short data here"},
         ]
@@ -56,7 +68,11 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "title": "Introduction",
         "description":
         "Introducing the new and exciting concept of Work-Life Balance",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
           {"title": "", "type": "text", "data": "some short data here"},
         ]
@@ -72,7 +88,11 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "title": "Introduction",
         "description":
         "Introducing the new and exciting concept of Work-Life Balance",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
           {"title": "", "type": "text", "data": "some short data here"},
         ]
@@ -87,7 +107,11 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "id": 1,
         "title": "Introduction",
         "description": "Introducing something",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
           {"title": "", "type": "text", "data": "some short data here"},
         ]
@@ -102,7 +126,11 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "id": 1,
         "title": "Introduction",
         "description": "Introducing something",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
           {"title": "", "type": "text", "data": "some short data here"},
         ]
@@ -117,7 +145,11 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "id": 1,
         "title": "Introduction",
         "description": "Introducing something",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
           {"title": "", "type": "text", "data": "some short data here"},
         ]
@@ -132,7 +164,11 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "id": 1,
         "title": "Introduction",
         "description": "Introducing something",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
           {"title": "", "type": "text", "data": "some short data here"},
         ]
@@ -147,7 +183,11 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "id": 1,
         "title": "Introduction",
         "description": "Introducing something",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
           {"title": "", "type": "text", "data": "some short data here"},
         ]
@@ -162,7 +202,11 @@ final List<Map<String, dynamic>> MOCK_STATIC_JSON = [
         "id": 1,
         "title": "Introduction",
         "description": "Introducing something",
-        "wordsToFind": ["some", "short", "data"],
+        "wordsToFind": [
+          {"word": "some", "bonusInfo": "Some is a word"},
+          {"word": "short", "bonusInfo": "short is not a word"},
+          {"word": "data", "bonusInfo": "something is wrong."}
+        ],
         "content": [
           {"title": "", "type": "text", "data": "some short data here"},
         ]

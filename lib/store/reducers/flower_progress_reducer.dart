@@ -9,6 +9,8 @@ final flowerProgressReducer =
     combineReducers<Map<PetalName, ConstructProgressState>>([
   TypedReducer<Map<PetalName, ConstructProgressState>, SetChapterAsReadAction>(
       _setChapterAsRead),
+  TypedReducer<Map<PetalName, ConstructProgressState>, WordFoundAction>(
+      _wordFound),
 ]);
 
 Map<PetalName, ConstructProgressState> _setChapterAsRead(
@@ -19,6 +21,23 @@ Map<PetalName, ConstructProgressState> _setChapterAsRead(
       newMap[action.constructName]
           .constructProgress[action.chapterId]
           .copyWith(read: true);
+
+  return newMap;
+}
+
+Map<PetalName, ConstructProgressState> _wordFound(
+    Map<PetalName, ConstructProgressState> progress, WordFoundAction action) {
+  Map<PetalName, ConstructProgressState> newMap = Map.from(progress);
+  List<String> newWords = List.from(newMap[action.constructName]
+      .constructProgress[action.chapterId]
+      .foundWords);
+  if (!newWords.contains((action.word))) {
+    newWords.add(action.word);
+    newMap[action.constructName].constructProgress[action.chapterId] =
+        newMap[action.constructName]
+            .constructProgress[action.chapterId]
+            .copyWith(foundWords: newWords);
+  }
 
   return newMap;
 }

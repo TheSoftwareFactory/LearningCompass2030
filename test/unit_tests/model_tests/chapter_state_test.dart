@@ -9,7 +9,7 @@ main() {
 
       expect(cState.read, isFalse);
       expect(cState.foundWords, []);
-      expect(cState.maxProgress, 14);
+      expect(cState.maxProgress, 7);
     });
 
     test('saves parameters correctly', () {
