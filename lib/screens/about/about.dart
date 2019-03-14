@@ -4,7 +4,7 @@ import 'package:learning_compass_exp/screens/about/about_tabbed_appbar.dart';
 
 class About extends StatelessWidget {
 
-  static final _choicesJson = 'assets/static_data/choices.json';
+  static final _choicesJson = 'assets/static_data/about/choices.json';
 
   @override
   Widget build(BuildContext context) {

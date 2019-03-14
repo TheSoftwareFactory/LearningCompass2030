@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 
 
-class AboutTabBarViewChoiceBody extends StatelessWidget {
-  const AboutTabBarViewChoiceBody({Key key, this.choiceBody}) : super(key: key);
+class AboutScreenTabBarViewBody extends StatelessWidget {
+  const AboutScreenTabBarViewBody({Key key, this.choiceBody}) : super(key: key);
   final Map<String, dynamic> choiceBody;
 
 
