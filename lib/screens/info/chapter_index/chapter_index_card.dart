@@ -81,7 +81,7 @@ class _ChapterIndexCardState extends State<ChapterIndexCard> {
               child: InkWell(
                 onTap: () {
                   changeRoute();
-                  navigateToInfoView();
+                  navigateToInfoView(); // Passed from ChapterIndex
                 },
                 child: null,
               ),
