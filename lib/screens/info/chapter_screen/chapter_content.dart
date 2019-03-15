@@ -32,7 +32,7 @@ class ChapterContent extends StatelessWidget {
       magicWords = data['magicWords'];
     }
 
-    List<TextSpan> texts = splitDataIntoPieces(content, magicWords, 0, context);
+    List<TextSpan> texts = _splitDataIntoPieces(content, magicWords, 0, context);
 
     return SizedBox(
       width: 250,
@@ -61,6 +61,7 @@ class ChapterContent extends StatelessWidget {
     }
   }
 
+  /* Unnecessary atm
   Color _getLighterColor(double multiplier) {
     final rinc = 255 - color.red;
     final rtint = rinc * multiplier;
@@ -77,14 +78,15 @@ class ChapterContent extends StatelessWidget {
       1.0,
     );
   }
+  */
 
-  List<TextSpan> splitDataIntoPieces(
+  List<TextSpan> _splitDataIntoPieces(
       String data, List words, int pointer, BuildContext context) {
     if (words.length == 0) {
       return [TextSpan(text: data.substring(pointer))];
     }
 
-    int index = words.first['index'] + 1;
+    int index = words.first['index'];
     int wordLength = words.first['word'].length;
     List<TextSpan> dataPieces = [TextSpan(text: data.substring(pointer, index))]
       ..add(TextSpan(
@@ -100,7 +102,7 @@ class ChapterContent extends StatelessWidget {
                 });
           },
       ))
-      ..addAll(splitDataIntoPieces(
+      ..addAll(_splitDataIntoPieces(
           data, words.sublist(1), index + wordLength, context));
     return dataPieces;
   }
@@ -111,7 +113,7 @@ class ChapterContent extends StatelessWidget {
       padding: data['type'] == 'video'
           ? EdgeInsets.only(top: 30, bottom: 30)
           : EdgeInsets.all(30),
-      color: true ? Colors.white : _getLighterColor(0.7),
+      color: Colors.white,
       child: Column(
         children: <Widget>[
           _buildTitle(context),
