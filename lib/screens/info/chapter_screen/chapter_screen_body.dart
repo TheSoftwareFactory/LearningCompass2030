@@ -32,13 +32,12 @@ class ChapterScreenBody extends StatelessWidget {
               );
             },
             itemBuilder: (context, index) {
-              // Add header and a trailer.
+              // Add header and a trailer for magic word bar/chapter desc, and read button respectively.
               if (index == 0) {
                 return Column(
                   children: <Widget>[
                     SizedBox(
                       width: 250,
-                      //height: 50,
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: MagicWordBar(petal: subject, chapterState: chapterState),
