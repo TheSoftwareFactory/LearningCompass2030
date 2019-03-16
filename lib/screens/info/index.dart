@@ -21,27 +21,28 @@ class InfoScreen extends StatelessWidget {
 
     return StoreConnector<AppState, Function>(
         converter: (Store<AppState> store) {
-      return () => store.dispatch(ChangeSubrouteAction(null));
-    }, builder: (context, onPopCallback) {
-      return WillPopScope(
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('${petal.toString()}'),
-            backgroundColor: petal.color,
-          ),
-          body: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  colorFilter: ColorFilter.mode(
-                      petal.color.withAlpha(150), BlendMode.color),
-                  image: AssetImage(petal.pathToThemeImage),
-                  fit: BoxFit.cover,
-                ),
+          return () => store.dispatch(ChangeSubrouteAction(null));
+        },
+        builder: (context, onPopCallback) {
+          return WillPopScope(
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text('${petal.toString()}'),
+                backgroundColor: petal.color,
               ),
-              child: ChapterIndex(subject: petal)),
-        ),
-        onWillPop: () => _willPopCallback(onPopCallback),
-      );
+              body: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          petal.color.withAlpha(150), BlendMode.color),
+                      image: AssetImage(petal.pathToThemeImage),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: ChapterIndex(subject: petal)),
+            ),
+            onWillPop: () => _willPopCallback(onPopCallback),
+          );
     });
   }
 }
