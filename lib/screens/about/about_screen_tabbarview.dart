@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:learning_compass_exp/screens/about/about_tabbarview_choice_body.dart';
+import 'package:learning_compass_exp/screens/about/about_screen_tabbarview_body.dart';
 
 
-class AboutTabBarViewChoice extends StatelessWidget {
-  const AboutTabBarViewChoice({Key key, this.choice}) : super(key: key);
+class AboutScreenTabBarView extends StatelessWidget {
+  const AboutScreenTabBarView({Key key, this.choice}) : super(key: key);
   final Map <String, dynamic> choice;
 
 
@@ -41,7 +41,7 @@ class AboutTabBarViewChoice extends StatelessWidget {
     json['content'].forEach((element) {
       choiceBodyList.add(Padding(
         padding: const EdgeInsets.only(top: 8.0),
-        child: AboutTabBarViewChoiceBody(choiceBody: element),
+        child: AboutScreenTabBarViewBody(choiceBody: element),
       ));
     });
 

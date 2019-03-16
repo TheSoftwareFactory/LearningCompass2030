@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learning_compass_exp/screens/about/about_tabbarview_choice.dart';
+import 'package:learning_compass_exp/screens/about/about_screen_tabbarview.dart';
+
 
 class AboutTabbedAppBar extends StatelessWidget {
   final List<dynamic> choices;
@@ -21,7 +22,7 @@ class AboutTabbedAppBar extends StatelessWidget {
     List<Widget> choiceList = new List<Widget>();
 
     json.forEach((element) {
-      choiceList.add(AboutTabBarViewChoice(choice: element));
+      choiceList.add(AboutScreenTabBarView(choice: element));
     });
 
     return choiceList;
