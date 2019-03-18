@@ -47,7 +47,7 @@ class ChapterScreenBody extends StatelessWidget {
                       color: Colors.black38,
                       padding: EdgeInsets.all(30),
                       child: Text(
-                        chapter['description'],
+                        chapter['description'] ?? '',
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme

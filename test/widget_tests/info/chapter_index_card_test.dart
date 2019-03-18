@@ -77,6 +77,20 @@ void main() {
       expect(icon.icon, Icons.check_circle);
       expect(icon.color, Colors.green);
     });
+
+    testWidgets('expands description text when tapped', (WidgetTester tester) async {
+      await setUpWidget(tester, null);
+
+      Text desc = find.text("Introducing the new and exciting concept of Work-Life Balance").evaluate().first.widget;
+      expect(desc.maxLines, 1);
+
+      expect(find.descendant(of: find.byType(Card), matching: find.byType(InkWell)), findsNWidgets(2));
+      await tester.tap(find.descendant(of: find.byType(Card), matching: find.byType(InkWell).at(1)));
+      await tester.pumpAndSettle();
+
+      desc = find.text("Introducing the new and exciting concept of Work-Life Balance").evaluate().first.widget;
+      expect(desc.maxLines, 100);
+    });
   });
 }
 

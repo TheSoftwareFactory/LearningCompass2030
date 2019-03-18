@@ -17,7 +17,7 @@ class ChapterScreen extends StatelessWidget {
 
   Map _getContent(subroute) {
     final Map<String, dynamic> current = chapters
-        .firstWhere((item) => item['title'] == subroute, orElse: () => []);
+        .firstWhere((item) => item['title'] == subroute, orElse: () => Map<String, dynamic>());
 
     return findMagicWords(_deepCopyChapter(current));
   }
@@ -54,7 +54,7 @@ class ChapterScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: ChapterScreenBody(
+              child: chapters.length == 0 ? Container() : ChapterScreenBody(
                   subject: petal, chapter: _getContent(subroute)),
             ),
           );
@@ -63,18 +63,19 @@ class ChapterScreen extends StatelessWidget {
 }
 
 Map<String, dynamic> _deepCopyChapter(Map<String, dynamic> chapter) {
+  if (chapter == null || chapter.length == 0) return chapter;
   Map<String, dynamic> copy = Map<String, dynamic>();
   copy['id'] = chapter['id'];
 
   String title = chapter['title'];
   String desc = chapter['description'];
   List<Map<String, dynamic>> wordsToFind =
-      List<Map<String, dynamic>>.from(chapter['wordsToFind']);
+      chapter['wordsToFind'] == null ? List<Map<String, dynamic>>() : List<Map<String, dynamic>>.from(chapter['wordsToFind']);
   List<Map<String, dynamic>> content =
-      List<Map<String, dynamic>>.from(chapter['content']);
+      chapter['content'] == null ? List<Map<String, dynamic>>() : List<Map<String, dynamic>>.from(chapter['content']);
 
-  copy['title'] = title.substring(0);
-  copy['description'] = desc.substring(0);
+  copy['title'] = title == null ? null :title.substring(0);
+  copy['description'] = desc == null ? null : desc.substring(0);
   copy['wordsToFind'] = wordsToFind;
   copy['content'] = List<Map<String, dynamic>>();
   List<Map<String, dynamic>> copyContent = List<Map<String, dynamic>>();

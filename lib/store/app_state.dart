@@ -92,7 +92,7 @@ class AppState {
   factory AppState.initial(List<Map<String, dynamic>> decodedJson) {
     AppState initialState = AppState().copyWith(
         progress: Map<PetalName, ConstructProgressState>(),
-        flowerSmall: true,
+        flowerSmall: false,
         firstStartUp: true,
         subroute: null
 

@@ -8,6 +8,7 @@ class FoundWord {
 }
 
 Map<String, dynamic> findMagicWords(final Map<String, dynamic> chapter) {
+  if (chapter.length == 0) return chapter;
   Map<String, dynamic> chapterCopy = _deepCopyChapter(chapter);
   List<FoundWord> foundWords = _getAllFoundWords(chapterCopy['content'], chapterCopy['wordsToFind']);
 

@@ -35,7 +35,7 @@ class ChapterSelectionBar extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
                         fontSize: 16),
-                    items: chapters
+                    items: chapters == null ? [DropdownMenuItem<String>(value: 'INVALID', child: Text('No content found'))] : chapters
                         .map((chapter) => DropdownMenuItem<String>(
                             value: chapter, child: Text(chapter)))
                         .toList(),

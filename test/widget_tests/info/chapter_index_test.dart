@@ -9,24 +9,49 @@ import 'package:learning_compass_exp/screens/info/chapter_index/chapter_index_ca
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
-import 'package:learning_compass_exp/data/models/construct_progress_state.dart';
-import 'package:learning_compass_exp/data/models/chapter_state.dart';
 
 import '../../mock_data.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
-  TestWidgetsFlutterBinding.ensureInitialized();
+      TestWidgetsFlutterBinding.ensureInitialized();
   if (binding is LiveTestWidgetsFlutterBinding) {
     binding.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.fullyLive;
   }
 
-
   group("ChapterIndex widget", () {
-    testWidgets('shows correct message when no proper data can be accessed', (WidgetTester tester) async {
+    testWidgets('shows correct title', (WidgetTester tester) async {
       await setUpWidget(tester, null);
 
-      expect(find.text('Waiting on data...'), findsOneWidget);
+      expect(find.text('Test Petal'), findsOneWidget);
+    });
+
+    testWidgets('has correct number of ChapterIndexCards',
+        (WidgetTester tester) async {
+      await setUpWidget(tester, null);
+
+      expect(find.byType(ChapterIndexCard), findsOneWidget);
+    });
+
+    testWidgets('has correct properties for ChapterIndexCards',
+        (WidgetTester tester) async {
+      await setUpWidget(tester, null);
+
+      ChapterIndexCard card =
+          find.byType(ChapterIndexCard).evaluate().first.widget;
+      expect(card.data, MOCK_STATIC_JSON.first['chapters'].first);
+      expect(
+          card.subject,
+          Petal(
+            'Test Petal',
+            name: PetalName.safety,
+            color: Colors.brown,
+            icon: Icons.sort,
+            pathToThemeImage: 'path/to/theme',
+            pathToAssetData: 'path/to/asset',
+            route: '/test',
+            angle: 69.0,
+          ));
     });
   });
 }
@@ -39,7 +64,6 @@ Future<void> setUpWidget(WidgetTester tester, Store<AppState> store) async {
     );
   }
 
-
   ChapterIndex card = ChapterIndex(
     subject: Petal(
       'Test Petal',
@@ -51,13 +75,15 @@ Future<void> setUpWidget(WidgetTester tester, Store<AppState> store) async {
       route: '/test',
       angle: 69.0,
     ),
+    chapters: MOCK_STATIC_JSON.first['chapters'],
   );
-  await tester.pumpWidget(StoreProvider(
-    store: store,
-    child: MaterialApp(
-      home: card,
-    ),
-  ));
+  await tester.pumpWidget(
+    StoreProvider<AppState>(
+        store: store,
+        child: MaterialApp(
+          home: card,
+        )),
+  );
 
   await tester.pump();
   await tester.pump();
