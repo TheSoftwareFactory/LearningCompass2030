@@ -7,8 +7,9 @@ import 'package:learning_compass_exp/screens/info/chapter_screen/chapter_screen.
 
 class ChapterIndex extends StatelessWidget {
   final Petal subject;
+  final List<Map<String, dynamic>> chapters;
 
-  ChapterIndex({this.subject});
+  ChapterIndex({this.subject, this.chapters});
 
   Widget _topTitle(BuildContext context) {
     return Container(
@@ -19,14 +20,13 @@ class ChapterIndex extends StatelessWidget {
         child: Text(
           subject.toString(),
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline.copyWith(color: Colors.white),
+          style: Theme.of(context)
+              .textTheme
+              .headline
+              .copyWith(color: Colors.white),
         ),
       ),
     );
-  }
-
-  List _decodeChapters(String data) {
-    return json.decode(data)['chapters'];
   }
 
   void _navigateToInfoView(context, chapters) {
@@ -37,36 +37,25 @@ class ChapterIndex extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<String>(
-      future:
-          DefaultAssetBundle.of(context).loadString(subject.pathToAssetData),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          List _chapters = _decodeChapters(snapshot.data)
-            ..insert(0, null); // used to leave room for title.
-          return Center(
-            child: SizedBox(
-              width: 400,
-              child: ListView.builder(
-                padding: EdgeInsets.all(20),
-                itemCount: _chapters.length,
-                itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return _topTitle(context);
-                  }
-                  return ChapterIndexCard(
-                      subject: subject,
-                      data: _chapters[index],
-                      navigateToInfoView: () =>
-                          _navigateToInfoView(context, _chapters.sublist(1)));
-                },
-              ),
-            ),
-          );
-        } else {
-          return Center(child: Text("Waiting on data..."));
-        }
-      },
+    return Center(
+      child: SizedBox(
+        width: 400,
+        child: ListView.builder(
+          padding: EdgeInsets.all(20),
+          itemCount: chapters.length + 1,
+          itemBuilder: (context, index) {
+            if (index == 0) {
+              return _topTitle(context);
+            }
+            index -= 1;
+            return ChapterIndexCard(
+                subject: subject,
+                data: chapters[index],
+                navigateToInfoView: () =>
+                    _navigateToInfoView(context, chapters));
+          },
+        ),
+      ),
     );
   }
 }

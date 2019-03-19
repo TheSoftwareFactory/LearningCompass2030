@@ -69,12 +69,12 @@ main() {
       test("that copies the AppState except for given parameter", () {
         AppState originalAppState = AppState.initial(MOCK_STATIC_JSON);
         AppState modifiedAppState =
-            originalAppState.copyWith(flowerSmall: false);
+            originalAppState.copyWith(flowerSmall: true);
 
         expect(modifiedAppState != originalAppState, isTrue);
         expect(modifiedAppState.progress == originalAppState.progress, isTrue);
-        expect(originalAppState.flowerSmall, isTrue);
-        expect(modifiedAppState.flowerSmall, isFalse);
+        expect(originalAppState.flowerSmall, isFalse);
+        expect(modifiedAppState.flowerSmall, isTrue);
       });
     });
 

@@ -41,7 +41,7 @@ void main() {
 
       // Check that it's padding property is set correctly
       // 100 is the size of the flower when it's small
-      expect(cont.constraints, BoxConstraints.expand(width: 100, height: 100));
+      expect(cont.constraints, BoxConstraints.expand(width: 225, height: 225));
     });
 
     testWidgets("sets insets correctly around the flower to center it",
@@ -56,7 +56,7 @@ void main() {
 
       // width and height in a Container translate into BoxConstraints
       // 100 is the size of the flower when it's small
-      expect(cont.padding, EdgeInsets.only(left: 100 / 2, top: 100 / 2));
+      expect(cont.padding, EdgeInsets.only(left: (75 / 100) * 150, top: (75 / 100) * 150));
     });
 
     testWidgets("has a Stack widget", (WidgetTester tester) async {
@@ -142,10 +142,10 @@ void main() {
       expect(petal.color, Colors.teal[300]);
     });
 
-    testWidgets("is correct size when it is small", (WidgetTester tester) async {
+    testWidgets("is correct size when it is big", (WidgetTester tester) async {
       await setUpWidget(tester);
 
-      expect(store.state.flowerSmall, isTrue);
+      expect(store.state.flowerSmall, isFalse);
 
       Container cont = find
           .descendant(of: find.byType(Flower), matching: find.byType(Container))
@@ -153,14 +153,13 @@ void main() {
           .first
           .widget;
 
-      expect(cont.constraints, BoxConstraints.expand(width: 100, height: 100));
+      expect(cont.constraints, BoxConstraints.expand(width: (75 / 100) * 300, height: (75 / 100) * 300));
     });
 
-    testWidgets('is correct size when it is large', (WidgetTester tester) async {
+    testWidgets('is correct size when it is small', (WidgetTester tester) async {
       await setUpWidget(tester);
 
-      Finder invisibleButton = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(GestureDetector));
-
+      Finder invisibleButton = find.descendant(of: find.byType(FlowerMenu), matching: find.byType(GestureDetector)).first;
       await tester.tap(invisibleButton);
       await tester.pumpAndSettle();
 
@@ -170,8 +169,8 @@ void main() {
           .first
           .widget;
 
-      // Large flower is larger
-      expect(cont.constraints, BoxConstraints.expand(width: (75 / 100) * 300, height: (75 / 100) * 300));
+      // Small flower is small
+      expect(cont.constraints, BoxConstraints.expand(width: 100, height: 100));
     });
   });
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
-import 'package:learning_compass_exp/screens/info/chapter_index/chapter_index.dart';
+import 'package:learning_compass_exp/screens/info/static_data_fetcher.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/actions/actions.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
@@ -38,7 +38,7 @@ class InfoScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: ChapterIndex(subject: petal)),
+              child: StaticDataFetcher(subject: petal)),
         ),
         onWillPop: () => _willPopCallback(onPopCallback),
       );

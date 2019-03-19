@@ -15,11 +15,11 @@ main() {
         initialState: AppState.initial(MOCK_STATIC_JSON),
       );
 
-      expect(store.state.flowerSmall, isTrue);
+      expect(store.state.flowerSmall, isFalse);
 
       store.dispatch(ToggleFlowerSmallAction());
 
-      expect(store.state.flowerSmall, isFalse);
+      expect(store.state.flowerSmall, isTrue);
     });
 
     test('should toggle flowerSmall bool variable in state correctly in response to multiple ToggleFlowerSmallAction', () {
@@ -28,10 +28,6 @@ main() {
         initialState: AppState.initial(MOCK_STATIC_JSON),
       );
 
-      expect(store.state.flowerSmall, isTrue);
-
-      store.dispatch(ToggleFlowerSmallAction());
-
       expect(store.state.flowerSmall, isFalse);
 
       store.dispatch(ToggleFlowerSmallAction());
@@ -41,6 +37,10 @@ main() {
       store.dispatch(ToggleFlowerSmallAction());
 
       expect(store.state.flowerSmall, isFalse);
+
+      store.dispatch(ToggleFlowerSmallAction());
+
+      expect(store.state.flowerSmall, isTrue);
     });
   });
 }

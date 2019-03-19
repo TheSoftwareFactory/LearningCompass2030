@@ -48,7 +48,6 @@ class Flower extends StatelessWidget {
           converter: (Store<AppState> store) => store.state.progress,
           builder: (context, progress) {
             return Container(
-              // half of parent size
               width: _maxSize,
               height: _maxSize,
               // This padding is because the center of the flower is top-left

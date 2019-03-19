@@ -81,7 +81,7 @@ class _ChapterIndexCardState extends State<ChapterIndexCard> {
               child: InkWell(
                 onTap: () {
                   changeRoute();
-                  navigateToInfoView();
+                  navigateToInfoView(); // Passed from ChapterIndex
                 },
                 child: null,
               ),
@@ -106,9 +106,8 @@ class _ChapterIndexCardState extends State<ChapterIndexCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: AnimatedContainer(
+              child: Padding(
                 padding: EdgeInsets.all(10),
-                duration: Duration(seconds: 1),
                 child: Text(data['description'],
                     maxLines: _descExpanded ? 100 : 1,
                     overflow: TextOverflow.ellipsis),
