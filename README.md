@@ -16,5 +16,5 @@ Structure of the Flutter App:
 * `screens`: This is the code for the screens in the App. 
 * `store`: This is the code that contains the redux part of the App. 
 * `app.dart` : This is the entry point of the App. 
-* `main.dart`: This is where the individual part of the App are put together. 
+* `main.dart`: This is where the individual parts of the App are put together. 
 * `routes.dart`: This contains the App's screen routes.  
