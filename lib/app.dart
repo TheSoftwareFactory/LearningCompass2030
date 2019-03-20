@@ -19,9 +19,10 @@ class LearningCompassApp extends StatelessWidget {
         routes: routes,
         title: 'Learning Compass',
         theme: ThemeData(
-          primaryColor: Colors.green,
-          textTheme: ThemeData().textTheme.copyWith(body1: TextStyle().copyWith(fontSize: 17), title: TextStyle().copyWith(fontSize: 30))
-        ),
+            primaryColor: Colors.green,
+            textTheme: ThemeData().textTheme.copyWith(
+                body1: TextStyle().copyWith(fontSize: 17),
+                title: TextStyle().copyWith(fontSize: 30))),
       ),
     );
   }
