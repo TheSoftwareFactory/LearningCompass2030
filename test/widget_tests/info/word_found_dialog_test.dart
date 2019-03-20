@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:learning_compass_exp/screens/info/chapter_screen/word_found_dialog.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_screen/word_found_dialog.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =

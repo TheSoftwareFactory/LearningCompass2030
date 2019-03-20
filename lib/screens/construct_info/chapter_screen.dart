@@ -3,8 +3,8 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/store/app_state.dart';
-import 'package:learning_compass_exp/screens/info/chapter_screen/chapter_selection_bar.dart';
-import 'package:learning_compass_exp/screens/info/chapter_screen/chapter_screen_body.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_screen/chapter_selection_bar.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_screen/chapter_screen_body.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 
 import 'package:learning_compass_exp/services/magic_words_service.dart';

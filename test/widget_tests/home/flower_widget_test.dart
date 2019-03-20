@@ -2,10 +2,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:redux/redux.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower/flower.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower/flower_menu.dart';
+import 'package:learning_compass_exp/common/widgets/flower/flower.dart';
+import 'package:learning_compass_exp/common/widgets/flower/flower_menu.dart';
 import 'package:learning_compass_exp/app.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal.dart';
+import 'package:learning_compass_exp/common/widgets/flower/flower_petal.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 

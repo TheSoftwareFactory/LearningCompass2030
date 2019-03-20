@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:learning_compass_exp/screens/info/chapter_screen/star_info_dialog.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_screen/star_info_dialog.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/data/models/chapter_state.dart';
 import 'package:learning_compass_exp/data/constants/MISC_CONSTANTS.dart';

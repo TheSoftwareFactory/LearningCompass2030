@@ -9,11 +9,11 @@ import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 
-import 'package:learning_compass_exp/screens/info/chapter_index/chapter_index.dart';
-import 'package:learning_compass_exp/screens/info/chapter_index/chapter_index_card.dart';
-import 'package:learning_compass_exp/screens/info/chapter_screen/chapter_screen.dart';
-import 'package:learning_compass_exp/screens/info/chapter_screen/chapter_content.dart';
-import 'package:learning_compass_exp/screens/info/chapter_screen/star_info_dialog.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_index/chapter_index.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_index/chapter_index_card.dart';
+import 'package:learning_compass_exp/screens/construct_info/chapter_screen.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_screen/chapter_content.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_screen/star_info_dialog.dart';
 
 import '../mock_data.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:redux/redux.dart';
 
-import 'package:learning_compass_exp/screens/home/welcome_dialog.dart';
+import 'package:learning_compass_exp/screens/home/widgets/welcome_dialog.dart';
 import 'package:learning_compass_exp/app.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';

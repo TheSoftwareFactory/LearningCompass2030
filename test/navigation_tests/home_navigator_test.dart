@@ -10,8 +10,8 @@ import 'package:learning_compass_exp/store/reducers/app_state_reducer.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 
 import 'package:learning_compass_exp/screens/home/widgets/grid/grid_item.dart';
-import 'package:learning_compass_exp/screens/info/index.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower/icon_popup/icon_popup.dart';
+import 'package:learning_compass_exp/screens/construct_info/chapter_index.dart';
+import 'package:learning_compass_exp/common/widgets/flower/icon_popup/icon_popup.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icon_button.dart';
 import 'package:learning_compass_exp/common/widgets/custom_icons_icons.dart';
 

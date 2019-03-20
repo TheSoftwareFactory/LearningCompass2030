@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:learning_compass_exp/screens/home/widgets/flower/icon_popup/icon_popup.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower/icon_popup/progress_bar.dart';
+import 'package:learning_compass_exp/common/widgets/flower/icon_popup/icon_popup.dart';
+import 'package:learning_compass_exp/common/widgets/flower/icon_popup/progress_bar.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/data/constants/PETAL_CONSTANTS.dart';
 
