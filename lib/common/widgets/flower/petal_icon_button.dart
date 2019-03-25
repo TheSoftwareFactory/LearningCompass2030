@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/common/widgets/custom_icon_button.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower/icon_popup/icon_popup.dart';
+import 'package:learning_compass_exp/common/widgets/flower/icon_popup/icon_popup.dart';
 
 class PetalIconButton extends StatelessWidget {
   final Petal petal;

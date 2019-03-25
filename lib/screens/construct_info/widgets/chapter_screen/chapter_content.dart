@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
-import 'package:learning_compass_exp/screens/info/chapter_screen/word_found_dialog.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_screen/word_found_dialog.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/data/models/chapter_state.dart';
 import 'package:learning_compass_exp/store/app_state.dart';

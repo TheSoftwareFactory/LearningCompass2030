@@ -1,9 +1,8 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/data/models/petal.dart';
-import 'package:learning_compass_exp/screens/info/chapter_index/chapter_index_card.dart';
-import 'package:learning_compass_exp/screens/info/chapter_screen/chapter_screen.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_index/chapter_index_card.dart';
+import 'package:learning_compass_exp/screens/construct_info/chapter_screen.dart';
 
 class ChapterIndex extends StatelessWidget {
   final Petal subject;

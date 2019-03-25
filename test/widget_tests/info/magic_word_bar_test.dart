@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:learning_compass_exp/screens/info/chapter_screen/magic_word_bar.dart';
-import 'package:learning_compass_exp/screens/info/chapter_screen/star_info_dialog.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_screen/magic_word_bar.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_screen/star_info_dialog.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';
 import 'package:learning_compass_exp/data/models/petal_names.dart';
 import 'package:learning_compass_exp/data/models/chapter_state.dart';

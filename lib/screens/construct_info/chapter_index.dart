@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
-import 'package:learning_compass_exp/screens/info/static_data_fetcher.dart';
+import 'package:learning_compass_exp/screens/construct_info/static_data_fetcher.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 import 'package:learning_compass_exp/store/actions/actions.dart';
 import 'package:learning_compass_exp/data/models/petal.dart';

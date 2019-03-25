@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:learning_compass_exp/data/models/petal.dart';
 
-import 'package:learning_compass_exp/screens/info/chapter_index/chapter_index.dart';
+import 'package:learning_compass_exp/screens/construct_info/widgets/chapter_index/chapter_index.dart';
 
 class StaticDataFetcher extends StatelessWidget {
   final Petal subject;

@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-import 'package:learning_compass_exp/screens/home/widgets/flower/flower_petal_painter.dart';
+import 'package:learning_compass_exp/common/widgets/flower/flower_petal_painter.dart';
 
 class FlowerPetal extends StatelessWidget {
   final double angle;

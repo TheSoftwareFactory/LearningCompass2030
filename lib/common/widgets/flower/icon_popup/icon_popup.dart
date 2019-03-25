@@ -3,7 +3,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:learning_compass_exp/data/models/petal.dart';
-import 'package:learning_compass_exp/screens/home/widgets/flower/icon_popup/progress_bar.dart';
+import 'package:learning_compass_exp/common/widgets/flower/icon_popup/progress_bar.dart';
 import 'package:learning_compass_exp/store/app_state.dart';
 
 class IconPopup extends StatelessWidget {
